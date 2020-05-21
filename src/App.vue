@@ -1,17 +1,27 @@
 <template>
   <div id="app">
     <h1>Vue Toggles</h1>
-    <SimpleToggle @click="toggle" checked="On" unchecked="Off" />
+    <SimpleToggle
+      style="margin-bottom: 20px;"
+      :value="testy"
+      @click="toggle"
+      checked="On"
+      unchecked="Off"
+    />
+
+    <ShortToggle @click="toggle" />
   </div>
 </template>
 
 <script>
 import SimpleToggle from "@/components/SimpleToggle.vue";
+import ShortToggle from "@/components/ShortToggle.vue";
 
 export default {
   name: "App",
   components: {
     SimpleToggle,
+    ShortToggle,
   },
   data: () => ({
     testy: false,
