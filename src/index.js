@@ -1,10 +1,16 @@
 import SimpleToggle from "./SimpleToggle.vue";
 
-// This exports the plugin object.
+let installed = false;
+
 export default {
-  // The install method will be called with the Vue constructor as
-  // the first argument
   install(Vue) {
+    if (installed) {
+      return;
+    }
+
     Vue.component("SimpleToggle", SimpleToggle);
+    installed = true;
   },
 };
+
+export { SimpleToggle };

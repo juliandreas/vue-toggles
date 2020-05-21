@@ -1,6 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
-import SimpleToggle from "@/components/";
+import SimpleToggle from "@";
 
 Vue.use(SimpleToggle);
 

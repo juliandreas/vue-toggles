@@ -1,29 +1,15 @@
 # Vue Toggles
 
-## Project setup
+## Under Construction
 
 ```
-npm install
+Under Construction
 ```
 
-### Compiles and hot-reloads for development
+### Under Construction
 
 ```
-npm run serve
+Under Construction
 ```
-
-### Compiles and minifies for production
-
-```
-npm run build
-```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
