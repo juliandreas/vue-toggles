@@ -2,33 +2,31 @@
   <div id="app">
     <h1>Vue Toggles</h1>
     <SimpleToggle
-      style="margin-bottom: 20px;"
-      :value="testy"
       @click="toggle"
+      :value="value"
       checked="On"
       unchecked="Off"
+      class="margin"
     />
 
-    <ShortToggle @click="toggle" />
+    <SimpleToggle @click="toggle" :value="value" class="margin" />
   </div>
 </template>
 
 <script>
 import SimpleToggle from "@/components/SimpleToggle.vue";
-import ShortToggle from "@/components/ShortToggle.vue";
 
 export default {
   name: "App",
   components: {
     SimpleToggle,
-    ShortToggle,
   },
   data: () => ({
-    testy: false,
+    value: false,
   }),
   methods: {
-    toggle(payload) {
-      this.testy = payload;
+    toggle() {
+      this.value = !this.value;
     },
   },
 };
@@ -59,6 +57,10 @@ body {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 50px;
+  }
+
+  .margin {
+    margin-bottom: 20px;
   }
 }
 </style>

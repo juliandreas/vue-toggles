@@ -1,23 +1,19 @@
 <template>
   <span
-    @click="toggle()"
-    @keydown.space.prevent="toggle()"
+    @click="toggle"
+    @keydown.space.prevent="toggle"
     role="switch"
     tabindex="0"
-    :aria-checked="on || value ? 'true' : 'false'"
+    :aria-checked="value ? 'true' : 'false'"
     :disabled="disabled"
     class="bg"
-    :class="{ 'toggled-bg': on || value }"
+    :class="{ 'toggled-bg': value }"
   >
-    <span
-      aria-hidden="true"
-      class="dot"
-      :class="{ 'toggled-dot': on || value }"
-    >
+    <span aria-hidden="true" class="dot" :class="{ 'toggled-dot': value }">
       <span
         v-if="checked"
         class="text"
-        :class="{ 'toggled-text': on || value, checked: on || value }"
+        :class="{ 'toggled-text': value, 'text-checked': value }"
       >
         {{ checked }}
       </span>
@@ -25,7 +21,10 @@
       <span
         v-if="unchecked"
         class="text"
-        :class="{ 'toggled-text': !on || !value, unchecked: !on || !value }"
+        :class="{
+          'toggled-text': !value,
+          'text-unchecked': !value,
+        }"
       >
         {{ unchecked }}
       </span>
@@ -45,20 +44,20 @@ export default {
       type: Boolean,
       default: false,
     },
-    label: String,
-    checked: String,
-    unchecked: String,
+    checked: {
+      type: String,
+      default: null,
+    },
+    unchecked: {
+      type: String,
+      default: null,
+    },
   },
-  data: () => ({
-    on: false,
-  }),
   methods: {
     toggle() {
       if (!this.disabled) {
-        this.on = !this.on;
+        this.$emit("click", this.value);
       }
-
-      this.$emit("click", this.on);
     },
   },
 };
@@ -98,22 +97,28 @@ $radius: 9999px;
 
 .text {
   position: absolute;
+  font-size: 14px;
   color: #fff;
   opacity: 0;
   user-select: none;
+
+  @media all and (-ms-high-contrast: none) {
+    // ie11
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 .toggled-text {
   opacity: 1;
-  font-size: 14px;
   transition: opacity ease 0.2s;
 }
 
-.checked {
+.text-checked {
   right: $height;
 }
 
-.unchecked {
+.text-unchecked {
   left: $height;
 }
 
