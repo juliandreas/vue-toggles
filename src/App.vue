@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <h1>Vue Toggles</h1>
+    <header>
+      <h1>Vue Toggles</h1>
+      <p>Still in Alpha, do not use.. yet</p>
+    </header>
+
     <SimpleToggle
       @click="toggle"
       :value="value"
@@ -14,13 +18,8 @@
 </template>
 
 <script>
-import SimpleToggle from "@/components/SimpleToggle.vue";
-
 export default {
   name: "App",
-  components: {
-    SimpleToggle,
-  },
   data: () => ({
     value: false,
   }),
@@ -52,11 +51,15 @@ body {
   color: #fff;
   height: 100vh;
 
-  h1 {
+  header {
     background: linear-gradient(to bottom right, #939393, #5850ec);
     background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 50px;
+
+    h1 {
+      margin-bottom: 10px;
+    }
   }
 
   .margin {
