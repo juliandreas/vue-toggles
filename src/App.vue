@@ -1,17 +1,26 @@
 <template>
   <div id="app">
-    <span role="checkbox" tabindex="0" aria-checked="false" class="first">
-      <span aria-hidden="true" class="second" :class="{ hoger: test }"></span>
-    </span>
+    <SimpleToggle :value="testy" @change="yup" checked="On" unchecked="Off" />
+    {{ testy }}
   </div>
 </template>
 
 <script>
+import SimpleToggle from "@/components/SimpleToggle.vue";
+
 export default {
   name: "App",
+  components: {
+    SimpleToggle,
+  },
   data: () => ({
-    test: false,
+    testy: false,
   }),
+  methods: {
+    yup(event) {
+      this.testy = event.value;
+    },
+  },
 };
 </script>
 
@@ -27,33 +36,11 @@ body {
 }
 
 #app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
   height: 100vh;
-}
-
-.first {
-  width: 50px;
-  height: 25px;
-  background: grey;
-  position: relative;
-  display: inline-block;
-  flex-shrink: 0;
-  border: 2px solid black;
-  border-radius: 6px;
-}
-
-.second {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #fff;
-}
-
-.hoger {
-  transform: translateX(25px);
 }
 </style>
