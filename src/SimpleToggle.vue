@@ -68,6 +68,12 @@ $width: 60px;
 $height: 25px;
 $radius: 9999px;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .bg {
   display: flex;
   align-items: center;
@@ -99,6 +105,7 @@ $radius: 9999px;
 
 .text {
   position: absolute;
+  font-family: inherit;
   font-size: 14px;
   color: #fff;
   opacity: 0;

@@ -1,10 +1,11 @@
 {
   "name": "vue-toggles",
-  "version": "0.3.1",
+  "version": "0.3.4",
   "private": false,
+  "main": "./src/index.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib --name vue-toggles ./src/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
