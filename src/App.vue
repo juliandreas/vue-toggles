@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <SimpleToggle :value="testy" @change="yup" checked="On" unchecked="Off" />
-    {{ testy }}
+    <h1>Vue Toggles</h1>
+    <SimpleToggle @click="toggle" checked="On" unchecked="Off" />
   </div>
 </template>
 
@@ -17,8 +17,8 @@ export default {
     testy: false,
   }),
   methods: {
-    yup(event) {
-      this.testy = event.value;
+    toggle(payload) {
+      this.testy = payload;
     },
   },
 };
@@ -38,9 +38,17 @@ body {
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #fff;
   height: 100vh;
+
+  h1 {
+    background: linear-gradient(to bottom right, #939393, #5850ec);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 50px;
+  }
 }
 </style>

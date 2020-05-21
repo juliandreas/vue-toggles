@@ -1,12 +1,10 @@
 <template>
   <span
-    @change="$emit('change', on)"
-    @click="disabled ? on : (on = !on)"
-    @keydown.space.prevent="disabled ? on : (on = !on)"
+    @click="toggle()"
+    @keydown.space.prevent="toggle()"
     role="switch"
     tabindex="0"
     :aria-checked="on ? 'true' : 'false'"
-    :aria-label="label + on"
     :disabled="disabled"
     class="bg"
     :class="{ 'toggled-bg': on }"
@@ -47,11 +45,13 @@ export default {
     on: false,
   }),
   methods: {
-    /* toggle(value) {
-      this.on = !this.on;
+    toggle() {
+      if (!this.disabled) {
+        this.on = !this.on;
+      }
 
-      this.$emit("change", value);
-    }, */
+      this.$emit("click", this.on);
+    },
   },
 };
 </script>
