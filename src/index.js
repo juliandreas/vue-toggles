@@ -1,4 +1,4 @@
-import SimpleToggle from "./SimpleToggle.vue";
+import SimpleToggle from "./components/SimpleToggle.vue";
 
 let installed = false;
 

@@ -1,8 +1,13 @@
 {
   "name": "vue-toggles",
-  "version": "0.3.4",
-  "private": false,
-  "main": "./src/index.js",
+  "version": "0.3.6",
+  "author": "Julian Lagerberg <jl@jlagerberg.se>",
+  "license": "MIT",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jllagerberg/vue-toggles.git"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name vue-toggles ./src/index.js",
