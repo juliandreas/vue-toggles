@@ -3,7 +3,8 @@ import App from './App.vue';
 
 import VueToggles from '@';
 
-Vue.use(VueToggles);
+Vue.component('VueToggles', VueToggles);
+
 Vue.config.productionTip = false;
 
 new Vue({
