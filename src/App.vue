@@ -10,11 +10,14 @@
       :value="value"
       checked="On"
       unchecked="Off"
-      height="25"
-      width="75"
+      height="30"
+      width="90"
       class="margin"
       uncheckedBgColor="lightgrey"
       checkedBgColor="#b4d455"
+      fontSize="12"
+      fontColor="#000"
+      fontWeight="bold"
     />
 
     <SimpleToggle @click="toggle" :value="value" class="margin" />

@@ -9,19 +9,19 @@
     :style="bgStyle"
     class="bg"
   >
-    <span aria-hidden="true" class="dot" :style="dotStyle">
+    <span aria-hidden="true" :style="dotStyle" class="dot">
       <span
         v-if="checked"
-        class="text"
         :style="[value ? { right: this.height + 'px', opacity: 1 } : { right: 'auto' }]"
+        class="text"
       >
         {{ checked }}
       </span>
 
       <span
         v-if="unchecked"
-        class="text"
         :style="[!value ? { left: this.height + 'px', opacity: 1 } : { left: 'auto' }]"
+        class="text"
       >
         {{ unchecked }}
       </span>
@@ -69,10 +69,25 @@ export default {
       type: String,
       default: '#fff',
     },
+    fontSize: {
+      type: [Number, String],
+      default: '14',
+    },
+    fontColor: {
+      type: String,
+      default: '#fff',
+    },
+    fontWeight: {
+      type: String,
+      default: 'normal',
+    },
   },
   computed: {
     bgStyle() {
       const styles = {
+        'font-weight': this.fontWeight,
+        color: this.fontColor,
+        'font-size': this.fontSize + 'px',
         width: this.width + 'px',
         height: this.height + 'px',
       };
@@ -141,8 +156,6 @@ export default {
 .text {
   position: absolute;
   font-family: inherit;
-  font-size: 14px;
-  color: #fff;
   opacity: 0;
   user-select: none;
 
@@ -151,9 +164,5 @@ export default {
     top: 50%;
     transform: translateY(-50%);
   }
-}
-
-.toggled-bg {
-  background: #5850ec;
 }
 </style>
