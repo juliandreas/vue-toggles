@@ -21,6 +21,12 @@ The only toggle library you need.
   </a>
 </p>
 
+## Demo
+
+```
+[Demo](https://vue-toggles.netlify.app/)
+```
+
 ## Installation
 
 ```
