@@ -39,7 +39,7 @@ Import plugin:
 import Vue from 'vue';
 import VueToggles from 'vue-toggles';
 
-Vue.use(VueToggles);
+Vue.component('VueToggles', VueToggles);
 ```
 
 ## Usage
