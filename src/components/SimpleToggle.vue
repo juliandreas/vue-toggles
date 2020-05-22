@@ -60,6 +60,10 @@ export default {
       type: [Number, String],
       default: 25,
     },
+    dotColor: {
+      type: String,
+      default: '#fff',
+    },
   },
   computed: {
     bgStyle() {
@@ -71,6 +75,7 @@ export default {
     dotStyle() {
       if (this.value) {
         return {
+          background: this.dotColor,
           width: this.height - 8 + 'px',
           height: this.height - 8 + 'px',
           'min-width': this.height - 8 + 'px',
@@ -80,6 +85,7 @@ export default {
       }
 
       return {
+        background: this.dotColor,
         width: this.height - 8 + 'px',
         height: this.height - 8 + 'px',
         'min-width': this.height - 8 + 'px',
@@ -98,10 +104,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$width: 75px;
-$height: 25px;
-$radius: 9999px;
-
 * {
   margin: 0;
   padding: 0;
@@ -114,7 +116,7 @@ $radius: 9999px;
   background: #939393;
   cursor: pointer;
   border: 2px solid transparent;
-  border-radius: $radius;
+  border-radius: 9999px;
   transition: all ease 0.2s;
   padding: 3px;
   outline: none;
@@ -126,7 +128,6 @@ $radius: 9999px;
   display: flex;
   align-items: center;
   border-radius: 9999px;
-  background: #fff;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   transition: all ease 0.2s;
 }
