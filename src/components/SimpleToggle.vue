@@ -6,14 +6,16 @@
     tabindex="0"
     :aria-checked="value ? 'true' : 'false'"
     :disabled="disabled"
+    :style="bgStyle"
     class="bg"
     :class="{ 'toggled-bg': value }"
   >
-    <span aria-hidden="true" class="dot" :class="{ 'toggled-dot': value }">
+    <span aria-hidden="true" class="dot" :style="dotStyle">
       <span
         v-if="checked"
         class="text"
-        :class="{ 'toggled-text': value, 'text-checked': value }"
+        :style="[value ? { right: this.height + 'px' } : { right: 'auto' }]"
+        :class="{ 'toggled-text': value }"
       >
         {{ checked }}
       </span>
@@ -21,10 +23,8 @@
       <span
         v-if="unchecked"
         class="text"
-        :class="{
-          'toggled-text': !value,
-          'text-unchecked': !value,
-        }"
+        :style="[!value ? { left: this.height + 'px' } : { left: 'auto' }]"
+        :class="{ 'toggled-text': !value }"
       >
         {{ unchecked }}
       </span>
@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  name: "SimpleToggle",
+  name: 'SimpleToggle',
   props: {
     value: {
       type: Boolean,
@@ -52,11 +52,45 @@ export default {
       type: String,
       default: null,
     },
+    width: {
+      type: [Number, String],
+      default: 75,
+    },
+    height: {
+      type: [Number, String],
+      default: 25,
+    },
+  },
+  computed: {
+    bgStyle() {
+      return {
+        width: this.width + 'px',
+        height: this.height + 'px',
+      };
+    },
+    dotStyle() {
+      if (this.value) {
+        return {
+          width: this.height - 8 + 'px',
+          height: this.height - 8 + 'px',
+          'min-width': this.height - 8 + 'px',
+          'min-height': this.height - 8 + 'px',
+          transform: 'translateX(' + (this.width - this.height - 2) + 'px )',
+        };
+      }
+
+      return {
+        width: this.height - 8 + 'px',
+        height: this.height - 8 + 'px',
+        'min-width': this.height - 8 + 'px',
+        'min-height': this.height - 8 + 'px',
+      };
+    },
   },
   methods: {
     toggle() {
       if (!this.disabled) {
-        this.$emit("click", this.value);
+        this.$emit('click', this.value);
       }
     },
   },
@@ -64,7 +98,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$width: 60px;
+$width: 75px;
 $height: 25px;
 $radius: 9999px;
 
@@ -77,14 +111,12 @@ $radius: 9999px;
 .bg {
   display: flex;
   align-items: center;
-  width: $width;
-  height: $height;
   background: #939393;
   cursor: pointer;
   border: 2px solid transparent;
   border-radius: $radius;
   transition: all ease 0.2s;
-  padding: 0 3px;
+  padding: 3px;
   outline: none;
   overflow: hidden;
 }
@@ -93,10 +125,6 @@ $radius: 9999px;
   position: relative;
   display: flex;
   align-items: center;
-  width: $height - 5;
-  height: $height - 5;
-  min-height: $height - 5;
-  min-width: $height - 5;
   border-radius: 9999px;
   background: #fff;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -123,21 +151,8 @@ $radius: 9999px;
   transition: opacity ease 0.2s;
 }
 
-.text-checked {
-  right: $height;
-}
-
-.text-unchecked {
-  left: $height;
-}
-
 .toggled-bg {
   background: #5850ec;
-  transition: all ease 0.2s;
-}
-
-.toggled-dot {
-  margin-left: $width - ($height - 5);
   transition: all ease 0.2s;
 }
 </style>

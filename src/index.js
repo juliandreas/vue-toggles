@@ -1,4 +1,4 @@
-import SimpleToggle from "./components/SimpleToggle.vue";
+import SimpleToggle from './components/SimpleToggle.vue';
 
 let installed = false;
 
@@ -8,7 +8,7 @@ export default {
       return;
     }
 
-    Vue.component("SimpleToggle", SimpleToggle);
+    Vue.component('SimpleToggle', SimpleToggle);
     installed = true;
   },
 };

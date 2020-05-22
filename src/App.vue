@@ -10,6 +10,8 @@
       :value="value"
       checked="On"
       unchecked="Off"
+      height="25"
+      width="75"
       class="margin"
     />
 
@@ -19,7 +21,7 @@
 
 <script>
 export default {
-  name: "App",
+  name: 'App',
   data: () => ({
     value: false,
   }),

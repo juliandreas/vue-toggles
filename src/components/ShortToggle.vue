@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: "SimpleToggle",
+  name: 'SimpleToggle',
   props: {
     value: {
       type: Boolean,
@@ -46,7 +46,7 @@ export default {
         this.on = !this.on;
       }
 
-      this.$emit("click", this.on);
+      this.$emit('click', this.on);
     },
   },
 };
