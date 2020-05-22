@@ -11,13 +11,17 @@
     "type": "git",
     "url": "git+https://github.com/jllagerberg/vue-toggles.git"
   },
-  "main": "src/vue-toggles.common.js",
-  "unpkg": "dist/vue-toggles.umd.js",
-  "browser": "dist/vue-toggles.umd.js",
+  "main": "dist/vue-toggles.umd.js",
+  "module": "dist/vue-toggles.esm.js",
+  "unpkg": "dist/vue-toggles.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name vue-toggles src/index.js",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "demo": "vue-cli-service build",
+    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/vue-toggles.umd.js",
+    "build:es": "rollup --config build/rollup.config.js --format es --file dist/vue-toggles.esm.js",
+    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/vue-toggles.min.js"
   },
   "files": [
     "dist",
@@ -25,6 +29,8 @@
   ],
   "dependencies": {},
   "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.3",
+    "@rollup/plugin-commonjs": "^12.0.0",
     "@vue/cli-plugin-babel": "~4.3.0",
     "@vue/cli-plugin-eslint": "~4.3.0",
     "@vue/cli-service": "~4.3.0",
@@ -36,6 +42,8 @@
     "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.12.0",
     "prettier": "^2.0.5",
+    "rollup": "^2.10.7",
+    "rollup-plugin-vue": "^5.1.9",
     "sass-loader": "^8.0.2",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"

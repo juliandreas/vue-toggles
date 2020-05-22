@@ -1,16 +1,27 @@
 import VueToggles from './components/VueToggles.vue';
 
-let installed = false;
+// Declare install function executed by Vue.use()
+export function install(Vue) {
+  if (install.installed) return;
+  install.installed = true;
+  Vue.component('VueToggles', VueToggles);
+}
 
-export default {
-  install(Vue) {
-    if (installed) {
-      return;
-    }
-
-    Vue.component('VueToggles', VueToggles);
-    installed = true;
-  },
+// Create module definition for Vue.use()
+const plugin = {
+  install,
 };
 
-export { VueToggles };
+// Auto-install when vue is found (eg. in browser via <script> tag)
+let GlobalVue = null;
+if (typeof window !== 'undefined') {
+  GlobalVue = window.Vue;
+} else if (typeof global !== 'undefined') {
+  GlobalVue = global.Vue;
+}
+if (GlobalVue) {
+  GlobalVue.use(plugin);
+}
+
+// To allow use as module (npm/webpack/etc.) export component
+export default VueToggles;
