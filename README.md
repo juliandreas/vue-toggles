@@ -5,7 +5,11 @@
 </p>
 
 <p align="center">
-The only toggle library you need. It is <u>very</u> customizable.
+The only toggle library you need.
+</p>
+
+<p align="center">
+**⚠️ This plugin is still in Alpha (this will change soon). But for now there might still be a lot of caveats, so I do not recommend using it in production **
 </p>
 
 <p align="center">
