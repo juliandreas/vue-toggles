@@ -23,9 +23,7 @@ The only toggle library you need.
 
 ## Demo
 
-```
 [Demo](https://vue-toggles.netlify.app/)
-```
 
 ## Installation
 
