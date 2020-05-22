@@ -8,7 +8,6 @@
     :disabled="disabled"
     :style="bgStyle"
     class="bg"
-    :class="{ 'toggled-bg': value }"
   >
     <span aria-hidden="true" class="dot" :style="dotStyle">
       <span
@@ -58,6 +57,10 @@ export default {
       type: [Number, String],
       default: 25,
     },
+    uncheckedBgColor: {
+      type: String,
+      default: '#939393',
+    },
     checkedBgColor: {
       type: String,
       default: '#5850ec',
@@ -69,30 +72,33 @@ export default {
   },
   computed: {
     bgStyle() {
-      return {
+      const styles = {
         width: this.width + 'px',
         height: this.height + 'px',
       };
-    },
-    dotStyle() {
+
       if (this.value) {
-        return {
-          background: this.dotColor,
-          width: this.height - 8 + 'px',
-          height: this.height - 8 + 'px',
-          'min-width': this.height - 8 + 'px',
-          'min-height': this.height - 8 + 'px',
-          transform: 'translateX(' + (this.width - this.height - 2) + 'px )',
-        };
+        styles.background = this.checkedBgColor;
+      } else {
+        styles.background = this.uncheckedBgColor;
       }
 
-      return {
+      return styles;
+    },
+    dotStyle() {
+      const styles = {
         background: this.dotColor,
         width: this.height - 8 + 'px',
         height: this.height - 8 + 'px',
         'min-width': this.height - 8 + 'px',
         'min-height': this.height - 8 + 'px',
       };
+
+      if (this.value) {
+        styles.transform = 'translateX(' + (this.width - this.height - 2) + 'px )';
+      }
+
+      return styles;
     },
   },
   methods: {
@@ -115,7 +121,6 @@ export default {
 .bg {
   display: flex;
   align-items: center;
-  background: #939393;
   cursor: pointer;
   border: 2px solid transparent;
   border-radius: 9999px;

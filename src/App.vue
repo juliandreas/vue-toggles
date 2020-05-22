@@ -13,6 +13,8 @@
       height="25"
       width="75"
       class="margin"
+      uncheckedBgColor="lightgrey"
+      checkedBgColor="#b4d455"
     />
 
     <SimpleToggle @click="toggle" :value="value" class="margin" />
