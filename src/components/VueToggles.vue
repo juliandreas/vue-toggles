@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  name: 'SimpleToggle',
+  name: 'VueToggles',
   props: {
     value: {
       type: Boolean,

@@ -5,22 +5,22 @@
       <p>Still in Alpha, do not use.. yet</p>
     </header>
 
-    <SimpleToggle
+    <VueToggles
       @click="toggle"
       :value="value"
       checked="On"
       unchecked="Off"
       height="30"
       width="90"
-      class="margin"
       uncheckedBgColor="lightgrey"
       checkedBgColor="#b4d455"
       fontSize="12"
       fontColor="#000"
       fontWeight="bold"
+      class="margin"
     />
 
-    <SimpleToggle @click="toggle" :value="value" class="margin" />
+    <VueToggles @click="toggle()" :value="value" class="margin" />
   </div>
 </template>
 

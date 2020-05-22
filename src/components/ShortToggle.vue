@@ -23,7 +23,7 @@
 
 <script>
 export default {
-  name: 'SimpleToggle',
+  name: 'ShortToggle',
   props: {
     value: {
       type: Boolean,

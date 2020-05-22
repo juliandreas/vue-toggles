@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import App from './App.vue';
 
-import SimpleToggle from '@';
+import VueToggles from '@';
 
-Vue.use(SimpleToggle);
+Vue.use(VueToggles);
 Vue.config.productionTip = false;
 
 new Vue({
