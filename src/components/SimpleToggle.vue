@@ -14,8 +14,7 @@
       <span
         v-if="checked"
         class="text"
-        :style="[value ? { right: this.height + 'px' } : { right: 'auto' }]"
-        :class="{ 'toggled-text': value }"
+        :style="[value ? { right: this.height + 'px', opacity: 1 } : { right: 'auto' }]"
       >
         {{ checked }}
       </span>
@@ -23,8 +22,7 @@
       <span
         v-if="unchecked"
         class="text"
-        :style="[!value ? { left: this.height + 'px' } : { left: 'auto' }]"
-        :class="{ 'toggled-text': !value }"
+        :style="[!value ? { left: this.height + 'px', opacity: 1 } : { left: 'auto' }]"
       >
         {{ unchecked }}
       </span>
@@ -59,6 +57,10 @@ export default {
     height: {
       type: [Number, String],
       default: 25,
+    },
+    checkedBgColor: {
+      type: String,
+      default: '#5850ec',
     },
     dotColor: {
       type: String,
@@ -119,7 +121,6 @@ export default {
   border-radius: 9999px;
   transition: all ease 0.2s;
   padding: 3px;
-  outline: none;
   overflow: hidden;
 }
 
@@ -141,19 +142,13 @@ export default {
   user-select: none;
 
   @media all and (-ms-high-contrast: none) {
-    // ie11
+    /* IE11 fix */
     top: 50%;
     transform: translateY(-50%);
   }
 }
 
-.toggled-text {
-  opacity: 1;
-  transition: opacity ease 0.2s;
-}
-
 .toggled-bg {
   background: #5850ec;
-  transition: all ease 0.2s;
 }
 </style>
