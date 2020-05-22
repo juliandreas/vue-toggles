@@ -141,6 +141,7 @@ export default {
   border-radius: 9999px;
   transition: all ease 0.2s;
   padding: 3px;
+  outline: none;
   overflow: hidden;
 }
 

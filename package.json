@@ -48,5 +48,20 @@
     "sass-loader": "^8.0.2",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "vue.js",
+    "vue2",
+    "toggle",
+    "toggles",
+    "checkbox",
+    "switch",
+    "library",
+    "component library",
+    "accessibility",
+    "accessible",
+    "a11y"
+  ]
 }

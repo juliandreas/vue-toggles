@@ -9,7 +9,7 @@ The only toggle library you need.
 </p>
 
 <p align="center">
-**⚠️ This plugin is still in Alpha (this will change soon). But for now there might still be a lot of caveats, so I do not recommend using it in production **
+**⚠️ This plugin is still in Beta (this will change soon). But for now there might still be a lot of caveats, so I do not recommend using it in production **
 </p>
 
 <p align="center">
@@ -44,10 +44,10 @@ Vue.component('VueToggles', VueToggles);
 
 ## Usage
 
-The toggle is very easy to use out of the box. The bare minimum for it to work is a `@click`-function and a `:value`-prop.
+The toggle is very easy to use out of the box. The bare minimum for it to work is a `@click`-toggle and a `:value`-prop.
 
 ```html
-<VueToggles @click="toggle()" :value="value" />
+<VueToggles @click="value = !value" :value="value" />
 ```
 
 ## Options
@@ -56,7 +56,7 @@ You can also add more props to customize things like color and width/height.
 
 ```html
 <VueToggles
-  @click="toggle()"
+  @click="value = !value"
   :value="value"
   checked="On"
   unchecked="Off"
