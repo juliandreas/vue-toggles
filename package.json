@@ -3,7 +3,6 @@
   "version": "0.4.0",
   "author": "Julian Lagerberg <jl@jlagerberg.se>",
   "license": "MIT",
-  "main": "src/index.js",
   "homepage": "https://vue-toggles.netlify.app/",
   "bugs": {
     "url": "https://github.com/jllagerberg/vue-toggles"
@@ -12,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/jllagerberg/vue-toggles.git"
   },
+  "main": "src/vue-toggles.common.js",
+  "unpkg": "dist/vue-toggles.umd.js",
+  "browser": "dist/vue-toggles.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name vue-toggles src/index.js",
@@ -21,8 +23,7 @@
     "dist",
     "src"
   ],
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.3.0",
     "@vue/cli-plugin-eslint": "~4.3.0",
