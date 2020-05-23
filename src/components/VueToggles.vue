@@ -61,6 +61,10 @@ export default {
       type: String,
       default: '#5850ec',
     },
+    disabledBg: {
+      type: String,
+      default: '#939393',
+    },
     dotColor: {
       type: String,
       default: '#fff',
@@ -89,6 +93,10 @@ export default {
         styles.background = this.checkedBgColor;
       } else {
         styles.background = this.uncheckedBgColor;
+      }
+
+      if (this.disabled) {
+        styles.background = this.disabledBg;
       }
 
       return styles;

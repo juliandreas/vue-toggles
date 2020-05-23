@@ -22,14 +22,20 @@
 
           <label for="dotColor">Dot Color</label>
           <input v-model="dotColor" id="dotColor" type="text" />
+
+          <label for="uncheckedBgColor">Unchecked Background Color</label>
+          <input v-model="uncheckedBgColor" id="uncheckedBgColor" type="text" />
         </div>
 
         <div class="inputs">
-          <label for="uncheckedBgColor">Unchecked Background Color</label>
-          <input v-model="uncheckedBgColor" id="uncheckedBgColor" type="text" />
-
           <label for="checkedBgColor">Checked Background Color</label>
           <input v-model="checkedBgColor" id="checkedBgColor" type="text" />
+
+          <label for="disabledBg">Disabled Background Color</label>
+          <input v-model="disabledBg" id="disabledBg" type="text" />
+
+          <label for="disabled">Disabled</label>
+          <input v-model="disabled" id="disabled" type="text" />
 
           <label for="fontColor">Font Color</label>
           <input v-model="fontColor" id="fontColor" type="text" />
@@ -52,6 +58,8 @@
           :width="width"
           :uncheckedBgColor="uncheckedBgColor"
           :checkedBgColor="checkedBgColor"
+          :disabledBg="disabledBg"
+          :disabled="disabled"
           :fontColor="fontColor"
           :dotColor="dotColor"
           :fontSize="fontSize"
@@ -66,13 +74,15 @@
 export default {
   name: 'App',
   data: () => ({
-    value: false,
+    value: true,
     width: 75,
     height: 25,
     checked: 'On',
     unchecked: 'Off',
     uncheckedBgColor: '#939393',
     checkedBgColor: '#5850ec',
+    disabledBg: '#939393',
+    disabled: false,
     fontColor: '#ffffff',
     dotColor: '#ffffff',
     fontSize: 12,

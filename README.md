@@ -80,6 +80,8 @@ You can also add more props to customize things like color and width/height.
 | dotColor         | String           | `#ffffff` |
 | uncheckedBgColor | String           | `#939393` |
 | checkedBgColor   | String           | `#5850ec` |
+| disabledBg       | String           | `#939393` |
+| disabled         | Boolean          | false     |
 | fontColor        | String           | `#ffffff` |
 | fontSize         | [String, Number] | 14        |
 | fontWeight       | [Number, String] | normal    |
