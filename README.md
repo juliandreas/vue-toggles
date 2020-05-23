@@ -44,7 +44,7 @@ Vue.component('VueToggles', VueToggles);
 
 ## Usage
 
-The toggle is very easy to use out of the box. The bare minimum for it to work is a `@click`-toggle and a `:value`-prop.
+The toggle is very easy to use out of the box. The bare minimum for it to work is a `@click`-function and a `:value`-prop.
 
 ```html
 <VueToggles @click="value = !value" :value="value" />

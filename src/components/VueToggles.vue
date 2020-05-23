@@ -12,7 +12,7 @@
     <span aria-hidden="true" :style="dotStyle" class="dot">
       <span
         v-if="checked"
-        :style="[value ? { right: this.height + 'px', opacity: 1 } : { right: 'auto' }]"
+        :style="[value ? { right: this.height - 4 + 'px', opacity: 1 } : { right: 'auto' }]"
         class="text"
       >
         {{ checked }}
@@ -20,7 +20,7 @@
 
       <span
         v-if="unchecked"
-        :style="[!value ? { left: this.height + 'px', opacity: 1 } : { left: 'auto' }]"
+        :style="[!value ? { left: this.height - 4 + 'px', opacity: 1 } : { left: 'auto' }]"
         class="text"
       >
         {{ unchecked }}
@@ -110,7 +110,10 @@ export default {
       };
 
       if (this.value) {
-        styles.transform = 'translateX(' + (this.width - this.height - 2) + 'px )';
+        styles.marginLeft = '0px';
+        styles.transform = 'translateX(' + (this.width - (this.height - 3)) + 'px )';
+      } else {
+        styles.marginLeft = '5px';
       }
 
       return styles;
@@ -137,10 +140,8 @@ export default {
   display: flex;
   align-items: center;
   cursor: pointer;
-  border: 2px solid transparent;
   border-radius: 9999px;
   transition: all ease 0.2s;
-  padding: 3px;
   outline: none;
   overflow: hidden;
 }

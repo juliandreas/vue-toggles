@@ -74,7 +74,7 @@ export default {
 <style lang="scss">
 body {
   min-height: 100vh;
-  background: #2c3e50;
+  background: #faf9fd;
 }
 
 #app {
@@ -83,7 +83,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: #000;
   height: 100vh;
 
   header {
