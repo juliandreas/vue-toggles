@@ -2,7 +2,6 @@
   <div id="app">
     <header>
       <h1>Vue Toggles</h1>
-      <p>Still in Beta though..</p>
     </header>
 
     <div class="container">
@@ -50,7 +49,7 @@
 
       <div class="wrapper">
         <VueToggles
-          @click="toggle"
+          @click="value = !value"
           :value="value"
           :checked="checked"
           :unchecked="unchecked"
@@ -67,6 +66,27 @@
         />
       </div>
     </div>
+
+    <div class="container">
+      <div class="toggles">
+        <VueToggles @click="value = !value" :value="value" />
+        <VueToggles
+          @click="value = !value"
+          :value="value"
+          checkedBgColor="#42A3AA"
+          checked="On"
+          unchecked="Off"
+        />
+        <VueToggles
+          @click="value = !value"
+          :value="value"
+          uncheckedBgColor="linear-gradient(to bottom right, grey, grey)"
+          checkedBgColor="linear-gradient(to bottom right, red, #5850ec)"
+          checked="😄"
+          unchecked="😑"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -74,7 +94,7 @@
 export default {
   name: 'App',
   data: () => ({
-    value: true,
+    value: false,
     width: 75,
     height: 25,
     checked: 'On',
@@ -88,11 +108,6 @@ export default {
     fontSize: 12,
     fontWeight: 'normal',
   }),
-  methods: {
-    toggle() {
-      this.value = !this.value;
-    },
-  },
 };
 </script>
 
@@ -131,6 +146,7 @@ body {
   .container {
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
 
     .wrapper {
       display: flex;
@@ -154,6 +170,17 @@ body {
           border: 1px solid #d2d6dc;
           border-radius: 6px;
           margin-bottom: 10px;
+        }
+      }
+    }
+
+    .toggles {
+      display: flex;
+      .bg {
+        margin-right: 10px;
+
+        &:last-child {
+          margin-right: 0;
         }
       }
     }

@@ -1,15 +1,15 @@
 <h1 align="center">Vue Toggles</h1>
 
 <p align="center">
+<img src="./vue-toggles.jpg" alt="Vue Toggles Logo"/>
+</p>
+
+<p align="center">
 <a href="https://www.npmjs.com/package/vue-toggles"><img src="https://img.shields.io/npm/v/vue-toggles.svg?style=flat-square"/> <img src="https://img.shields.io/npm/dm/vue-toggles.svg?style=flat-square"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.x-brightgreen.svg?style=flat-square"/></a>
 </p>
 
 <p align="center">
 The only toggle library you need.
-</p>
-
-<p align="center">
-**⚠️ This plugin is still in Beta (this will change soon). But for now there might still be a lot of caveats, so I do not recommend using it in production **
 </p>
 
 <p align="center">
