@@ -78,7 +78,7 @@ export default {
       default: '#fff',
     },
     fontWeight: {
-      type: String,
+      type: [Number, String],
       default: 'normal',
     },
   },
@@ -110,8 +110,7 @@ export default {
       };
 
       if (this.value) {
-        styles.marginLeft = '0px';
-        styles.transform = 'translateX(' + (this.width - (this.height - 3)) + 'px )';
+        styles.marginLeft = this.width - (this.height - 3) + 'px';
       } else {
         styles.marginLeft = '5px';
       }

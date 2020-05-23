@@ -5,46 +5,56 @@
       <p>Still in Beta though..</p>
     </header>
 
-    <VueToggles
-      @click="toggle"
-      :value="value"
-      :checked="checked"
-      :unchecked="unchecked"
-      :height="height"
-      :width="width"
-      :uncheckedBgColor="uncheckedBgColor"
-      :checkedBgColor="checkedBgColor"
-      :fontSize="fontSize"
-      :fontColor="fontColor"
-      :fontWeight="fontWeight"
-    />
+    <div class="d-flex">
+      <div class="d-flex wrapper">
+        <div class="flex-col" style="margin-right: 25px;">
+          <label for="height">Height</label>
+          <input v-model="height" id="height" type="number" />
 
-    <input v-model="height" id="height" type="number" />
-    <label for="height">Height</label>
+          <label for="width">Width</label>
+          <input v-model="width" id="width" type="number" />
 
-    <input v-model="width" id="width" type="number" />
-    <label for="width">Width</label>
+          <label for="checked">Checked Text</label>
+          <input v-model="checked" id="checked" type="text" />
 
-    <input v-model="checked" id="checked" type="text" />
-    <label for="checked">Checked Text</label>
+          <label for="unchecked">Unchecked Text</label>
+          <input v-model="unchecked" id="unchecked" type="text" />
+        </div>
 
-    <input v-model="unchecked" id="unchecked" type="text" />
-    <label for="unchecked">Unchecked Text</label>
+        <div class="flex-col">
+          <label for="uncheckedBgColor">Unchecked Background Color</label>
+          <input v-model="uncheckedBgColor" id="uncheckedBgColor" type="text" />
 
-    <input v-model="uncheckedBgColor" id="uncheckedBgColor" type="text" />
-    <label for="uncheckedBgColor">Unchecked Background Color</label>
+          <label for="checkedBgColor">Checked Background Color</label>
+          <input v-model="checkedBgColor" id="checkedBgColor" type="text" />
 
-    <input v-model="checkedBgColor" id="checkedBgColor" type="text" />
-    <label for="checkedBgColor">Checked Background Color</label>
+          <label for="fontColor">Font Color</label>
+          <input v-model="fontColor" id="fontColor" type="text" />
 
-    <input v-model="fontColor" id="fontColor" type="text" />
-    <label for="fontColor">Font Color</label>
+          <label for="fontSize">Font Size</label>
+          <input v-model="fontSize" id="fontSize" type="number" />
 
-    <input v-model="fontSize" id="fontSize" type="number" />
-    <label for="fontSize">Font Size</label>
+          <label for="fontWeight">Font Weight</label>
+          <input v-model="fontWeight" id="fontWeight" type="text" />
+        </div>
+      </div>
 
-    <input v-model="fontWeight" id="fontWeight" type="text" />
-    <label for="fontWeight">Font Weight</label>
+      <div class="flex-col wrapper">
+        <VueToggles
+          @click="toggle"
+          :value="value"
+          :checked="checked"
+          :unchecked="unchecked"
+          :height="height"
+          :width="width"
+          :uncheckedBgColor="uncheckedBgColor"
+          :checkedBgColor="checkedBgColor"
+          :fontSize="fontSize"
+          :fontColor="fontColor"
+          :fontWeight="fontWeight"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -55,8 +65,8 @@ export default {
     value: false,
     width: 75,
     height: 25,
-    checked: 'On',
-    unchecked: 'Off',
+    checked: '💗',
+    unchecked: '💔',
     uncheckedBgColor: '#939393',
     checkedBgColor: '#5850ec',
     fontColor: '#fff',
@@ -72,19 +82,24 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   min-height: 100vh;
   background: #faf9fd;
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Exo', sans-serif;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   color: #000;
   height: 100vh;
+  padding: 50px;
 
   header {
     background: linear-gradient(to bottom right, #939393, #5850ec);
@@ -98,12 +113,20 @@ body {
     }
   }
 
-  label {
-    margin-bottom: 25px;
+  .d-flex {
+    display: flex;
   }
 
-  .bg {
-    margin-bottom: 50px;
+  .flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wrapper {
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    width: 50%;
   }
 }
 </style>
