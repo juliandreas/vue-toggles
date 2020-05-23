@@ -5,9 +5,9 @@
       <p>Still in Beta though..</p>
     </header>
 
-    <div class="d-flex">
-      <div class="d-flex wrapper">
-        <div class="flex-col" style="margin-right: 25px;">
+    <div class="container">
+      <div class="wrapper">
+        <div class="inputs" style="margin-right: 25px;">
           <label for="height">Height</label>
           <input v-model="height" id="height" type="number" />
 
@@ -19,9 +19,12 @@
 
           <label for="unchecked">Unchecked Text</label>
           <input v-model="unchecked" id="unchecked" type="text" />
+
+          <label for="dotColor">Dot Color</label>
+          <input v-model="dotColor" id="dotColor" type="text" />
         </div>
 
-        <div class="flex-col">
+        <div class="inputs">
           <label for="uncheckedBgColor">Unchecked Background Color</label>
           <input v-model="uncheckedBgColor" id="uncheckedBgColor" type="text" />
 
@@ -39,7 +42,7 @@
         </div>
       </div>
 
-      <div class="flex-col wrapper">
+      <div class="wrapper">
         <VueToggles
           @click="toggle"
           :value="value"
@@ -49,8 +52,9 @@
           :width="width"
           :uncheckedBgColor="uncheckedBgColor"
           :checkedBgColor="checkedBgColor"
-          :fontSize="fontSize"
           :fontColor="fontColor"
+          :dotColor="dotColor"
+          :fontSize="fontSize"
           :fontWeight="fontWeight"
         />
       </div>
@@ -65,11 +69,12 @@ export default {
     value: false,
     width: 75,
     height: 25,
-    checked: '💗',
-    unchecked: '💔',
+    checked: 'On',
+    unchecked: 'Off',
     uncheckedBgColor: '#939393',
     checkedBgColor: '#5850ec',
-    fontColor: '#fff',
+    fontColor: '#ffffff',
+    dotColor: '#ffffff',
     fontSize: 12,
     fontWeight: 'normal',
   }),
@@ -113,20 +118,35 @@ body {
     }
   }
 
-  .d-flex {
+  .container {
     display: flex;
-  }
-
-  .flex-col {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .wrapper {
-    align-items: center;
     justify-content: center;
-    padding: 25px;
-    width: 50%;
+
+    .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+
+      .inputs {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          font-size: 12px;
+          margin-bottom: 5px;
+        }
+
+        input {
+          color: #2e2e2e;
+          font-size: 14px;
+          padding: 8px 10px;
+          border: 1px solid #d2d6dc;
+          border-radius: 6px;
+          margin-bottom: 10px;
+        }
+      }
+    }
   }
 }
 </style>

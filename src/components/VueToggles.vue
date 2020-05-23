@@ -10,21 +10,17 @@
     class="bg"
   >
     <span aria-hidden="true" :style="dotStyle" class="dot">
-      <span
-        v-if="checked"
-        :style="[value ? { right: this.height - 4 + 'px', opacity: 1 } : { right: 'auto' }]"
-        class="text"
-      >
-        {{ checked }}
-      </span>
+      <transition name="fade">
+        <span v-show="checked && value" :style="textStyle" class="text">
+          {{ checked }}
+        </span>
+      </transition>
 
-      <span
-        v-if="unchecked"
-        :style="[!value ? { left: this.height - 4 + 'px', opacity: 1 } : { left: 'auto' }]"
-        class="text"
-      >
-        {{ unchecked }}
-      </span>
+      <transition name="fade">
+        <span v-show="unchecked && !value" :style="textStyle" class="text">
+          {{ unchecked }}
+        </span>
+      </transition>
     </span>
   </span>
 </template>
@@ -85,9 +81,6 @@ export default {
   computed: {
     bgStyle() {
       const styles = {
-        'font-weight': this.fontWeight,
-        color: this.fontColor,
-        'font-size': this.fontSize + 'px',
         width: this.width + 'px',
         height: this.height + 'px',
       };
@@ -113,6 +106,23 @@ export default {
         styles.marginLeft = this.width - (this.height - 3) + 'px';
       } else {
         styles.marginLeft = '5px';
+      }
+
+      return styles;
+    },
+    textStyle() {
+      const styles = {
+        'font-weight': this.fontWeight,
+        color: this.fontColor,
+        'font-size': this.fontSize + 'px',
+      };
+
+      if (this.value) {
+        styles.right = this.height - 4 + 'px';
+        styles.left = 'auto';
+      } else {
+        styles.right = 'auto';
+        styles.left = this.height - 4 + 'px';
       }
 
       return styles;
@@ -152,18 +162,27 @@ export default {
   border-radius: 9999px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   transition: all ease 0.2s;
-}
 
-.text {
-  position: absolute;
-  font-family: inherit;
-  opacity: 0;
-  user-select: none;
+  .text {
+    position: absolute;
+    font-family: inherit;
+    opacity: 1;
+    user-select: none;
 
-  @media all and (-ms-high-contrast: none) {
-    /* IE11 fix */
-    top: 50%;
-    transform: translateY(-50%);
+    @media all and (-ms-high-contrast: none) {
+      /* IE11 fix */
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.2s;
+  }
+  .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
   }
 }
 </style>

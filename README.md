@@ -65,8 +65,6 @@ You can also add more props to customize things like color and width/height.
   uncheckedBgColor="lightgrey"
   checkedBgColor="#b4d455"
   fontColor="#000"
-  fontSize="12"
-  fontWeight="bold"
 />
 ```
 
@@ -79,6 +77,7 @@ You can also add more props to customize things like color and width/height.
 | width            | [String, Number] | 75        |
 | checked          | String           | null      |
 | unchecked        | String           | null      |
+| dotColor         | String           | `#ffffff` |
 | uncheckedBgColor | String           | `#939393` |
 | checkedBgColor   | String           | `#5850ec` |
 | fontColor        | String           | `#ffffff` |
