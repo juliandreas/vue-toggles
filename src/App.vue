@@ -47,9 +47,6 @@
             <label for="disabled-true">True</label>
           </div>
 
-          <label for="fontColor">Font Color (fontColor)</label>
-          <input v-model="fontColor" id="fontColor" type="color" />
-
           <label for="fontSize">Font Size (fontSize)</label>
           <input v-model="fontSize" id="fontSize" type="number" />
 
@@ -72,7 +69,6 @@
           :checkedColor="checkedColor"
           :disabledBg="disabledBg"
           :disabled="disabled"
-          :fontColor="fontColor"
           :dotColor="dotColor"
           :fontSize="fontSize"
           :fontWeight="fontWeight"
@@ -119,7 +115,6 @@ export default {
     checkedColor: '#ffffff',
     disabledBg: '#939393',
     disabled: false,
-    fontColor: '#ffffff',
     dotColor: '#ffffff',
     fontSize: 12,
     fontWeight: 'normal',

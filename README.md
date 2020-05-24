@@ -70,7 +70,6 @@ You can also add more props to customize things like color and width/height.
   unchecked="Off"
   uncheckedBg="lightgrey"
   checkedBg="#b4d455"
-  fontColor="#000"
 />
 ```
 
@@ -90,9 +89,8 @@ You can also add more props to customize things like color and width/height.
 | checkedBg      | String           | `#5850ec` | Background color when the toggle is checked       |
 | checkedColor   | String           | `#ffffff` | Text color when the toggle is checked             |
 | disabledBg     | String           | `#939393` | Background color when the toggle is disabled      |
-| fontColor      | String           | `#ffffff` | Text color                                        |
-| fontSize       | [String, Number] | 14        | Font size (if text exists)                        |
-| fontWeight     | [Number, String] | normal    | Font weight (if text exists)                      |
+| fontSize       | [String, Number] | 12        | Font size                                         |
+| fontWeight     | [Number, String] | normal    | Font weight                                       |
 
 ### Browser compatibility
 

@@ -4,16 +4,15 @@
     role="switch"
     :aria-checked="value ? 'true' : 'false'"
     :aria-readonly="disabled ? 'true' : 'false'"
-    tabindex="0"
     :style="bgStyle"
     class="toggles-btn"
   >
     <span aria-hidden="true" :style="dotStyle" class="dot">
-      <span v-show="checked && value" :style="checkedStyle" class="text">
+      <span v-show="checked && value" :style="textStyle" class="text">
         {{ checked }}
       </span>
 
-      <span v-show="unchecked && !value" :style="uncheckedStyle" class="text">
+      <span v-show="unchecked && !value" :style="textStyle" class="text">
         {{ unchecked }}
       </span>
     </span>
@@ -66,11 +65,7 @@ export default {
     },
     fontSize: {
       type: [Number, String],
-      default: '14',
-    },
-    fontColor: {
-      type: String,
-      default: '#fff',
+      default: '12',
     },
     uncheckedColor: {
       type: String,
@@ -121,44 +116,24 @@ export default {
 
       return styles;
     },
-    checkedStyle() {
+    textStyle() {
       const styles = {
         'font-weight': this.fontWeight,
-        color: this.fontColor,
         'font-size': this.fontSize + 'px',
       };
 
       if (this.checkedColor) {
         styles.color = this.checkedColor;
-      }
-
-      if (this.value) {
-        styles.right = this.height - 4 + 'px';
-        styles.left = 'auto';
-      } else {
-        styles.right = 'auto';
-        styles.left = this.height - 4 + 'px';
-      }
-
-      return styles;
-    },
-    uncheckedStyle() {
-      const styles = {
-        'font-weight': this.fontWeight,
-        color: this.fontColor,
-        'font-size': this.fontSize + 'px',
-      };
-
-      if (this.uncheckedColor) {
+      } else if (this.uncheckedColor) {
         styles.color = this.uncheckedColor;
       }
 
       if (this.value) {
-        styles.right = this.height - 4 + 'px';
+        styles.right = this.height - 3 + 'px';
         styles.left = 'auto';
       } else {
         styles.right = 'auto';
-        styles.left = this.height - 4 + 'px';
+        styles.left = this.height - 3 + 'px';
       }
 
       return styles;
@@ -203,7 +178,6 @@ export default {
   .text {
     position: absolute;
     font-family: inherit;
-    opacity: 1;
     user-select: none;
 
     @media all and (-ms-high-contrast: none) {
