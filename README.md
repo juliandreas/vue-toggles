@@ -12,9 +12,7 @@ A highly customizable and accessible toggle.
 </p>
 
 <p>
-Vue Toggles comes out of the box with accessibility support like `aria-checked` and `aria-readonly`. The only accessibility options left to you are the `aria-label` and the `focus`-style. 
- 
-The user can toggle the switch with either the mouse-click or the spacebar.
+Vue Toggles comes out of the box with accessibility support like `aria-checked` and `aria-readonly`. The only accessibility options left to you are the `aria-label` and the `focus`-style.
 
 I have decided that a disabled button should be focusable by default, since it still can give important information to the user even in a disabled state. If this is a behaviour people don't want, I will consider changing this with a `prop`-option.
 

@@ -1,7 +1,6 @@
 <template>
   <button
     @click="toggle"
-    @keydown.space.prevent="toggle"
     role="switch"
     :aria-checked="value ? 'true' : 'false'"
     :aria-readonly="disabled ? 'true' : 'false'"
