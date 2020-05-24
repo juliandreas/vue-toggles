@@ -12,7 +12,7 @@
 A highly customizable and accessible toggle.
 </p>
 
-<p align="center">
+<p>
 Vue Toggles comes out of the box with accessibility support like `aria-checked` and `aria-readonly`. The only accessibility options left to you are the `aria-label` and the `focus`-style. 
  
 The user can toggle the switch with either the mouse-click or the spacebar.
