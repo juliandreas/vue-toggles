@@ -11,13 +11,6 @@ A highly customizable and accessible toggle.
 <a href="https://www.npmjs.com/package/vue-toggles"><img src="https://img.shields.io/npm/v/vue-toggles.svg?style=flat-square"/> <img src="https://img.shields.io/npm/dm/vue-toggles.svg?style=flat-square"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.x-brightgreen.svg?style=flat-square"/></a>
 </p>
 
-<p>
-Vue Toggles comes out of the box with accessibility support like `aria-checked` and `aria-readonly`. The only accessibility options left to you are the `aria-label` and the `focus`-style.
-
-I have decided that a disabled button should be focusable by default, since it still can give important information to the user even in a disabled state. If this is a behaviour people don't want, I will consider changing this with a `prop`-option.
-
-</p>
-
 <p align="center">
   <a href="https://www.buymeacoff.ee/Nifel">
     <img
@@ -25,6 +18,10 @@ I have decided that a disabled button should be focusable by default, since it s
          alt="Buy me a coffee"
          src="https://user-images.githubusercontent.com/1577802/36840220-21beb89c-1d3c-11e8-98a4-45fc334842cf.png">
   </a>
+</p>
+
+<p>
+Vue Toggles comes out of the box with accessibility support like `aria-checked` and `aria-readonly`. The only accessibility options left to you are the `aria-label` and the `focus`-style.
 </p>
 
 ## Demo
@@ -77,20 +74,20 @@ You can also add more props to customize things like color and width/height.
 
 | Name           | Type             | Default   | Description                                       |
 | -------------- | ---------------- | --------- | ------------------------------------------------- |
-| value          | Boolean          | false     | Initial state of the toggle button                |
-| disabled       | Boolean          | false     | Toggle does not react on mouse or keyboard events |
-| height         | [String, Number] | 25        | Height of the toggle in `px`                      |
-| width          | [String, Number] | 75        | Width of the toggle in `px`                       |
-| checked        | String           | null      | Optional text when the toggle is checked          |
-| unchecked      | String           | null      | Optional text when the toggle is unchecked        |
-| dotColor       | String           | `#ffffff` | Color of the toggle dot                           |
-| uncheckedBg    | String           | `#939393` | Background color when the toggle is unchecked     |
-| uncheckedColor | String           | `#ffffff` | Text color when the toggle is unchecked           |
+| value          | Boolean          | `false`   | Initial state of the toggle button                |
+| disabled       | Boolean          | `false`   | Toggle does not react on mouse or keyboard events |
+| height         | [String, Number] | `25`      | Height of the toggle in `px`                      |
+| width          | [String, Number] | `75`      | Width of the toggle in `px`                       |
+| checked        | String           | `null`    | Optional text when the toggle is checked          |
+| unchecked      | String           | `null`    | Optional text when the toggle is unchecked        |
 | checkedBg      | String           | `#5850ec` | Background color when the toggle is checked       |
-| checkedColor   | String           | `#ffffff` | Text color when the toggle is checked             |
+| uncheckedBg    | String           | `#939393` | Background color when the toggle is unchecked     |
 | disabledBg     | String           | `#939393` | Background color when the toggle is disabled      |
-| fontSize       | [String, Number] | 12        | Font size                                         |
-| fontWeight     | [Number, String] | normal    | Font weight                                       |
+| checkedColor   | String           | `#ffffff` | Text color when the toggle is checked             |
+| uncheckedColor | String           | `#ffffff` | Text color when the toggle is unchecked           |
+| dotColor       | String           | `#ffffff` | Color of the toggle dot                           |
+| fontSize       | [String, Number] | `12`      | Font size                                         |
+| fontWeight     | [Number, String] | `normal`  | Font weight                                       |
 
 ### Browser compatibility
 
