@@ -10,17 +10,13 @@
     class="bg"
   >
     <span aria-hidden="true" :style="dotStyle" class="dot">
-      <transition name="fade">
-        <span v-show="checked && value" :style="textStyle" class="text">
-          {{ checked }}
-        </span>
-      </transition>
+      <span v-show="checked && value" :style="checkedStyle" class="text">
+        {{ checked }}
+      </span>
 
-      <transition name="fade">
-        <span v-show="unchecked && !value" :style="textStyle" class="text">
-          {{ unchecked }}
-        </span>
-      </transition>
+      <span v-show="unchecked && !value" :style="uncheckedStyle" class="text">
+        {{ unchecked }}
+      </span>
     </span>
   </span>
 </template>
@@ -77,6 +73,14 @@ export default {
       type: String,
       default: '#fff',
     },
+    uncheckedColor: {
+      type: String,
+      default: '#fff',
+    },
+    checkedColor: {
+      type: String,
+      default: '#fff',
+    },
     fontWeight: {
       type: [Number, String],
       default: 'normal',
@@ -118,12 +122,37 @@ export default {
 
       return styles;
     },
-    textStyle() {
+    checkedStyle() {
       const styles = {
         'font-weight': this.fontWeight,
         color: this.fontColor,
         'font-size': this.fontSize + 'px',
       };
+
+      if (this.checkedColor) {
+        styles.color = this.checkedColor;
+      }
+
+      if (this.value) {
+        styles.right = this.height - 4 + 'px';
+        styles.left = 'auto';
+      } else {
+        styles.right = 'auto';
+        styles.left = this.height - 4 + 'px';
+      }
+
+      return styles;
+    },
+    uncheckedStyle() {
+      const styles = {
+        'font-weight': this.fontWeight,
+        color: this.fontColor,
+        'font-size': this.fontSize + 'px',
+      };
+
+      if (this.uncheckedColor) {
+        styles.color = this.uncheckedColor;
+      }
 
       if (this.value) {
         styles.right = this.height - 4 + 'px';
@@ -182,15 +211,6 @@ export default {
       top: 50%;
       transform: translateY(-50%);
     }
-  }
-
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.2s;
-  }
-  .fade-enter,
-  .fade-leave-to {
-    opacity: 0;
   }
 }
 </style>

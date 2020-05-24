@@ -70,21 +70,23 @@ You can also add more props to customize things like color and width/height.
 
 ## Properties
 
-| Name             | Type             | Default   |
-| ---------------- | ---------------- | --------- |
-| value            | Boolean          | false     |
-| height           | [String, Number] | 25        |
-| width            | [String, Number] | 75        |
-| checked          | String           | null      |
-| unchecked        | String           | null      |
-| dotColor         | String           | `#ffffff` |
-| uncheckedBgColor | String           | `#939393` |
-| checkedBgColor   | String           | `#5850ec` |
-| disabledBg       | String           | `#939393` |
-| disabled         | Boolean          | false     |
-| fontColor        | String           | `#ffffff` |
-| fontSize         | [String, Number] | 14        |
-| fontWeight       | [Number, String] | normal    |
+| Name             | Type             | Default   | Description                                       |
+| ---------------- | ---------------- | --------- | ------------------------------------------------- |
+| value            | Boolean          | false     | Initial state of the toggle button                |
+| disabled         | Boolean          | false     | Toggle does not react on mouse or keyboard events |
+| height           | [String, Number] | 25        | Height of the toggle in `px`                      |
+| width            | [String, Number] | 75        | Width of the toggle in `px`                       |
+| checked          | String           | null      | Optional text when the toggle is checked          |
+| unchecked        | String           | null      | Optional text when the toggle is unchecked        |
+| dotColor         | String           | `#ffffff` | Color of the toggle dot                           |
+| uncheckedBgColor | String           | `#939393` | Background color when the toggle is unchecked     |
+| uncheckedColor   | String           | `#ffffff` | Text color when the toggle is unchecked           |
+| checkedBgColor   | String           | `#5850ec` | Background color when the toggle is checked       |
+| checkedColor     | String           | `#ffffff` | Text color when the toggle is checked             |
+| disabledBg       | String           | `#939393` | Background color when the toggle is disabled      |
+| fontColor        | String           | `#ffffff` | Text color                                        |
+| fontSize         | [String, Number] | 14        | Font size (if text exists)                        |
+| fontWeight       | [Number, String] | normal    | Font weight (if text exists)                      |
 
 ### Browser compatibility
 

@@ -20,24 +20,35 @@
           <input v-model="unchecked" id="unchecked" type="text" />
 
           <label for="dotColor">Dot Color</label>
-          <input v-model="dotColor" id="dotColor" type="text" />
+          <input v-model="dotColor" id="dotColor" type="color" />
 
           <label for="uncheckedBgColor">Unchecked Background Color</label>
-          <input v-model="uncheckedBgColor" id="uncheckedBgColor" type="text" />
+          <input v-model="uncheckedBgColor" id="uncheckedBgColor" type="color" />
+
+          <label for="uncheckedColor">Unchecked Text Color</label>
+          <input v-model="uncheckedColor" id="uncheckedColor" type="color" />
         </div>
 
         <div class="inputs">
           <label for="checkedBgColor">Checked Background Color</label>
-          <input v-model="checkedBgColor" id="checkedBgColor" type="text" />
+          <input v-model="checkedBgColor" id="checkedBgColor" type="color" />
+
+          <label for="checkedColor">Checked Text Color</label>
+          <input v-model="checkedColor" id="checkedColor" type="color" />
 
           <label for="disabledBg">Disabled Background Color</label>
-          <input v-model="disabledBg" id="disabledBg" type="text" />
+          <input v-model="disabledBg" id="disabledBg" type="color" />
 
-          <label for="disabled">Disabled</label>
-          <input v-model="disabled" id="disabled" type="text" />
+          <label>Disabled</label>
+          <div class="radio-wrapper">
+            <input type="radio" id="disabled-true" v-model="disabled" :value="true" />
+            <label for="disabled-true">True</label>
+            <input type="radio" id="disabled-false" v-model="disabled" :value="false" />
+            <label for="disabled-false">False</label>
+          </div>
 
           <label for="fontColor">Font Color</label>
-          <input v-model="fontColor" id="fontColor" type="text" />
+          <input v-model="fontColor" id="fontColor" type="color" />
 
           <label for="fontSize">Font Size</label>
           <input v-model="fontSize" id="fontSize" type="number" />
@@ -56,7 +67,9 @@
           :height="height"
           :width="width"
           :uncheckedBgColor="uncheckedBgColor"
+          :uncheckedColor="uncheckedColor"
           :checkedBgColor="checkedBgColor"
+          :checkedColor="checkedColor"
           :disabledBg="disabledBg"
           :disabled="disabled"
           :fontColor="fontColor"
@@ -100,7 +113,9 @@ export default {
     checked: 'On',
     unchecked: 'Off',
     uncheckedBgColor: '#939393',
+    uncheckedColor: '#ffffff',
     checkedBgColor: '#5850ec',
+    checkedColor: '#ffffff',
     disabledBg: '#939393',
     disabled: false,
     fontColor: '#ffffff',
@@ -170,6 +185,26 @@ body {
           border: 1px solid #d2d6dc;
           border-radius: 6px;
           margin-bottom: 10px;
+        }
+
+        input[type='color'] {
+          padding: 0;
+          width: 100%;
+          height: 35px;
+        }
+
+        .radio-wrapper {
+          display: flex;
+          align-items: center;
+          height: 45px;
+
+          input[type='radio'] {
+            margin-right: 5px;
+          }
+
+          label {
+            margin-right: 10px;
+          }
         }
       }
     }
