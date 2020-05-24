@@ -1,4 +1,7 @@
 <h1 align="center">Vue Toggles</h1>
+<p align="center">
+A highly customizable and accessible toggle.
+</p>
 
 <p align="center">
 <img src="./vue-toggles.jpg" alt="Vue Toggles Logo"/>
@@ -6,10 +9,6 @@
 
 <p align="center">
 <a href="https://www.npmjs.com/package/vue-toggles"><img src="https://img.shields.io/npm/v/vue-toggles.svg?style=flat-square"/> <img src="https://img.shields.io/npm/dm/vue-toggles.svg?style=flat-square"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.x-brightgreen.svg?style=flat-square"/></a>
-</p>
-
-<p align="center">
-A highly customizable and accessible toggle.
 </p>
 
 <p>
