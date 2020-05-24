@@ -27,6 +27,7 @@ Vue Toggles comes out of the box with accessibility support like `aria-checked` 
 ## Demo
 
 [Demo](https://vue-toggles.netlify.app/)
+[CodeSandbox](https://codesandbox.io/s/suspicious-framework-6uk74?from-embed=&file=/src/App.vue/)
 
 ## Installation
 
@@ -65,8 +66,8 @@ You can also add more props to customize things like color and width/height.
   width="90"
   checked="On"
   unchecked="Off"
-  uncheckedBg="lightgrey"
   checkedBg="#b4d455"
+  uncheckedBg="lightgrey"
 />
 ```
 
@@ -86,7 +87,7 @@ You can also add more props to customize things like color and width/height.
 | checkedColor   | String           | `#ffffff` | Text color when the toggle is checked             |
 | uncheckedColor | String           | `#ffffff` | Text color when the toggle is unchecked           |
 | dotColor       | String           | `#ffffff` | Color of the toggle dot                           |
-| fontSize       | [String, Number] | `12`      | Font size                                         |
+| fontSize       | [String, Number] | `12`      | Font size in `px`                                 |
 | fontWeight     | [Number, String] | `normal`  | Font weight                                       |
 
 ### Browser compatibility

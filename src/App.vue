@@ -19,25 +19,31 @@
           <label for="unchecked">Unchecked Text (unchecked)</label>
           <input v-model="unchecked" id="unchecked" type="text" />
 
-          <label for="dotColor">Dot Color (dotColor)</label>
-          <input v-model="dotColor" id="dotColor" type="color" />
+          <label for="checkedBg">Checked Background Color (checkedBg)</label>
+          <input v-model="checkedBg" id="checkedBg" type="color" />
 
           <label for="uncheckedBg">Unchecked Background Color (uncheckedBg)</label>
           <input v-model="uncheckedBg" id="uncheckedBg" type="color" />
 
-          <label for="uncheckedColor">Unchecked Text Color (uncheckedColor)</label>
-          <input v-model="uncheckedColor" id="uncheckedColor" type="color" />
+          <label for="disabledBg">Disabled Background Color (disabledBg)</label>
+          <input v-model="disabledBg" id="disabledBg" type="color" />
         </div>
 
         <div class="inputs">
-          <label for="checkedBg">Checked Background Color (checkedBg)</label>
-          <input v-model="checkedBg" id="checkedBg" type="color" />
-
           <label for="checkedColor">Checked Text Color (checkedColor)</label>
           <input v-model="checkedColor" id="checkedColor" type="color" />
 
-          <label for="disabledBg">Disabled Background Color (disabledBg)</label>
-          <input v-model="disabledBg" id="disabledBg" type="color" />
+          <label for="uncheckedColor">Unchecked Text Color (uncheckedColor)</label>
+          <input v-model="uncheckedColor" id="uncheckedColor" type="color" />
+
+          <label for="dotColor">Dot Color (dotColor)</label>
+          <input v-model="dotColor" id="dotColor" type="color" />
+
+          <label for="fontSize">Font Size (fontSize)</label>
+          <input v-model="fontSize" id="fontSize" type="number" />
+
+          <label for="fontWeight">Font Weight (fontWeight)</label>
+          <input v-model="fontWeight" id="fontWeight" type="text" />
 
           <label>Disabled (disabled)</label>
           <div class="radio-wrapper">
@@ -46,12 +52,6 @@
             <input type="radio" id="disabled-true" v-model="disabled" :value="true" />
             <label for="disabled-true">True</label>
           </div>
-
-          <label for="fontSize">Font Size (fontSize)</label>
-          <input v-model="fontSize" id="fontSize" type="number" />
-
-          <label for="fontWeight">Font Weight (fontWeight)</label>
-          <input v-model="fontWeight" id="fontWeight" type="text" />
         </div>
       </div>
 
@@ -78,6 +78,7 @@
 
     <div class="container">
       <div class="toggles">
+        <p>Examples:</p>
         <VueToggles class="testy" @click="value2 = !value2" :value="value2" />
         <VueToggles
           @click="value2 = !value2"
@@ -207,6 +208,13 @@ body {
 
     .toggles {
       display: flex;
+      align-items: center;
+
+      p {
+        font-size: 12px;
+        margin-right: 10px;
+      }
+
       .toggles-btn {
         margin-right: 10px;
 
