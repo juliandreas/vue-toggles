@@ -1,13 +1,13 @@
 <template>
-  <span
+  <button
     @click="toggle"
     @keydown.space.prevent="toggle"
     role="switch"
-    tabindex="0"
     :aria-checked="value ? 'true' : 'false'"
-    :disabled="disabled"
+    :aria-readonly="disabled ? 'true' : 'false'"
+    tabindex="0"
     :style="bgStyle"
-    class="bg"
+    class="toggles-btn"
   >
     <span aria-hidden="true" :style="dotStyle" class="dot">
       <span v-show="checked && value" :style="checkedStyle" class="text">
@@ -18,7 +18,7 @@
         {{ unchecked }}
       </span>
     </span>
-  </span>
+  </button>
 </template>
 
 <script>
@@ -49,11 +49,11 @@ export default {
       type: [Number, String],
       default: 25,
     },
-    uncheckedBgColor: {
+    uncheckedBg: {
       type: String,
       default: '#939393',
     },
-    checkedBgColor: {
+    checkedBg: {
       type: String,
       default: '#5850ec',
     },
@@ -94,9 +94,9 @@ export default {
       };
 
       if (this.value) {
-        styles.background = this.checkedBgColor;
+        styles.background = this.checkedBg;
       } else {
-        styles.background = this.uncheckedBgColor;
+        styles.background = this.uncheckedBg;
       }
 
       if (this.disabled) {
@@ -182,14 +182,15 @@ export default {
   box-sizing: border-box;
 }
 
-.bg {
+.toggles-btn {
   display: flex;
   align-items: center;
   cursor: pointer;
   border-radius: 9999px;
-  transition: all ease 0.2s;
-  outline: none;
+  border: 0;
+  padding: 0;
   overflow: hidden;
+  transition: all ease 0.2s;
 }
 
 .dot {

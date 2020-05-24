@@ -9,7 +9,16 @@
 </p>
 
 <p align="center">
-The only toggle library you need.
+A highly customizable and accessible toggle.
+</p>
+
+<p align="center">
+Vue Toggles comes out of the box with accessibility support like `aria-checked` and `aria-readonly`. The only accessibility options left to you are the `aria-label` and the `focus`-style. 
+ 
+The user can toggle the switch with either the mouse-click or the spacebar.
+
+I have decided that a disabled button should be focusable by default, since it still can give important information to the user even in a disabled state. If this is a behaviour people don't want, I will consider changing this with a `prop`-option.
+
 </p>
 
 <p align="center">
@@ -62,31 +71,31 @@ You can also add more props to customize things like color and width/height.
   width="90"
   checked="On"
   unchecked="Off"
-  uncheckedBgColor="lightgrey"
-  checkedBgColor="#b4d455"
+  uncheckedBg="lightgrey"
+  checkedBg="#b4d455"
   fontColor="#000"
 />
 ```
 
 ## Properties
 
-| Name             | Type             | Default   | Description                                       |
-| ---------------- | ---------------- | --------- | ------------------------------------------------- |
-| value            | Boolean          | false     | Initial state of the toggle button                |
-| disabled         | Boolean          | false     | Toggle does not react on mouse or keyboard events |
-| height           | [String, Number] | 25        | Height of the toggle in `px`                      |
-| width            | [String, Number] | 75        | Width of the toggle in `px`                       |
-| checked          | String           | null      | Optional text when the toggle is checked          |
-| unchecked        | String           | null      | Optional text when the toggle is unchecked        |
-| dotColor         | String           | `#ffffff` | Color of the toggle dot                           |
-| uncheckedBgColor | String           | `#939393` | Background color when the toggle is unchecked     |
-| uncheckedColor   | String           | `#ffffff` | Text color when the toggle is unchecked           |
-| checkedBgColor   | String           | `#5850ec` | Background color when the toggle is checked       |
-| checkedColor     | String           | `#ffffff` | Text color when the toggle is checked             |
-| disabledBg       | String           | `#939393` | Background color when the toggle is disabled      |
-| fontColor        | String           | `#ffffff` | Text color                                        |
-| fontSize         | [String, Number] | 14        | Font size (if text exists)                        |
-| fontWeight       | [Number, String] | normal    | Font weight (if text exists)                      |
+| Name           | Type             | Default   | Description                                       |
+| -------------- | ---------------- | --------- | ------------------------------------------------- |
+| value          | Boolean          | false     | Initial state of the toggle button                |
+| disabled       | Boolean          | false     | Toggle does not react on mouse or keyboard events |
+| height         | [String, Number] | 25        | Height of the toggle in `px`                      |
+| width          | [String, Number] | 75        | Width of the toggle in `px`                       |
+| checked        | String           | null      | Optional text when the toggle is checked          |
+| unchecked      | String           | null      | Optional text when the toggle is unchecked        |
+| dotColor       | String           | `#ffffff` | Color of the toggle dot                           |
+| uncheckedBg    | String           | `#939393` | Background color when the toggle is unchecked     |
+| uncheckedColor | String           | `#ffffff` | Text color when the toggle is unchecked           |
+| checkedBg      | String           | `#5850ec` | Background color when the toggle is checked       |
+| checkedColor   | String           | `#ffffff` | Text color when the toggle is checked             |
+| disabledBg     | String           | `#939393` | Background color when the toggle is disabled      |
+| fontColor      | String           | `#ffffff` | Text color                                        |
+| fontSize       | [String, Number] | 14        | Font size (if text exists)                        |
+| fontWeight     | [Number, String] | normal    | Font weight (if text exists)                      |
 
 ### Browser compatibility
 
