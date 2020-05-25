@@ -64,8 +64,8 @@ You can also add more props to customize things like color and width/height.
   :value="value"
   height="30"
   width="90"
-  checked="On"
-  unchecked="Off"
+  checkedText="On"
+  uncheckedText="Off"
   checkedBg="#b4d455"
   uncheckedBg="lightgrey"
 />
@@ -79,8 +79,8 @@ You can also add more props to customize things like color and width/height.
 | disabled       | Boolean          | `false`   | Toggle does not react on mouse or keyboard events |
 | height         | [String, Number] | `25`      | Height of the toggle in `px`                      |
 | width          | [String, Number] | `75`      | Width of the toggle in `px`                       |
-| checked        | String           | `null`    | Optional text when the toggle is checked          |
-| unchecked      | String           | `null`    | Optional text when the toggle is unchecked        |
+| checkedText    | String           | `null`    | Optional text when the toggle is checked          |
+| uncheckedText  | String           | `null`    | Optional text when the toggle is unchecked        |
 | checkedBg      | String           | `#5850ec` | Background color when the toggle is checked       |
 | uncheckedBg    | String           | `#939393` | Background color when the toggle is unchecked     |
 | disabledBg     | String           | `#939393` | Background color when the toggle is disabled      |

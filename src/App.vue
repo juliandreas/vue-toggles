@@ -13,11 +13,11 @@
           <label for="width">Width (width)</label>
           <input v-model="width" id="width" type="number" />
 
-          <label for="checked">Checked Text (checked)</label>
-          <input v-model="checked" id="checked" type="text" />
+          <label for="checked">Checked Text (checkedText)</label>
+          <input v-model="checkedText" id="checkedText" type="text" />
 
-          <label for="unchecked">Unchecked Text (unchecked)</label>
-          <input v-model="unchecked" id="unchecked" type="text" />
+          <label for="unchecked">Unchecked Text (uncheckedText)</label>
+          <input v-model="uncheckedText" id="uncheckedText" type="text" />
 
           <label for="checkedBg">Checked Background Color (checkedBg)</label>
           <input v-model="checkedBg" id="checkedBg" type="color" />
@@ -59,8 +59,8 @@
         <VueToggles
           @click="value = !value"
           :value="value"
-          :checked="checked"
-          :unchecked="unchecked"
+          :checkedText="checkedText"
+          :uncheckedText="uncheckedText"
           :height="height"
           :width="width"
           :uncheckedBg="uncheckedBg"
@@ -84,16 +84,16 @@
           @click="value2 = !value2"
           :value="value2"
           checkedBg="#42A3AA"
-          checked="On"
-          unchecked="Off"
+          checkedText="On"
+          uncheckedText="Off"
         />
         <VueToggles
           @click="value2 = !value2"
           :value="value2"
           uncheckedBg="linear-gradient(to bottom right, grey, grey)"
           checkedBg="linear-gradient(to bottom right, red, #5850ec)"
-          checked="😄"
-          unchecked="😑"
+          checkedText="😄"
+          uncheckedText="😑"
         />
       </div>
     </div>
@@ -108,8 +108,8 @@ export default {
     value2: false,
     width: 75,
     height: 25,
-    checked: 'On',
-    unchecked: 'Off',
+    checkedText: 'On',
+    uncheckedText: 'Off',
     uncheckedBg: '#939393',
     uncheckedColor: '#ffffff',
     checkedBg: '#5850ec',

@@ -8,12 +8,12 @@
     class="toggles-btn"
   >
     <span aria-hidden="true" :style="dotStyle" class="dot">
-      <span v-show="checked && value" :style="textStyle" class="text">
-        {{ checked }}
+      <span v-show="checkedText && value" :style="textStyle" class="text">
+        {{ checkedText }}
       </span>
 
-      <span v-show="unchecked && !value" :style="textStyle" class="text">
-        {{ unchecked }}
+      <span v-show="uncheckedText && !value" :style="textStyle" class="text">
+        {{ uncheckedText }}
       </span>
     </span>
   </button>
@@ -31,11 +31,11 @@ export default {
       type: Boolean,
       default: false,
     },
-    checked: {
+    checkedText: {
       type: String,
       default: null,
     },
-    unchecked: {
+    uncheckedText: {
       type: String,
       default: null,
     },
