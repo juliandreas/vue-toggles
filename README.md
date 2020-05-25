@@ -31,7 +31,7 @@ Vue Toggles comes out of the box with accessibility support for:
 
 - `aria-checked` depending on state
 - `aria-readonly` if the toggle is disabled
-- `prefers-reduced-motion` if the user has requested any type of motion reduction [prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)
+- `prefers-reduced-motion` if the user has requested any type of motion reduction [[prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)]
 
 The only accessibility options left to you are the `aria-label` and the `focus`-style.
 
