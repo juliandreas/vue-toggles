@@ -33,7 +33,14 @@ Vue Toggles comes out of the box with accessibility support for:
 - `aria-readonly` if the toggle is disabled
 - `prefers-reduced-motion` if the user has requested any type of motion reduction [[prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion)]
 
-The only accessibility options left to you are the `aria-label` and the `focus`-style.
+### Accessibility
+
+What's left for you, when it comes to accessibility, is labeling the toggle correctly. This is either done by:
+
+- A `<label for="example-id">Toggle description</label>` followed by the toggle component `<VueToggles id="example-id" />`
+- An `aria-label`, for example `<VueToggles aria-label="Toggle description" />`. Remember, you still need a visual text description of what the toggle does
+
+The `focus`-style is also left up to you — which is recommended you don't remove. If you think the default is ugly, style it yourself!
 
 ## Installation
 
@@ -103,8 +110,6 @@ You can also add more props to customize things like color and width/height.
 - Safari: 10+
 - IE: 11+
 
----
-
-## License
+### License
 
 [MIT](http://opensource.org/licenses/MIT)

@@ -157,14 +157,17 @@ export default {
 }
 
 .toggles-btn {
+  cursor: pointer;
   display: flex;
   align-items: center;
-  cursor: pointer;
   border-radius: 9999px;
-  border: 0;
-  padding: 0;
+  border: none;
   overflow: hidden;
-  transition: all ease 0.2s;
+  transition: background-color ease 0.2s, width ease 0.2s, height ease 0.2s;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
 }
 
 .dot {
@@ -173,7 +176,7 @@ export default {
   align-items: center;
   border-radius: 9999px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  transition: all ease 0.2s;
+  transition: margin ease 0.2s;
 
   @media (prefers-reduced-motion: reduce) {
     transition: none;
