@@ -175,6 +175,10 @@ export default {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   transition: all ease 0.2s;
 
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
   .text {
     position: absolute;
     font-family: inherit;
