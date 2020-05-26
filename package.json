@@ -1,19 +1,19 @@
 {
   "name": "vue-toggles",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "author": "Julian Lagerberg <jl@jlagerberg.se>",
   "license": "MIT",
   "homepage": "https://vue-toggles.netlify.app/",
   "bugs": {
-    "url": "https://github.com/jllagerberg/vue-toggles"
+    "url": "https://github.com/juliandreas/vue-toggles"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jllagerberg/vue-toggles.git"
+    "url": "git+https://github.com/juliandreas/vue-toggles.git"
   },
-  "main": "dist/vue-toggles.umd",
-  "module": "dist/vue-toggles.esm",
-  "unpkg": "dist/vue-toggles.min",
+  "main": "dist/vue-toggles.umd.js",
+  "module": "dist/vue-toggles.esm.js",
+  "unpkg": "dist/vue-toggles.min.js",
   "files": [
     "dist",
     "src"
