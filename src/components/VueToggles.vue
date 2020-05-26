@@ -1,6 +1,6 @@
 <template>
   <button
-    @click="toggle"
+    @click="!disabled ? $emit('click', value) : null"
     role="switch"
     :aria-checked="value ? 'true' : 'false'"
     :aria-readonly="disabled ? 'true' : 'false'"
@@ -31,6 +31,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    reverse: {
+      type: Boolean,
+      default: false,
+    },
     checkedText: {
       type: String,
       default: null,
@@ -55,10 +59,6 @@ export default {
       type: String,
       default: '#5850ec',
     },
-    disabledBg: {
-      type: String,
-      default: '#939393',
-    },
     dotColor: {
       type: String,
       default: '#fff',
@@ -67,11 +67,11 @@ export default {
       type: [Number, String],
       default: '12',
     },
-    uncheckedColor: {
+    checkedColor: {
       type: String,
       default: '#fff',
     },
-    checkedColor: {
+    uncheckedColor: {
       type: String,
       default: '#fff',
     },
@@ -85,17 +85,8 @@ export default {
       const styles = {
         width: this.width + 'px',
         height: this.height + 'px',
+        background: this.value && !this.disabled ? this.checkedBg : this.uncheckedBg,
       };
-
-      if (this.value) {
-        styles.background = this.checkedBg;
-      } else {
-        styles.background = this.uncheckedBg;
-      }
-
-      if (this.disabled) {
-        styles.background = this.disabledBg;
-      }
 
       return styles;
     },
@@ -106,11 +97,14 @@ export default {
         height: this.height - 8 + 'px',
         'min-width': this.height - 8 + 'px',
         'min-height': this.height - 8 + 'px',
+        'margin-left': this.value ? this.width - (this.height - 3) + 'px' : '5px',
       };
 
-      if (this.value) {
+      if ((!this.value && this.reverse) || (this.value && !this.reverse)) {
         styles.marginLeft = this.width - (this.height - 3) + 'px';
-      } else {
+      }
+
+      if ((this.value && this.reverse) || (!this.value && !this.reverse)) {
         styles.marginLeft = '5px';
       }
 
@@ -120,30 +114,22 @@ export default {
       const styles = {
         'font-weight': this.fontWeight,
         'font-size': this.fontSize + 'px',
+        color: this.value && !this.disabled ? this.checkedColor : this.uncheckedColor,
+        right: this.value ? this.height - 3 + 'px' : 'auto',
+        left: this.value ? 'auto' : this.height - 3 + 'px',
       };
 
-      if (this.checkedColor) {
-        styles.color = this.checkedColor;
-      } else if (this.uncheckedColor) {
-        styles.color = this.uncheckedColor;
-      }
-
-      if (this.value) {
+      if (!this.value && this.reverse) {
         styles.right = this.height - 3 + 'px';
         styles.left = 'auto';
-      } else {
-        styles.right = 'auto';
+      }
+
+      if (this.value && this.reverse) {
         styles.left = this.height - 3 + 'px';
+        styles.right = 'auto';
       }
 
       return styles;
-    },
-  },
-  methods: {
-    toggle() {
-      if (!this.disabled) {
-        this.$emit('click', this.value);
-      }
     },
   },
 };

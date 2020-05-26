@@ -24,9 +24,6 @@
 
           <label for="uncheckedBg">Unchecked Background Color (uncheckedBg)</label>
           <input v-model="uncheckedBg" id="uncheckedBg" type="color" />
-
-          <label for="disabledBg">Disabled Background Color (disabledBg)</label>
-          <input v-model="disabledBg" id="disabledBg" type="color" />
         </div>
 
         <div class="inputs">
@@ -52,6 +49,14 @@
             <input type="radio" id="disabled-true" v-model="disabled" :value="true" />
             <label for="disabled-true">True</label>
           </div>
+
+          <label>Reverse (reverse)</label>
+          <div class="radio-wrapper">
+            <input type="radio" id="reverse-false" v-model="reverse" :value="false" />
+            <label for="reverse-false">False</label>
+            <input type="radio" id="reverse-true" v-model="reverse" :value="true" />
+            <label for="reverse-true">True</label>
+          </div>
         </div>
       </div>
 
@@ -67,11 +72,11 @@
           :uncheckedColor="uncheckedColor"
           :checkedBg="checkedBg"
           :checkedColor="checkedColor"
-          :disabledBg="disabledBg"
           :disabled="disabled"
           :dotColor="dotColor"
           :fontSize="fontSize"
           :fontWeight="fontWeight"
+          :reverse="reverse"
         />
       </div>
     </div>
@@ -90,8 +95,8 @@
         <VueToggles
           @click="value2 = !value2"
           :value="value2"
-          uncheckedBg="linear-gradient(to bottom right, grey, grey)"
           checkedBg="linear-gradient(to bottom right, red, #5850ec)"
+          uncheckedBg="linear-gradient(to bottom right, grey, grey)"
           checkedText="😄"
           uncheckedText="😑"
         />
@@ -110,15 +115,15 @@ export default {
     height: 25,
     checkedText: 'On',
     uncheckedText: 'Off',
-    uncheckedBg: '#939393',
-    uncheckedColor: '#ffffff',
     checkedBg: '#5850ec',
+    uncheckedBg: '#939393',
     checkedColor: '#ffffff',
-    disabledBg: '#939393',
-    disabled: false,
+    uncheckedColor: '#ffffff',
     dotColor: '#ffffff',
     fontSize: 12,
     fontWeight: 'normal',
+    disabled: false,
+    reverse: false,
   }),
 };
 </script>
