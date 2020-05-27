@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <header>
-      <h1>Vue Toggles</h1>
-    </header>
+    <Header />
 
     <div class="container">
       <div class="wrapper">
@@ -106,8 +104,13 @@
 </template>
 
 <script>
+import Header from '@/components/demo/Header.vue';
+
 export default {
   name: 'App',
+  components: {
+    Header,
+  },
   data: () => ({
     value: false,
     value2: false,
@@ -146,19 +149,6 @@ body {
   flex-direction: column;
   color: #000;
   height: 100vh;
-  padding: 50px;
-
-  header {
-    background: linear-gradient(to bottom right, #939393, #5850ec);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
-    margin-bottom: 50px;
-
-    h1 {
-      margin-bottom: 10px;
-    }
-  }
 
   .container {
     display: flex;
@@ -222,6 +212,7 @@ body {
 
       .toggles-btn {
         margin-right: 10px;
+        transition: border ease 0.2s;
 
         &:last-child {
           margin-right: 0;

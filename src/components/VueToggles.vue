@@ -142,12 +142,15 @@ export default {
   box-sizing: border-box;
 }
 
+button {
+  border: none;
+}
+
 .toggles-btn {
   cursor: pointer;
   display: flex;
   align-items: center;
   border-radius: 9999px;
-  border: none;
   overflow: hidden;
   transition: background-color ease 0.2s, width ease 0.2s, height ease 0.2s;
 
