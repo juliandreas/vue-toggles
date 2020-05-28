@@ -1,6 +1,6 @@
 {
   "name": "vue-toggles",
-  "version": "0.7.5-beta.0",
+  "version": "0.7.5",
   "author": "Julian Lagerberg <jl@jlagerberg.se>",
   "license": "MIT",
   "homepage": "https://vue-toggles.netlify.app/",
@@ -14,10 +14,6 @@
   "main": "dist/vue-toggles.umd.js",
   "module": "dist/vue-toggles.esm.js",
   "unpkg": "dist/vue-toggles.min.js",
-  "files": [
-    "dist",
-    "src"
-  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
