@@ -138,12 +138,8 @@ export default {
 <style scoped lang="scss">
 * {
   margin: 0;
-  box-sizing: border-box;
-}
-
-button {
-  border: none;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .toggles-btn {
@@ -152,6 +148,8 @@ button {
   align-items: center;
   border-radius: 9999px;
   overflow: hidden;
+  border: none;
+  padding: 0;
   transition: background-color ease 0.2s, width ease 0.2s, height ease 0.2s;
 
   @media (prefers-reduced-motion: reduce) {
