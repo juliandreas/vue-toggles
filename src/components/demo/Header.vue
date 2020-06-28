@@ -2,7 +2,6 @@
   <header>
     <div class="title-page-wrapper">
       <h1>Vue Toggles</h1>
-      <VueToggles :value="value" @click="value = !value" />
     </div>
 
     <div class="logos">
@@ -74,9 +73,6 @@
 <script>
 export default {
   name: 'Header',
-  data: () => ({
-    value: false,
-  }),
 };
 </script>
 

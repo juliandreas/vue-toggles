@@ -138,12 +138,12 @@ export default {
 <style scoped lang="scss">
 * {
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
 button {
   border: none;
+  padding: 0;
 }
 
 .toggles-btn {

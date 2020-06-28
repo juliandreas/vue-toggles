@@ -14,7 +14,7 @@ A highly customizable and accessible toggle.
 ## Demo
 
 - [Demo](https://vue-toggles.netlify.app/)
-- [CodeSandbox](https://codesandbox.io/s/suspicious-framework-6uk74?from-embed=&file=/src/App.vue/)
+- [CodeSandbox](https://codesandbox.io/s/vue-toggles-mkkp4?file=/src/App.vue)
 
 ## Introduction
 
