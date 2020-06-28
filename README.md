@@ -4,20 +4,11 @@ A highly customizable and accessible toggle.
 </p>
 
 <p align="center">
-<a href="https://www.npmjs.com/package/vue-toggles"><img src="https://img.shields.io/npm/v/vue-toggles.svg?style=flat-square"/> <img src="https://img.shields.io/npm/dm/vue-toggles.svg?style=flat-square"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.x-brightgreen.svg?style=flat-square"/></a>
+<a href="https://www.npmjs.com/package/vue-toggles"><img src="https://img.shields.io/npm/v/vue-toggles.svg?style=flat-square"/> <img src="https://img.shields.io/npm/dt/vue-toggles.svg?style=flat-square"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.x-brightgreen.svg?style=flat-square"/></a>
 </p>
 
 <p align="center">
 <img src="./vue-toggles.jpg" alt="Vue Toggles Logo"/>
-</p>
-
-<p align="center">
-  <a href="https://www.buymeacoff.ee/Nifel">
-    <img
-         width="140"
-         alt="Buy me a coffee"
-         src="https://user-images.githubusercontent.com/1577802/36840220-21beb89c-1d3c-11e8-98a4-45fc334842cf.png">
-  </a>
 </p>
 
 ## Demo

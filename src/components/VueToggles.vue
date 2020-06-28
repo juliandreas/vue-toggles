@@ -1,11 +1,11 @@
 <template>
   <button
-    @click="!disabled ? $emit('click', value) : null"
     role="switch"
     :aria-checked="value ? 'true' : 'false'"
     :aria-readonly="disabled ? 'true' : 'false'"
     :style="bgStyle"
     class="toggles-btn"
+    @click="!disabled ? $emit('click', value) : null"
   >
     <span aria-hidden="true" :style="dotStyle" class="dot">
       <span v-show="checkedText && value" :style="textStyle" class="text">
@@ -138,6 +138,7 @@ export default {
 <style scoped lang="scss">
 * {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 

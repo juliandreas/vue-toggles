@@ -6,53 +6,53 @@
       <div class="wrapper">
         <div class="inputs" style="margin-right: 25px;">
           <label for="height">Height (height)</label>
-          <input v-model="height" id="height" type="number" />
+          <input id="height" v-model="height" type="number" />
 
           <label for="width">Width (width)</label>
-          <input v-model="width" id="width" type="number" />
+          <input id="width" v-model="width" type="number" />
 
           <label for="checked">Checked Text (checkedText)</label>
-          <input v-model="checkedText" id="checkedText" type="text" />
+          <input id="checkedText" v-model="checkedText" type="text" />
 
           <label for="unchecked">Unchecked Text (uncheckedText)</label>
-          <input v-model="uncheckedText" id="uncheckedText" type="text" />
+          <input id="uncheckedText" v-model="uncheckedText" type="text" />
 
           <label for="checkedBg">Checked Background Color (checkedBg)</label>
-          <input v-model="checkedBg" id="checkedBg" type="color" />
+          <input id="checkedBg" v-model="checkedBg" type="color" />
 
           <label for="uncheckedBg">Unchecked Background Color (uncheckedBg)</label>
-          <input v-model="uncheckedBg" id="uncheckedBg" type="color" />
+          <input id="uncheckedBg" v-model="uncheckedBg" type="color" />
         </div>
 
         <div class="inputs">
           <label for="checkedColor">Checked Text Color (checkedColor)</label>
-          <input v-model="checkedColor" id="checkedColor" type="color" />
+          <input id="checkedColor" v-model="checkedColor" type="color" />
 
           <label for="uncheckedColor">Unchecked Text Color (uncheckedColor)</label>
-          <input v-model="uncheckedColor" id="uncheckedColor" type="color" />
+          <input id="uncheckedColor" v-model="uncheckedColor" type="color" />
 
           <label for="dotColor">Dot Color (dotColor)</label>
-          <input v-model="dotColor" id="dotColor" type="color" />
+          <input id="dotColor" v-model="dotColor" type="color" />
 
           <label for="fontSize">Font Size (fontSize)</label>
-          <input v-model="fontSize" id="fontSize" type="number" />
+          <input id="fontSize" v-model="fontSize" type="number" />
 
           <label for="fontWeight">Font Weight (fontWeight)</label>
-          <input v-model="fontWeight" id="fontWeight" type="text" />
+          <input id="fontWeight" v-model="fontWeight" type="text" />
 
           <label>Disabled (disabled)</label>
           <div class="radio-wrapper">
-            <input type="radio" id="disabled-false" v-model="disabled" :value="false" />
+            <input id="disabled-false" v-model="disabled" type="radio" :value="false" />
             <label for="disabled-false">False</label>
-            <input type="radio" id="disabled-true" v-model="disabled" :value="true" />
+            <input id="disabled-true" v-model="disabled" type="radio" :value="true" />
             <label for="disabled-true">True</label>
           </div>
 
           <label>Reverse (reverse)</label>
           <div class="radio-wrapper">
-            <input type="radio" id="reverse-false" v-model="reverse" :value="false" />
+            <input id="reverse-false" v-model="reverse" type="radio" :value="false" />
             <label for="reverse-false">False</label>
-            <input type="radio" id="reverse-true" v-model="reverse" :value="true" />
+            <input id="reverse-true" v-model="reverse" type="radio" :value="true" />
             <label for="reverse-true">True</label>
           </div>
         </div>
@@ -60,21 +60,21 @@
 
       <div class="wrapper">
         <VueToggles
-          @click="value = !value"
           :value="value"
-          :checkedText="checkedText"
-          :uncheckedText="uncheckedText"
+          :checked-text="checkedText"
+          :unchecked-text="uncheckedText"
           :height="height"
           :width="width"
-          :uncheckedBg="uncheckedBg"
-          :uncheckedColor="uncheckedColor"
-          :checkedBg="checkedBg"
-          :checkedColor="checkedColor"
+          :unchecked-bg="uncheckedBg"
+          :unchecked-color="uncheckedColor"
+          :checked-bg="checkedBg"
+          :checked-color="checkedColor"
           :disabled="disabled"
-          :dotColor="dotColor"
-          :fontSize="fontSize"
-          :fontWeight="fontWeight"
+          :dot-color="dotColor"
+          :font-size="fontSize"
+          :font-weight="fontWeight"
           :reverse="reverse"
+          @click="value = !value"
         />
       </div>
     </div>
@@ -82,21 +82,21 @@
     <div class="container">
       <div class="toggles">
         <p>Examples:</p>
-        <VueToggles class="testy" @click="value2 = !value2" :value="value2" />
+        <VueToggles class="testy" :value="value2" @click="value2 = !value2" />
         <VueToggles
-          @click="value2 = !value2"
           :value="value2"
-          checkedBg="#42A3AA"
-          checkedText="On"
-          uncheckedText="Off"
+          checked-bg="#42A3AA"
+          checked-text="On"
+          unchecked-text="Off"
+          @click="value2 = !value2"
         />
         <VueToggles
-          @click="value2 = !value2"
           :value="value2"
-          checkedBg="linear-gradient(to bottom right, red, #5850ec)"
-          uncheckedBg="linear-gradient(to bottom right, grey, grey)"
-          checkedText="😄"
-          uncheckedText="😑"
+          checked-bg="linear-gradient(to bottom right, red, #5850ec)"
+          unchecked-bg="linear-gradient(to bottom right, grey, grey)"
+          checked-text="😄"
+          unchecked-text="😑"
+          @click="value2 = !value2"
         />
       </div>
     </div>
@@ -132,12 +132,6 @@ export default {
 </script>
 
 <style lang="scss">
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   min-height: 100vh;
   background: #faf9fd;
