@@ -7,9 +7,6 @@
   "bugs": {
     "url": "https://github.com/juliandreas/vue-toggles"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/juliandreas/vue-toggles.git"
