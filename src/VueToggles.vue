@@ -1,11 +1,14 @@
 <template>
-  <button
+  <span
     role="switch"
+    tabindex="0"
     :aria-checked="value ? 'true' : 'false'"
     :aria-readonly="disabled ? 'true' : 'false'"
     :style="bgStyle"
     class="toggles-btn"
     @click="!disabled ? $emit('click', value) : null"
+    @keyup.enter="!disabled ? $emit('click', value) : null"
+    @keyup.space="!disabled ? $emit('click', value) : null"
   >
     <span aria-hidden="true" :style="dotStyle" class="dot">
       <span v-show="checkedText && value" :style="textStyle" class="text">
@@ -16,7 +19,7 @@
         {{ uncheckedText }}
       </span>
     </span>
-  </button>
+  </span>
 </template>
 
 <script>
@@ -135,38 +138,22 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+<style lang="scss">
 .toggles-btn {
   cursor: pointer;
   display: flex;
   align-items: center;
   border-radius: 9999px;
   overflow: hidden;
-  border: none;
-  padding: 0;
   transition: background-color ease 0.2s, width ease 0.2s, height ease 0.2s;
 
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
-  }
-}
-
-.dot {
-  position: relative;
-  display: flex;
-  align-items: center;
-  border-radius: 9999px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  transition: margin ease 0.2s;
-
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
+  .dot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 9999px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    transition: margin ease 0.2s;
   }
 
   .text {
@@ -179,6 +166,18 @@ export default {
       top: 50%;
       transform: translateY(-50%);
     }
+  }
+}
+
+@media (prefers-reduced-motion) {
+  /* disable animations if user have a reduced motion setting */
+  .toggles-btn,
+  .toggles-btn *,
+  .toggles-btn *::before,
+  .toggles-btn *::after {
+    animation: none !important;
+    transition: none !important;
+    transition-duration: none !important;
   }
 }
 </style>

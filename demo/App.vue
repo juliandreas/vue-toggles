@@ -82,7 +82,7 @@
     <div class="container">
       <div class="toggles">
         <p>Examples:</p>
-        <VueToggles class="testy" :value="value2" @click="value2 = !value2" />
+        <VueToggles :value="value2" @click="value2 = !value2" />
         <VueToggles
           :value="value2"
           checked-bg="#42A3AA"

@@ -1,15 +1,12 @@
 {
   "name": "vue-toggles",
-  "version": "1.0.3-beta.2",
+  "version": "1.0.3-beta.4",
   "author": "Julian Lagerberg <juliandreas@hey.com>",
   "private": false,
   "license": "MIT",
   "homepage": "https://vue-toggles.netlify.app/",
   "bugs": {
     "url": "https://github.com/juliandreas/vue-toggles"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "repository": {
     "type": "git",
