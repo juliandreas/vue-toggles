@@ -1,7 +1,6 @@
 import Vue from 'vue';
-import App from './App.vue';
-
-import VueToggles from '@';
+import App from '@/App.vue';
+import VueToggles from '../src/VueToggles.vue';
 
 Vue.component('VueToggles', VueToggles);
 

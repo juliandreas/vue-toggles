@@ -1,4 +1,4 @@
-import VueToggles from './components/VueToggles.vue';
+import VueToggles from './VueToggles.vue';
 
 // Declare install function executed by Vue.use()
 export function install(Vue) {

@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import Header from '@/components/demo/Header.vue';
+import Header from './Header.vue';
 
 export default {
   name: 'App',

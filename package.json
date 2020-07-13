@@ -1,11 +1,15 @@
 {
   "name": "vue-toggles",
-  "version": "1.0.2",
-  "author": "Julian Lagerberg <jl@jlagerberg.se>",
+  "version": "1.0.3-beta.2",
+  "author": "Julian Lagerberg <juliandreas@hey.com>",
+  "private": false,
   "license": "MIT",
   "homepage": "https://vue-toggles.netlify.app/",
   "bugs": {
     "url": "https://github.com/juliandreas/vue-toggles"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "repository": {
     "type": "git",
@@ -14,7 +18,10 @@
   "main": "dist/vue-toggles.umd.js",
   "module": "dist/vue-toggles.esm.js",
   "unpkg": "dist/vue-toggles.min.js",
-  "types": "./src/index.d.ts",
+  "browser": {
+    "./sfc": "src/VueToggles.vue"
+  },
+  "types": "index.d.ts",
   "files": [
     "dist",
     "src"
@@ -24,29 +31,32 @@
     "lint": "vue-cli-service lint",
     "demo": "vue-cli-service build",
     "deploy": "npm run build & npm publish",
+    "beta": "npm run build & npm publish --tag beta",
     "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
     "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/vue-toggles.umd.js",
     "build:es": "rollup --config build/rollup.config.js --format es --file dist/vue-toggles.esm.js",
     "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/vue-toggles.min.js"
   },
-  "dependencies": {},
+  "peerDependencies": {
+    "vue": "^2.6.11"
+  },
   "devDependencies": {
     "@rollup/plugin-buble": "^0.21.3",
-    "@rollup/plugin-commonjs": "^12.0.0",
-    "@vue/cli-plugin-babel": "^4.4.1",
-    "@vue/cli-plugin-eslint": "^4.4.1",
-    "@vue/cli-service": "^4.4.1",
+    "@rollup/plugin-commonjs": "^13.0.1",
+    "@vue/cli-plugin-babel": "^4.4.6",
+    "@vue/cli-plugin-eslint": "^4.4.6",
+    "@vue/cli-service": "^4.4.6",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
     "core-js": "^3.6.4",
-    "eslint": "^7.1.0",
-    "eslint-plugin-prettier": "^3.1.1",
+    "eslint": "^7.4.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.12.0",
     "prettier": "^2.0.5",
-    "rollup": "^2.10.9",
+    "rollup": "^2.21.0",
     "rollup-plugin-vue": "^5.1.9",
-    "sass-loader": "^8.0.2",
+    "sass-loader": "^9.0.2",
     "vue": "^2.6.11",
     "vue-template-compiler": "^2.6.11"
   },
