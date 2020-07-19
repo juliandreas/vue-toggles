@@ -1,14 +1,14 @@
 <template>
   <span
+    class="vue-toggles"
+    :style="bgStyle"
     role="switch"
     tabindex="0"
     :aria-checked="value ? 'true' : 'false'"
     :aria-readonly="disabled ? 'true' : 'false'"
-    :style="bgStyle"
-    class="toggles-btn"
     @click="!disabled ? $emit('click', value) : null"
-    @keyup.enter="!disabled ? $emit('click', value) : null"
-    @keyup.space="!disabled ? $emit('click', value) : null"
+    @keyup.enter.prevent="!disabled ? $emit('click', value) : null"
+    @keyup.space.prevent="!disabled ? $emit('click', value) : null"
   >
     <span aria-hidden="true" :style="dotStyle" class="dot">
       <span v-show="checkedText && value" :style="textStyle" class="text">
@@ -88,14 +88,14 @@ export default {
       const styles = {
         width: this.width + 'px',
         height: this.height + 'px',
-        background: this.value && !this.disabled ? this.checkedBg : this.uncheckedBg,
+        backgroundColor: this.value && !this.disabled ? this.checkedBg : this.uncheckedBg,
       };
 
       return styles;
     },
     dotStyle() {
       const styles = {
-        background: this.dotColor,
+        backgroundColor: this.dotColor,
         width: this.height - 8 + 'px',
         height: this.height - 8 + 'px',
         'min-width': this.height - 8 + 'px',
@@ -138,43 +138,45 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.toggles-btn {
+<style>
+.vue-toggles {
   cursor: pointer;
   display: flex;
   align-items: center;
   border-radius: 9999px;
   overflow: hidden;
   transition: background-color ease 0.2s, width ease 0.2s, height ease 0.2s;
+}
 
-  .dot {
-    position: relative;
-    display: flex;
-    align-items: center;
-    border-radius: 9999px;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    transition: margin ease 0.2s;
-  }
+.vue-toggles .dot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 9999px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  transition: margin ease 0.2s;
+}
 
-  .text {
-    position: absolute;
-    font-family: inherit;
-    user-select: none;
+.vue-toggles .text {
+  position: absolute;
+  font-family: inherit;
+  user-select: none;
+}
 
-    @media all and (-ms-high-contrast: none) {
-      /* IE11 fix */
-      top: 50%;
-      transform: translateY(-50%);
-    }
+@media all and (-ms-high-contrast: none) {
+  .vue-toggles .text {
+    /* IE11 fix */
+    top: 50%;
+    transform: translateY(-50%);
   }
 }
 
 @media (prefers-reduced-motion) {
   /* disable animations if user have a reduced motion setting */
-  .toggles-btn,
-  .toggles-btn *,
-  .toggles-btn *::before,
-  .toggles-btn *::after {
+  .vue-toggles,
+  .vue-toggles *,
+  .vue-toggles *::before,
+  .vue-toggles *::after {
     animation: none !important;
     transition: none !important;
     transition-duration: none !important;

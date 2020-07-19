@@ -39,7 +39,7 @@ The `focus`-style is also left up to you — which is recommended you don't remo
 npm i vue-toggles
 ```
 
-## Import
+### Import
 
 Import plugin:
 
@@ -49,6 +49,11 @@ import VueToggles from 'vue-toggles';
 
 Vue.component('VueToggles', VueToggles);
 ```
+
+!! If you're using Nuxt, you need to disable SSR for the plugin. This is done first in the `nuxt.config.js` file with `plugins: [{ src: "~plugins/vue-toggles.js", mode: "client" }]`. And then wrapping the `<VueToggles>`-component with a `<client-only>`.
+
+[The plugins Property](https://nuxtjs.org/api/configuration-plugins/)
+[The client-only Component](https://nuxtjs.org/api/components-client-only/)
 
 ## Usage
 
