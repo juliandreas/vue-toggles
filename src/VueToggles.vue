@@ -88,14 +88,14 @@ export default {
       const styles = {
         width: this.width + 'px',
         height: this.height + 'px',
-        backgroundColor: this.value && !this.disabled ? this.checkedBg : this.uncheckedBg,
+        background: this.value && !this.disabled ? this.checkedBg : this.uncheckedBg,
       };
 
       return styles;
     },
     dotStyle() {
       const styles = {
-        backgroundColor: this.dotColor,
+        background: this.dotColor,
         width: this.height - 8 + 'px',
         height: this.height - 8 + 'px',
         'min-width': this.height - 8 + 'px',

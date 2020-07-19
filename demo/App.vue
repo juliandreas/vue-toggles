@@ -204,7 +204,7 @@ body {
         margin-right: 10px;
       }
 
-      .toggles-btn {
+      .vue-toggles {
         margin-right: 10px;
         transition: border ease 0.2s;
 
