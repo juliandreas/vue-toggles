@@ -41,8 +41,6 @@ npm i vue-toggles
 
 ### Import
 
-Import plugin:
-
 ```javascript
 import Vue from 'vue';
 import VueToggles from 'vue-toggles';
