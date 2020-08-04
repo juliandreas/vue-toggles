@@ -1,6 +1,7 @@
 <h1 align="center">Vue Toggles</h1>
 <p align="center">
 A highly customizable and accessible toggle.
+Now with SSR support!
 </p>
 
 <p align="center">
@@ -48,10 +49,15 @@ import VueToggles from 'vue-toggles';
 Vue.component('VueToggles', VueToggles);
 ```
 
-> :warning: **If you are using Nuxt**: You need to disable SSR for the plugin. This is done first in the `nuxt.config.js` file with `plugins: [{ src: "~plugins/vue-toggles.js", mode: "client" }]`. And then wrapping the `<VueToggles>`-component with a `<client-only>`
+### SSR import (Nuxt for example)
 
-- [The plugins Property](https://nuxtjs.org/api/configuration-plugins/)
-- [The client-only Component](https://nuxtjs.org/api/components-client-only/)
+```javascript
+import Vue from 'vue';
+import VueToggles from 'vue-toggles/dist/vue-toggles.ssr';
+import 'vue-toggles/dist/vue-toggles.ssr.css';
+
+Vue.component('VueToggles', VueToggles);
+```
 
 ## Usage
 

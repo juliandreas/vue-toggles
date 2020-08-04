@@ -1,6 +1,6 @@
 {
   "name": "vue-toggles",
-  "version": "1.1.0-beta.2",
+  "version": "1.1.0",
   "author": "Julian Lagerberg <juliandreas@hey.com>",
   "private": false,
   "license": "MIT",
@@ -13,7 +13,6 @@
     "url": "git+https://github.com/juliandreas/vue-toggles.git"
   },
   "main": "dist/vue-toggles.esm.js",
-  "module": "dist/vue-toggles.ssr.js",
   "style": "dist/vue-toggles.ssr.css",
   "types": "src/index.d.ts",
   "files": [
