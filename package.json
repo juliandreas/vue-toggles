@@ -1,6 +1,6 @@
 {
   "name": "vue-toggles",
-  "version": "1.0.4",
+  "version": "1.1.0-beta.2",
   "author": "Julian Lagerberg <juliandreas@hey.com>",
   "private": false,
   "license": "MIT",
@@ -12,28 +12,21 @@
     "type": "git",
     "url": "git+https://github.com/juliandreas/vue-toggles.git"
   },
-  "main": "dist/vue-toggles.umd.js",
-  "module": "dist/vue-toggles.esm.js",
-  "unpkg": "dist/vue-toggles.min.js",
-  "browser": {
-    "./sfc": "src/VueToggles.vue"
-  },
-  "types": "index.d.ts",
+  "main": "dist/vue-toggles.esm.js",
+  "module": "dist/vue-toggles.ssr.js",
+  "style": "dist/vue-toggles.ssr.css",
+  "types": "src/index.d.ts",
   "files": [
     "dist",
-    "src",
-    "index.d.ts"
+    "src"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
+    "build": "rollup -c",
     "demo": "vue-cli-service build",
     "deploy": "npm run build & npm publish",
-    "beta": "npm run build & npm publish --tag beta",
-    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
-    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/vue-toggles.umd.js",
-    "build:es": "rollup --config build/rollup.config.js --format es --file dist/vue-toggles.esm.js",
-    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/vue-toggles.min.js"
+    "beta": "npm run build & npm publish --tag beta"
   },
   "peerDependencies": {
     "vue": "^2.6.11"
@@ -53,6 +46,8 @@
     "node-sass": "^4.12.0",
     "prettier": "^2.0.5",
     "rollup": "^2.21.0",
+    "rollup-plugin-css-only": "^2.1.0",
+    "rollup-plugin-filesize": "^9.0.2",
     "rollup-plugin-vue": "^5.1.9",
     "sass-loader": "^9.0.2",
     "vue": "^2.6.11",
