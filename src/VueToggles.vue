@@ -161,6 +161,7 @@ export default {
   position: absolute;
   font-family: inherit;
   user-select: none;
+  white-space: nowrap;
 }
 
 @media all and (-ms-high-contrast: none) {
