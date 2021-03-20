@@ -4,7 +4,7 @@
 
     <div class="container">
       <div class="wrapper">
-        <div class="inputs" style="margin-right: 25px;">
+        <div class="inputs" style="margin-right: 25px">
           <label for="height">Height (height)</label>
           <input id="height" v-model="height" type="number" />
 
