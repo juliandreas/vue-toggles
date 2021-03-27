@@ -64,7 +64,7 @@ Vue.component('VueToggles', VueToggles);
 The toggle is very easy to use out of the box. The bare minimum for it to work is a `@click`-function and a `:value`-prop.
 
 ```html
-<VueToggles @click="value = !value" :value="value" />
+<VueToggles :value="value" @click="value = !value" />
 ```
 
 ## Options
@@ -73,14 +73,14 @@ You can also add more props to customize things like color and width/height.
 
 ```html
 <VueToggles
-  @click="value = !value"
-  :value="value"
   height="30"
   width="90"
   checkedText="On"
   uncheckedText="Off"
   checkedBg="#b4d455"
   uncheckedBg="lightgrey"
+  :value="value"
+  @click="value = !value"
 />
 ```
 
