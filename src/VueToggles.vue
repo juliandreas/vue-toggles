@@ -86,8 +86,8 @@ export default {
   computed: {
     bgStyle() {
       const styles = {
-        width: this.width + 'px',
-        height: this.height + 'px',
+        width: `${this.width}px`,
+        height: `${this.height}px`,
         background: this.value && !this.disabled ? this.checkedBg : this.uncheckedBg,
       };
 
@@ -96,18 +96,16 @@ export default {
     dotStyle() {
       const styles = {
         background: this.dotColor,
-        width: this.height - 8 + 'px',
-        height: this.height - 8 + 'px',
-        'min-width': this.height - 8 + 'px',
-        'min-height': this.height - 8 + 'px',
-        'margin-left': this.value ? this.width - (this.height - 3) + 'px' : '5px',
+        width: `${this.height - 8}px`,
+        height: `${this.height - 8}px`,
+        'min-width': `${this.height - 8}px`,
+        'min-height': `${this.height - 8}px`,
+        'margin-left': this.value ? `${this.width - (this.height - 3)}px` : '5px',
       };
 
       if ((!this.value && this.reverse) || (this.value && !this.reverse)) {
-        styles.marginLeft = this.width - (this.height - 3) + 'px';
-      }
-
-      if ((this.value && this.reverse) || (!this.value && !this.reverse)) {
+        styles.marginLeft = `${this.width - (this.height - 3)}px`;
+      } else if ((this.value && this.reverse) || (!this.value && !this.reverse)) {
         styles.marginLeft = '5px';
       }
 
@@ -116,19 +114,17 @@ export default {
     textStyle() {
       const styles = {
         'font-weight': this.fontWeight,
-        'font-size': this.fontSize + 'px',
+        'font-size': `${this.fontSize}px`,
         color: this.value && !this.disabled ? this.checkedColor : this.uncheckedColor,
-        right: this.value ? this.height - 3 + 'px' : 'auto',
-        left: this.value ? 'auto' : this.height - 3 + 'px',
+        right: this.value ? `${this.height - 3}px` : 'auto',
+        left: this.value ? 'auto' : `${this.height - 3}px`,
       };
 
       if (!this.value && this.reverse) {
-        styles.right = this.height - 3 + 'px';
+        styles.right = `${this.height - 3}px`;
         styles.left = 'auto';
-      }
-
-      if (this.value && this.reverse) {
-        styles.left = this.height - 3 + 'px';
+      } else if (this.value && this.reverse) {
+        styles.left = `${this.height - 3}px`;
         styles.right = 'auto';
       }
 
