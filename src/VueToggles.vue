@@ -62,10 +62,6 @@ export default {
       type: String,
       default: '#5850ec',
     },
-    disabledOpacity: {
-      type: [String, Number],
-      default: '0.75',
-    },
     dotColor: {
       type: String,
       default: '#fff',
@@ -93,7 +89,7 @@ export default {
         width: `${this.width}px`,
         height: `${this.height}px`,
         background: this.value ? this.checkedBg : this.uncheckedBg,
-        opacity: this.disabled ? this.disabledOpacity : 1,
+        opacity: this.disabled ? '0.5' : '1',
         cursor: !this.disabled ? 'pointer' : 'not-allowed',
       };
 
