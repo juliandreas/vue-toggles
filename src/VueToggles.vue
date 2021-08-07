@@ -62,6 +62,10 @@ export default {
       type: String,
       default: '#5850ec',
     },
+    disabledOpacity: {
+      type: [String, Number],
+      default: '0.75',
+    },
     dotColor: {
       type: String,
       default: '#fff',
@@ -88,7 +92,9 @@ export default {
       const styles = {
         width: `${this.width}px`,
         height: `${this.height}px`,
-        background: this.value && !this.disabled ? this.checkedBg : this.uncheckedBg,
+        background: this.value ? this.checkedBg : this.uncheckedBg,
+        opacity: this.disabled ? this.disabledOpacity : 1,
+        cursor: !this.disabled ? 'pointer' : 'not-allowed',
       };
 
       return styles;
@@ -136,7 +142,6 @@ export default {
 
 <style>
 .vue-toggles {
-  cursor: pointer;
   display: flex;
   align-items: center;
   border-radius: 9999px;
