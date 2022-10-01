@@ -6,9 +6,9 @@
     tabindex="0"
     :aria-checked="value ? 'true' : 'false'"
     :aria-readonly="disabled ? 'true' : 'false'"
-    @click="!disabled ? $emit('click', value) : null"
-    @keyup.enter.prevent="!disabled ? $emit('click', value) : null"
-    @keyup.space.prevent="!disabled ? $emit('click', value) : null"
+    @click="!disabled ? $emit('input', !value) : null"
+    @keyup.enter.prevent="!disabled ? $emit('input', !value) : null"
+    @keyup.space.prevent="!disabled ? $emit('input', !value) : null"
   >
     <span aria-hidden="true" :style="dotStyle" class="dot">
       <span v-show="checkedText && value" :style="textStyle" class="text">
@@ -131,6 +131,11 @@ export default {
       }
 
       return styles;
+    },
+  },
+  watch: {
+    value(val) {
+      this.$emit('change', val);
     },
   },
 };

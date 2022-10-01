@@ -61,10 +61,10 @@ Vue.component('VueToggles', VueToggles);
 
 ## Usage
 
-The toggle is very easy to use out of the box. The bare minimum for it to work is a `@click`-function and a `:value`-prop.
+The toggle is very easy to use out of the box. The bare minimum for it to work is to attach `v-model` to it. That's it
 
 ```html
-<VueToggles :value="value" @click="value = !value" />
+<VueToggles v-model="value" />
 ```
 
 ## Options
@@ -73,14 +73,13 @@ You can also add more props to customize things like color and width/height.
 
 ```html
 <VueToggles
+  v-model="value"
   height="30"
   width="90"
   checkedText="On"
   uncheckedText="Off"
   checkedBg="#b4d455"
   uncheckedBg="lightgrey"
-  :value="value"
-  @click="value = !value"
 />
 ```
 
@@ -102,6 +101,12 @@ You can also add more props to customize things like color and width/height.
 | dotColor       | String           | `#ffffff` | Color of the toggle dot                           |
 | fontSize       | [String, Number] | `12`      | Font size in `px`                                 |
 | fontWeight     | [Number, String] | `normal`  | Font weight                                       |
+
+## Events
+
+| Name           | Description                        |        |
+| -------------- | ---------------------------------- | ------ |
+| `change`       | Emitted every time `value` changes | `this.$emit('change', value)` |
 
 ### Browser compatibility
 

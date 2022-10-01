@@ -60,7 +60,7 @@
 
       <div class="wrapper">
         <VueToggles
-          :value="value"
+          v-model="value"
           :checked-text="checkedText"
           :unchecked-text="uncheckedText"
           :height="height"
@@ -74,7 +74,6 @@
           :font-size="fontSize"
           :font-weight="fontWeight"
           :reverse="reverse"
-          @click="value = !value"
         />
       </div>
     </div>
@@ -82,21 +81,14 @@
     <div class="container">
       <div class="toggles">
         <p>Examples:</p>
-        <VueToggles :value="value2" @click="value2 = !value2" />
+        <VueToggles v-model="value2" />
+        <VueToggles v-model="value2" checked-bg="#42A3AA" checked-text="On" unchecked-text="Off" />
         <VueToggles
-          :value="value2"
-          checked-bg="#42A3AA"
-          checked-text="On"
-          unchecked-text="Off"
-          @click="value2 = !value2"
-        />
-        <VueToggles
-          :value="value2"
+          v-model="value2"
           checked-bg="linear-gradient(to bottom right, red, #5850ec)"
           unchecked-bg="linear-gradient(to bottom right, grey, grey)"
           checked-text="😄"
           unchecked-text="😑"
-          @click="value2 = !value2"
         />
       </div>
     </div>
