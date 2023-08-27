@@ -8,8 +8,8 @@ const props = withDefaults(defineProps<VueTogglesProps>(), {
   dotColor: '#ffffff',
   uncheckedBg: '#939393',
   checkedBg: '#5850ec',
-  uncheckedColor: '#ffffff',
-  checkedColor: '#ffffff',
+  uncheckedTextColor: '#ffffff',
+  checkedTextColor: '#ffffff',
   uncheckedText: '',
   checkedText: '',
   fontSize: 12,
@@ -63,7 +63,7 @@ const textStyle = computed(() => {
   const styles = {
     'font-weight': props.fontWeight,
     'font-size': `${props.fontSize}px`,
-    color: props.value && !props.disabled ? props.checkedColor : props.uncheckedColor,
+    color: props.value && !props.disabled ? props.checkedTextColor : props.uncheckedTextColor,
     right: props.value ? `${props.height - 3}px` : 'auto',
     left: props.value ? 'auto' : `${props.height - 3}px`
   };
