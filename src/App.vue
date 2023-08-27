@@ -2,7 +2,6 @@
 import { ref } from "vue";
 // import Test from "./components/VueToggles.vue";
 import { VueToggles } from "vue-toggles";
-import "vue-toggles/dist/style.css";
 
 const checked = ref(false);
 </script>
