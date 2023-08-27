@@ -32,7 +32,9 @@
     "dev": "vite",
     "build": "vite build && vue-tsc --emitDeclarationOnly",
     "preview": "vite preview",
-    "test:unit": "vitest"
+    "test:unit": "vitest",
+    "deploy": "npm run build & npm publish",
+    "beta": "npm run build & npm publish --tag beta"
   },
   "peerDependencies": {
     "vue": "^3.3.4"
