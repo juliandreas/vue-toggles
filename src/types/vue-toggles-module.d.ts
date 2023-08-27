@@ -1,7 +1,7 @@
-import { DefineComponent } from 'vue';
-import { type VueTogglesProps } from './';
+import { DefineComponent } from "vue";
+import { type VueTogglesProps } from "./";
 
-declare module 'VueToggles' {
+declare module "VueToggles" {
   const component: DefineComponent<VueTogglesProps, {}, any>;
   export default component;
 }

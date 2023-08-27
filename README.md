@@ -1,10 +1,10 @@
 <h1 align="center">Vue Toggles</h1>
 <p align="center">
-A highly customizable and accessible toggle.
+A highly customizable and accessible toggle component for Vue 3.
 </p>
 
 <p align="center">
-<a href="https://www.npmjs.com/package/vue-toggles"><img src="https://img.shields.io/npm/v/vue-toggles.svg?style=flat-square"/> <img src="https://img.shields.io/npm/dt/vue-toggles.svg?style=flat-square"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.x-brightgreen.svg?style=flat-square"/></a>
+<a href="https://www.npmjs.com/package/vue-toggles"><img src="https://img.shields.io/npm/v/vue-toggles.svg?style=flat-square"/> <img src="https://img.shields.io/npm/dt/vue-toggles.svg?style=flat-square"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-3.x-brightgreen.svg?style=flat-square"/></a>
 </p>
 
 <p align="center">
@@ -24,9 +24,9 @@ Vue Toggles comes out of the box with accessibility support for:
 What's left for you, when it comes to accessibility, is labeling the toggle correctly. This is either done by:
 
 - A `<label for="example-id">Toggle description</label>` followed by the toggle component `<VueToggles id="example-id" />`
-- An `aria-label`, for example `<VueToggles aria-label="Toggle description" />`. Remember, you still need a visual text description of what the toggle does
+- Or an `aria-label`, for example `<VueToggles aria-label="Toggle description" />`. Remember, you still need a visual text description of what the toggle does
 
-The `focus`-style is also left up to you — which is recommended you don't remove. If you think the default is ugly, style it yourself!
+The `focus`-style is also left up to you — which you shouldn't remove. If you think the default is ugly, style it yourself!
 
 ## Installation
 
@@ -34,23 +34,16 @@ The `focus`-style is also left up to you — which is recommended you don't remo
 npm i vue-toggles
 ```
 
-### Import
+### Import component
 
 ```javascript
-import Vue from "vue";
-import VueToggles from "vue-toggles";
-
-Vue.component("VueToggles", VueToggles);
+import { VueToggles } from "vue-toggles";
 ```
 
-### SSR import (Nuxt for example)
+### Import types
 
 ```javascript
-import Vue from "vue";
-import VueToggles from "vue-toggles/dist/vue-toggles.ssr";
-import "vue-toggles/dist/vue-toggles.ssr.css";
-
-Vue.component("VueToggles", VueToggles);
+import { type VueTogglesProps } from "vue-toggles";
 ```
 
 ## Usage
@@ -58,7 +51,7 @@ Vue.component("VueToggles", VueToggles);
 The toggle is very easy to use out of the box. The bare minimum for it to work is a `@click`-function and a `:value`-prop.
 
 ```html
-<VueToggles :value="value" @click="value = !value" />
+<VueToggles :value="example" @click="example = !example" />
 ```
 
 ## Options
