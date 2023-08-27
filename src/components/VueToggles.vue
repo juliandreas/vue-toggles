@@ -5,14 +5,14 @@ interface Props {
   value: boolean;
   disabled?: boolean;
   reverse?: boolean;
-  checkedText?: string;
-  uncheckedText?: string;
   width?: number;
   height?: number;
+  checkedText?: string;
+  uncheckedText?: string;
   uncheckedBg?: string;
   checkedBg?: string;
   dotColor?: string;
-  fontSize?: number | string;
+  fontSize?: number;
   checkedColor?: string;
   uncheckedColor?: string;
   fontWeight?: number | string;
@@ -116,20 +116,16 @@ const toggle = () => {
     :style="bgStyle"
     role="switch"
     tabindex="0"
-    :aria-disabled="disabled"
     :aria-checked="value"
+    :aria-disabled="disabled"
     :aria-readonly="disabled"
     @keyup.enter.prevent="toggle"
     @keyup.space.prevent="toggle"
     @click="toggle"
   >
-    <span aria-hidden="true" :style="dotStyle" class="dot">
-      <span v-show="checkedText && value" :style="textStyle" class="text">
-        {{ checkedText }}
-      </span>
-
-      <span v-show="uncheckedText && !value" :style="textStyle" class="text">
-        {{ uncheckedText }}
+    <span aria-hidden="true" :style="dotStyle" class="vue-toggles__dot">
+      <span v-if="checkedText || uncheckedText" class="vue-toggles__text" :style="textStyle">
+        {{ value ? checkedText : uncheckedText }}
       </span>
     </span>
   </span>
@@ -147,7 +143,7 @@ const toggle = () => {
     height ease 0.2s;
 }
 
-.vue-toggles .dot {
+.vue-toggles__dot {
   position: relative;
   display: flex;
   align-items: center;
@@ -158,7 +154,7 @@ const toggle = () => {
   transition: margin ease 0.2s;
 }
 
-.vue-toggles .text {
+.vue-toggles__text {
   position: absolute;
   font-family: inherit;
   user-select: none;
@@ -166,7 +162,7 @@ const toggle = () => {
 }
 
 @media (prefers-reduced-motion) {
-  /* disable animations if user have a reduced motion setting */
+  /* Disable animations if user have a reduced motion setting */
   .vue-toggles,
   .vue-toggles *,
   .vue-toggles *::before,
