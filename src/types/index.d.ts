@@ -1,7 +1,16 @@
-declare module 'VueToggles' {
-  import { DefineComponent } from 'vue';
-  import { VueTogglesProps } from '../components/VueToggles.vue';
-
-  const component: DefineComponent<VueTogglesProps, {}, any>;
-  export default component;
+export interface VueTogglesProps {
+  value: boolean;
+  disabled?: boolean;
+  reverse?: boolean;
+  width?: number;
+  height?: number;
+  dotColor?: string;
+  uncheckedBg?: string;
+  checkedBg?: string;
+  uncheckedColor?: string;
+  checkedColor?: string;
+  uncheckedText?: string;
+  checkedText?: string;
+  fontSize?: number;
+  fontWeight?: string;
 }

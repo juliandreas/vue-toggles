@@ -38,7 +38,7 @@ describe('VueToggles', () => {
         width
       }
     });
-    expect(wrapper.attributes('style')).toContain(`width: ${width}px;`);
+    expect(wrapper.find('.vue-toggles').attributes('style')).toContain(`width: ${width}px;`);
   });
 
   it('handles height prop correctly', () => {
@@ -49,7 +49,7 @@ describe('VueToggles', () => {
         height
       }
     });
-    expect(wrapper.attributes('style')).toContain(`height: ${height}px;`);
+    expect(wrapper.find('.vue-toggles').attributes('style')).toContain(`height: ${height}px;`);
   });
 
   it('displays checked text correctly', () => {
@@ -83,6 +83,36 @@ describe('VueToggles', () => {
       }
     });
     await wrapper.vm.$nextTick();
-    expect(wrapper.attributes('style')).toContain(`background: ${hexToRgb(checkedBg)};`);
+    expect(wrapper.find('.vue-toggles').attributes('style')).toContain(
+      `background: ${hexToRgb(checkedBg)};`
+    );
+  });
+
+  it('applies unchecked background color', async () => {
+    const uncheckedBg = '#654321';
+    const wrapper = mount(VueToggles, {
+      props: {
+        value: false,
+        uncheckedBg
+      }
+    });
+    await wrapper.vm.$nextTick();
+    expect(wrapper.find('.vue-toggles').attributes('style')).toContain(
+      `background: ${hexToRgb(uncheckedBg)};`
+    );
+  });
+
+  it('applies dot color', async () => {
+    const dotColor = '#789012';
+    const wrapper = mount(VueToggles, {
+      props: {
+        value: true,
+        dotColor
+      }
+    });
+    await wrapper.vm.$nextTick();
+    expect(wrapper.find('.vue-toggles__dot').attributes('style')).toContain(
+      `background: ${hexToRgb(dotColor)};`
+    );
   });
 });

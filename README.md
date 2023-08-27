@@ -8,7 +8,7 @@ A highly customizable and accessible toggle.
 </p>
 
 <p align="center">
-<img src="./vue-toggles.jpg" alt="Vue Toggles Logo"/>
+<img src="./public/vue-toggles.jpg" alt="Vue Toggles Logo"/>
 </p>
 
 ## Demo
@@ -92,15 +92,15 @@ You can also add more props to customize things like color and width/height.
 | reverse        | Boolean          | `false`   | Reverse toggle to Right to Left                   |
 | height         | [String, Number] | `25`      | Height of the toggle in `px`                      |
 | width          | [String, Number] | `75`      | Width of the toggle in `px`                       |
-| checkedText    | String           | `null`    | Optional text when the toggle is checked          |
-| uncheckedText  | String           | `null`    | Optional text when the toggle is unchecked        |
-| checkedBg      | String           | `#5850ec` | Background color when the toggle is checked       |
-| uncheckedBg    | String           | `#939393` | Background color when the toggle is unchecked     |
-| checkedColor   | String           | `#ffffff` | Text color when the toggle is checked             |
-| uncheckedColor | String           | `#ffffff` | Text color when the toggle is unchecked           |
 | dotColor       | String           | `#ffffff` | Color of the toggle dot                           |
-| fontSize       | [String, Number] | `12`      | Font size in `px`                                 |
-| fontWeight     | [Number, String] | `normal`  | Font weight                                       |
+| uncheckedBg    | String           | `#939393` | Background color when the toggle is unchecked     |
+| checkedBg      | String           | `#5850ec` | Background color when the toggle is checked       |
+| uncheckedColor | String           | `#ffffff` | Text color when the toggle is unchecked           |
+| checkedColor   | String           | `#ffffff` | Text color when the toggle is checked             |
+| uncheckedText  | String           | `""`      | Optional text when the toggle is unchecked        |
+| checkedText    | String           | `""`      | Optional text when the toggle is checked          |
+| fontSize       | String           | `12`      | Font size in `px`                                 |
+| fontWeight     | String           | `normal`  | Font weight                                       |
 
 ### License
 

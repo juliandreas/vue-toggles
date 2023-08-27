@@ -1,32 +1,18 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-
-export interface VueTogglesProps {
-  value: boolean;
-  disabled?: boolean;
-  reverse?: boolean;
-  width?: number;
-  height?: number;
-  checkedText?: string;
-  uncheckedText?: string;
-  uncheckedBg?: string;
-  checkedBg?: string;
-  dotColor?: string;
-  fontSize?: number;
-  checkedColor?: string;
-  uncheckedColor?: string;
-  fontWeight?: number | string;
-}
+import { type VueTogglesProps } from '../types';
 
 const props = withDefaults(defineProps<VueTogglesProps>(), {
   width: 75,
   height: 25,
+  dotColor: '#ffffff',
   uncheckedBg: '#939393',
   checkedBg: '#5850ec',
-  dotColor: '#ffffff',
-  fontSize: 12,
-  checkedColor: '#ffffff',
   uncheckedColor: '#ffffff',
+  checkedColor: '#ffffff',
+  uncheckedText: '',
+  checkedText: '',
+  fontSize: 12,
   fontWeight: 'normal'
 });
 
