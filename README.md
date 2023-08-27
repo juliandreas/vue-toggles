@@ -90,6 +90,10 @@ You can also add more props to customize things like color and width/height.
 | fontSize           | String           | `12`      | Font size in `px`                                 |
 | fontWeight         | String           | `normal`  | Font weight                                       |
 
-### License
+## Vue 2 support
+
+If you're looking for the Vue 2 version, it's available [here](https://www.npmjs.com/package/vue-toggles/v/1.1.4).
+
+## License
 
 [MIT](http://opensource.org/licenses/MIT)
