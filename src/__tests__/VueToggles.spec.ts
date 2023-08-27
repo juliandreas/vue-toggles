@@ -5,7 +5,10 @@ import VueToggles from "../components/VueToggles.vue";
 const hexToRgb = (hex: string) => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
-    ? `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)})`
+    ? `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(
+        result[3],
+        16
+      )})`
     : null;
 };
 
@@ -16,8 +19,8 @@ describe("VueToggles", () => {
   it("toggles when clicked", async () => {
     const wrapper = mount(VueToggles, {
       props: {
-        value: false
-      }
+        value: false,
+      },
     });
     await wrapper.trigger("click");
   });
@@ -26,8 +29,8 @@ describe("VueToggles", () => {
     const wrapper = mount(VueToggles, {
       props: {
         value: false,
-        disabled: true
-      }
+        disabled: true,
+      },
     });
     await wrapper.trigger("click");
     expect(wrapper.emitted().click).toBeUndefined();
@@ -38,10 +41,12 @@ describe("VueToggles", () => {
     const wrapper = mount(VueToggles, {
       props: {
         value: false,
-        width
-      }
+        width,
+      },
     });
-    expect(wrapper.find(".vue-toggles").attributes("style")).toContain(`width: ${width}px;`);
+    expect(wrapper.find(".vue-toggles").attributes("style")).toContain(
+      `width: ${width}px;`
+    );
   });
 
   it("handles height prop correctly", () => {
@@ -49,18 +54,20 @@ describe("VueToggles", () => {
     const wrapper = mount(VueToggles, {
       props: {
         value: false,
-        height
-      }
+        height,
+      },
     });
-    expect(wrapper.find(".vue-toggles").attributes("style")).toContain(`height: ${height}px;`);
+    expect(wrapper.find(".vue-toggles").attributes("style")).toContain(
+      `height: ${height}px;`
+    );
   });
 
   it("displays checked text correctly", () => {
     const wrapper = mount(VueToggles, {
       props: {
         value: true,
-        checkedText
-      }
+        checkedText,
+      },
     });
     expect(wrapper.text()).toBe(checkedText);
   });
@@ -69,8 +76,8 @@ describe("VueToggles", () => {
     const wrapper = mount(VueToggles, {
       props: {
         value: false,
-        uncheckedText
-      }
+        uncheckedText,
+      },
     });
     expect(wrapper.text()).toBe(uncheckedText);
   });
@@ -80,8 +87,8 @@ describe("VueToggles", () => {
     const wrapper = mount(VueToggles, {
       props: {
         value: true,
-        checkedBg
-      }
+        checkedBg,
+      },
     });
     await wrapper.vm.$nextTick();
     expect(wrapper.find(".vue-toggles").attributes("style")).toContain(
@@ -94,8 +101,8 @@ describe("VueToggles", () => {
     const wrapper = mount(VueToggles, {
       props: {
         value: false,
-        uncheckedBg
-      }
+        uncheckedBg,
+      },
     });
     await wrapper.vm.$nextTick();
     expect(wrapper.find(".vue-toggles").attributes("style")).toContain(
@@ -108,8 +115,8 @@ describe("VueToggles", () => {
     const wrapper = mount(VueToggles, {
       props: {
         value: true,
-        dotColor
-      }
+        dotColor,
+      },
     });
     await wrapper.vm.$nextTick();
     expect(wrapper.find(".vue-toggles__dot").attributes("style")).toContain(
@@ -123,8 +130,8 @@ describe("VueToggles", () => {
       props: {
         value: true,
         checkedText,
-        checkedTextColor
-      }
+        checkedTextColor,
+      },
     });
     await wrapper.vm.$nextTick();
     expect(wrapper.find(".vue-toggles__text").attributes("style")).toContain(
@@ -138,8 +145,8 @@ describe("VueToggles", () => {
       props: {
         value: false,
         uncheckedText,
-        uncheckedTextColor
-      }
+        uncheckedTextColor,
+      },
     });
     await wrapper.vm.$nextTick();
     expect(wrapper.find(".vue-toggles__text").attributes("style")).toContain(
@@ -153,8 +160,8 @@ describe("VueToggles", () => {
       props: {
         value: false,
         uncheckedText,
-        fontWeight
-      }
+        fontWeight,
+      },
     });
     expect(wrapper.find(".vue-toggles__text").attributes("style")).toContain(
       `font-weight: ${fontWeight};`
@@ -167,8 +174,8 @@ describe("VueToggles", () => {
       props: {
         value: false,
         uncheckedText,
-        fontSize
-      }
+        fontSize,
+      },
     });
     expect(wrapper.find(".vue-toggles__text").attributes("style")).toContain(
       `font-size: ${fontSize}px;`
