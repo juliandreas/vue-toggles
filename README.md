@@ -1,7 +1,6 @@
 <h1 align="center">Vue Toggles</h1>
 <p align="center">
 A highly customizable and accessible toggle.
-Now with SSR support!
 </p>
 
 <p align="center">
@@ -73,13 +72,13 @@ You can also add more props to customize things like color and width/height.
 
 ```html
 <VueToggles
+  :value="value"
   height="30"
   width="90"
   checkedText="On"
   uncheckedText="Off"
   checkedBg="#b4d455"
   uncheckedBg="lightgrey"
-  :value="value"
   @click="value = !value"
 />
 ```
@@ -102,13 +101,6 @@ You can also add more props to customize things like color and width/height.
 | dotColor       | String           | `#ffffff` | Color of the toggle dot                           |
 | fontSize       | [String, Number] | `12`      | Font size in `px`                                 |
 | fontWeight     | [Number, String] | `normal`  | Font weight                                       |
-
-### Browser compatibility
-
-- Chrome: 40+
-- Firefox: 25+
-- Safari: 10+
-- IE: 11+
 
 ### License
 

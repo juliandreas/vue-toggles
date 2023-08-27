@@ -34,14 +34,6 @@ const emits = defineEmits<{
   click: [void];
 }>();
 
-const classes = computed(() => {
-  return {
-    'base-switch__input': true,
-    [`base-switch__input--true`]: props.value,
-    [`base-switch__input--disabled`]: props.disabled
-  };
-});
-
 const bgStyle = computed(() => {
   const styles = {
     width: `${props.width}px`,
@@ -64,10 +56,18 @@ const dotStyle = computed(() => {
     'margin-left': props.value ? `${props.width - (props.height - 3)}px` : '5px'
   };
 
-  if ((!props.value && props.reverse) || (props.value && !props.reverse)) {
-    styles['margin-left'] = `${props.width - (props.height - 3)}px`;
-  } else if ((props.value && props.reverse) || (!props.value && !props.reverse)) {
-    styles['margin-left'] = '5px';
+  if (props.value) {
+    if (props.reverse) {
+      styles['margin-left'] = '5px';
+    } else {
+      styles['margin-left'] = `${props.width - (props.height - 3)}px`;
+    }
+  } else {
+    if (props.reverse) {
+      styles['margin-left'] = `${props.width - (props.height - 3)}px`;
+    } else {
+      styles['margin-left'] = '5px';
+    }
   }
 
   return styles;
@@ -82,12 +82,22 @@ const textStyle = computed(() => {
     left: props.value ? 'auto' : `${props.height - 3}px`
   };
 
-  if (!props.value && props.reverse) {
-    styles.right = `${props.height - 3}px`;
-    styles.left = 'auto';
-  } else if (props.value && props.reverse) {
-    styles.left = `${props.height - 3}px`;
-    styles.right = 'auto';
+  if (props.value) {
+    if (props.reverse) {
+      styles.left = `${props.height - 3}px`;
+      styles.right = 'auto';
+    } else {
+      styles.right = `${props.height - 3}px`;
+      styles.left = 'auto';
+    }
+  } else {
+    if (props.reverse) {
+      styles.right = `${props.height - 3}px`;
+      styles.left = 'auto';
+    } else {
+      styles.left = `${props.height - 3}px`;
+      styles.right = 'auto';
+    }
   }
 
   return styles;
@@ -106,8 +116,9 @@ const toggle = () => {
     :style="bgStyle"
     role="switch"
     tabindex="0"
-    :aria-checked="value ? 'true' : 'false'"
-    :aria-readonly="disabled ? 'true' : 'false'"
+    :aria-disabled="disabled"
+    :aria-checked="value"
+    :aria-readonly="disabled"
     @keyup.enter.prevent="toggle"
     @keyup.space.prevent="toggle"
     @click="toggle"
@@ -152,14 +163,6 @@ const toggle = () => {
   font-family: inherit;
   user-select: none;
   white-space: nowrap;
-}
-
-@media all and (-ms-high-contrast: none) {
-  .vue-toggles .text {
-    /* IE11 fix */
-    top: 50%;
-    transform: translateY(-50%);
-  }
 }
 
 @media (prefers-reduced-motion) {
