@@ -23,8 +23,8 @@
   "module": "./dist/vue-toggles.js",
   "exports": {
     ".": {
-      "import": "./dist/vue-component-npm-example.js",
-      "require": "./dist/vue-component-npm-example.umd.js"
+      "import": "./dist/vue-toggles.js",
+      "require": "./dist/vue-toggles.umd.js"
     }
   },
   "types": "./dist/index.d.ts",
@@ -54,6 +54,9 @@
     "vite": "^4.4.9",
     "vitest": "^0.34.2",
     "vue-tsc": "^1.8.8"
+  },
+  "dependencies": {
+    "vue-toggles": "file:./vue-toggles-2.0.0.tgz"
   },
   "keywords": [
     "vue",
