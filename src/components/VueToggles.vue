@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-interface Props {
+export interface VueTogglesProps {
   value: boolean;
   disabled?: boolean;
   reverse?: boolean;
@@ -18,7 +18,7 @@ interface Props {
   fontWeight?: number | string;
 }
 
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<VueTogglesProps>(), {
   width: 75,
   height: 25,
   uncheckedBg: '#939393',
