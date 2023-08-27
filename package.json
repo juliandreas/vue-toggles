@@ -31,8 +31,7 @@
     "preview": "vite preview",
     "test:unit": "vitest",
     "deploy": "npm run build && npm publish",
-    "beta": "npm run build && npm publish --tag beta",
-    "testy": "npm run build && npm pack && npm uninstall vue-toggles"
+    "beta": "npm run build && npm publish --tag beta"
   },
   "peerDependencies": {
     "vue": "^3.3.4"
@@ -49,9 +48,6 @@
     "vite-plugin-css-injected-by-js": "^3.3.0",
     "vitest": "^0.34.2",
     "vue-tsc": "^1.8.8"
-  },
-  "dependencies": {
-    "vue-toggles": "file:./vue-toggles-2.0.0.tgz"
   },
   "keywords": [
     "vue",
