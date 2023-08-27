@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { type VueTogglesProps } from '../types';
+import { computed } from "vue";
+import { type VueTogglesProps } from "../types";
 
 const props = withDefaults(defineProps<VueTogglesProps>(), {
   width: 75,
   height: 25,
-  dotColor: '#ffffff',
-  uncheckedBg: '#939393',
-  checkedBg: '#5850ec',
-  uncheckedTextColor: '#ffffff',
-  checkedTextColor: '#ffffff',
-  uncheckedText: '',
-  checkedText: '',
+  dotColor: "#ffffff",
+  uncheckedBg: "#939393",
+  checkedBg: "#5850ec",
+  uncheckedTextColor: "#ffffff",
+  checkedTextColor: "#ffffff",
+  uncheckedText: "",
+  checkedText: "",
   fontSize: 12,
-  fontWeight: 'normal'
+  fontWeight: "normal",
 });
 
 const emits = defineEmits<{
@@ -25,8 +25,8 @@ const bgStyle = computed(() => {
     width: `${props.width}px`,
     height: `${props.height}px`,
     background: props.value ? props.checkedBg : props.uncheckedBg,
-    opacity: props.disabled ? '0.5' : '1',
-    cursor: !props.disabled ? 'pointer' : 'not-allowed'
+    opacity: props.disabled ? "0.5" : "1",
+    cursor: !props.disabled ? "pointer" : "not-allowed",
   };
 
   return styles;
@@ -37,22 +37,24 @@ const dotStyle = computed(() => {
     background: props.dotColor,
     width: `${props.height - 8}px`,
     height: `${props.height - 8}px`,
-    'min-width': `${props.height - 8}px`,
-    'min-height': `${props.height - 8}px`,
-    'margin-left': props.value ? `${props.width - (props.height - 3)}px` : '5px'
+    "min-width": `${props.height - 8}px`,
+    "min-height": `${props.height - 8}px`,
+    "margin-left": props.value
+      ? `${props.width - (props.height - 3)}px`
+      : "5px",
   };
 
   if (props.value) {
     if (props.reverse) {
-      styles['margin-left'] = '5px';
+      styles["margin-left"] = "5px";
     } else {
-      styles['margin-left'] = `${props.width - (props.height - 3)}px`;
+      styles["margin-left"] = `${props.width - (props.height - 3)}px`;
     }
   } else {
     if (props.reverse) {
-      styles['margin-left'] = `${props.width - (props.height - 3)}px`;
+      styles["margin-left"] = `${props.width - (props.height - 3)}px`;
     } else {
-      styles['margin-left'] = '5px';
+      styles["margin-left"] = "5px";
     }
   }
 
@@ -61,28 +63,31 @@ const dotStyle = computed(() => {
 
 const textStyle = computed(() => {
   const styles = {
-    'font-weight': props.fontWeight,
-    'font-size': `${props.fontSize}px`,
-    color: props.value && !props.disabled ? props.checkedTextColor : props.uncheckedTextColor,
-    right: props.value ? `${props.height - 3}px` : 'auto',
-    left: props.value ? 'auto' : `${props.height - 3}px`
+    "font-weight": props.fontWeight,
+    "font-size": `${props.fontSize}px`,
+    color:
+      props.value && !props.disabled
+        ? props.checkedTextColor
+        : props.uncheckedTextColor,
+    right: props.value ? `${props.height - 3}px` : "auto",
+    left: props.value ? "auto" : `${props.height - 3}px`,
   };
 
   if (props.value) {
     if (props.reverse) {
       styles.left = `${props.height - 3}px`;
-      styles.right = 'auto';
+      styles.right = "auto";
     } else {
       styles.right = `${props.height - 3}px`;
-      styles.left = 'auto';
+      styles.left = "auto";
     }
   } else {
     if (props.reverse) {
       styles.right = `${props.height - 3}px`;
-      styles.left = 'auto';
+      styles.left = "auto";
     } else {
       styles.left = `${props.height - 3}px`;
-      styles.right = 'auto';
+      styles.right = "auto";
     }
   }
 
@@ -91,7 +96,7 @@ const textStyle = computed(() => {
 
 const toggle = () => {
   if (!props.disabled) {
-    emits('click');
+    emits("click");
   }
 };
 </script>
@@ -110,7 +115,11 @@ const toggle = () => {
     @click="toggle"
   >
     <span aria-hidden="true" :style="dotStyle" class="vue-toggles__dot">
-      <span v-if="checkedText || uncheckedText" class="vue-toggles__text" :style="textStyle">
+      <span
+        v-if="checkedText || uncheckedText"
+        class="vue-toggles__text"
+        :style="textStyle"
+      >
         {{ value ? checkedText : uncheckedText }}
       </span>
     </span>
@@ -123,10 +132,7 @@ const toggle = () => {
   align-items: center;
   border-radius: 9999px;
   overflow: hidden;
-  transition:
-    background-color ease 0.2s,
-    width ease 0.2s,
-    height ease 0.2s;
+  transition: background-color ease 0.2s, width ease 0.2s, height ease 0.2s;
 }
 
 .vue-toggles__dot {
@@ -134,9 +140,7 @@ const toggle = () => {
   display: flex;
   align-items: center;
   border-radius: 9999px;
-  box-shadow:
-    0 1px 3px 0 rgba(0, 0, 0, 0.1),
-    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   transition: margin ease 0.2s;
 }
 

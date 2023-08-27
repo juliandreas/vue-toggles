@@ -16,25 +16,27 @@
   "files": [
     "dist"
   ],
-  "engines": {
-    "node": ">=12"
-  },
   "main": "./dist/vue-toggles.umd.cjs",
   "module": "./dist/vue-toggles.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/vue-toggles.js",
       "require": "./dist/vue-toggles.umd.js"
+    },
+    "./dist/style.css": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     }
   },
-  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "vite build && vue-tsc --emitDeclarationOnly",
     "preview": "vite preview",
     "test:unit": "vitest",
-    "deploy": "npm run build & npm publish",
-    "beta": "npm run build & npm publish --tag beta"
+    "deploy": "npm run build && npm publish",
+    "beta": "npm run build && npm publish --tag beta",
+    "testy": "npm run build && npm pack"
   },
   "peerDependencies": {
     "vue": "^3.3.4"

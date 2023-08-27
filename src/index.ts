@@ -1,3 +1,3 @@
 import VueToggles from "./components/VueToggles.vue";
 export { type VueTogglesProps } from "./types";
-export default { VueToggles };
+export { VueToggles };
