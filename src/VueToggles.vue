@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <span
     class="vue-toggles"
     :style="bgStyle"
@@ -180,4 +180,4 @@ export default {
     transition-duration: none !important;
   }
 }
-</style>
+</style> -->

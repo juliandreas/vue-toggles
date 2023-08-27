@@ -1,1 +1,1 @@
-declare module 'vue-toggles';
+// declare module 'vue-toggles';
