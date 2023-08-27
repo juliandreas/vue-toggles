@@ -1,30 +1,30 @@
 {
   "name": "vue-toggles",
   "version": "2.0.0",
-  "author": "Julian <juliandreas@fastmail.com>",
   "private": false,
   "license": "MIT",
-  "homepage": "https://vue-toggles.netlify.app/",
-  "bugs": {
-    "url": "https://github.com/juliandreas/vue-toggles"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/juliandreas/vue-toggles.git"
   },
-  "main": "dist/vue-toggles.esm.js",
-  "style": "dist/vue-toggles.ssr.css",
-  "types": "src/index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
+  "main": "./dist/vue-toggles.umd.cjs",
+  "module": "./dist/vue-toggles.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-toggles.js",
+      "require": "./dist/vue-toggles.umd.cjs"
+    }
+  },
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check build-only",
-    "preview": "vite preview",
+    "build": "vite build && vue-tsc --emitDeclarationOnly",
+    "types": "vue-tsc ",
     "test:unit": "vitest",
-    "build-only": "vite build",
+    "preview": "vite preview",
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",

@@ -11,11 +11,6 @@ A highly customizable and accessible toggle.
 <img src="./public/vue-toggles.jpg" alt="Vue Toggles Logo"/>
 </p>
 
-## Demo
-
-- [Demo](https://vue-toggles.netlify.app/)
-- [CodeSandbox](https://codesandbox.io/s/vue-toggles-mkkp4?file=/src/App.vue)
-
 ## Introduction
 
 Vue Toggles comes out of the box with accessibility support for:
@@ -42,20 +37,20 @@ npm i vue-toggles
 ### Import
 
 ```javascript
-import Vue from 'vue';
-import VueToggles from 'vue-toggles';
+import Vue from "vue";
+import VueToggles from "vue-toggles";
 
-Vue.component('VueToggles', VueToggles);
+Vue.component("VueToggles", VueToggles);
 ```
 
 ### SSR import (Nuxt for example)
 
 ```javascript
-import Vue from 'vue';
-import VueToggles from 'vue-toggles/dist/vue-toggles.ssr';
-import 'vue-toggles/dist/vue-toggles.ssr.css';
+import Vue from "vue";
+import VueToggles from "vue-toggles/dist/vue-toggles.ssr";
+import "vue-toggles/dist/vue-toggles.ssr.css";
 
-Vue.component('VueToggles', VueToggles);
+Vue.component("VueToggles", VueToggles);
 ```
 
 ## Usage
