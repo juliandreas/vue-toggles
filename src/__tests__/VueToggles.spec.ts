@@ -1,6 +1,10 @@
 import { describe, it, expect, vi } from "vitest";
-import { mount } from "@vue/test-utils";
+import { mount, type VueWrapper } from "@vue/test-utils";
 import VueToggles from "../components/VueToggles.vue";
+
+const uncheckedText = "Off";
+const checkedText = "On";
+const valueProps = ["value", "modelValue"];
 
 const hexToRgb = (hex: string) => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -12,15 +16,25 @@ const hexToRgb = (hex: string) => {
     : null;
 };
 
-const uncheckedText = "Off";
-const checkedText = "On";
-const valueProps = ["value", "modelValue"];
+// ["value", "modelValue"]
+const runTestForValueProps = (
+  testFunction: (wrapper: VueWrapper) => void,
+  options: { initialValue?: boolean } = {}
+) => {
+  const { initialValue = false } = options;
+
+  valueProps.forEach((prop) => {
+    const wrapper = mount(VueToggles, {
+      props: { [prop]: initialValue },
+    });
+    testFunction(wrapper);
+  });
+};
 
 describe("VueToggles", () => {
   describe("Warnings", () => {
     it("should emit a warning if both value and modelValue are provided", () => {
       const consoleMock = vi.spyOn(console, "warn");
-
       mount(VueToggles, {
         props: {
           value: false,
@@ -33,7 +47,6 @@ describe("VueToggles", () => {
 
     it("should not emit a warning if only one of value or modelValue are provided", () => {
       const consoleMock = vi.spyOn(console, "warn");
-
       mount(VueToggles, {
         props: {
           value: false,
@@ -47,25 +60,15 @@ describe("VueToggles", () => {
 
   describe("Interactions", () => {
     it("toggles when clicked", async () => {
-      valueProps.forEach(async (prop) => {
-        const wrapper = mount(VueToggles, {
-          props: {
-            [prop]: false,
-          },
-        });
+      runTestForValueProps(async (wrapper) => {
         await wrapper.trigger("click");
         expect(wrapper.emitted().click).toBeTruthy();
       });
     });
 
     it("does not toggle when disabled", async () => {
-      valueProps.forEach(async (prop) => {
-        const wrapper = mount(VueToggles, {
-          props: {
-            [prop]: false,
-            disabled: true,
-          },
-        });
+      runTestForValueProps(async (wrapper) => {
+        await wrapper.setProps({ disabled: true });
         await wrapper.trigger("click");
         expect(wrapper.emitted().click).toBeUndefined();
       });
@@ -74,69 +77,45 @@ describe("VueToggles", () => {
 
   describe("Size", () => {
     it("handles width prop correctly", () => {
-      valueProps.forEach(async (prop) => {
+      runTestForValueProps(async (wrapper) => {
         const width = 100;
-        const wrapper = mount(VueToggles, {
-          props: {
-            [prop]: false,
-            width,
-          },
-        });
-        await wrapper.trigger("click");
-        expect(wrapper.emitted().click).toBeTruthy();
+        await wrapper.setProps({ width });
+        expect(wrapper.attributes("style")).toContain(`width: ${width}px;`);
       });
     });
 
     it("handles height prop correctly", () => {
-      const height = 30;
-      valueProps.forEach(async (prop) => {
-        const wrapper = mount(VueToggles, {
-          props: {
-            [prop]: false,
-            height,
-          },
-        });
-        await wrapper.trigger("click");
-        expect(wrapper.emitted().click).toBeTruthy();
+      runTestForValueProps(async (wrapper) => {
+        const height = 30;
+        await wrapper.setProps({ height });
+        expect(wrapper.attributes("style")).toContain(`height: ${height}px;`);
       });
     });
   });
 
   describe("Text", () => {
     it("displays checked text correctly", () => {
-      valueProps.forEach((prop) => {
-        const wrapper = mount(VueToggles, {
-          props: {
-            [prop]: true,
-            checkedText,
-          },
-        });
-        expect(wrapper.text()).toBe(checkedText);
-      });
+      runTestForValueProps(
+        async (wrapper) => {
+          await wrapper.setProps({ checkedText });
+          expect(wrapper.text()).toBe(checkedText);
+        },
+        { initialValue: true }
+      );
     });
 
     it("displays unchecked text correctly", () => {
-      valueProps.forEach((prop) => {
-        const wrapper = mount(VueToggles, {
-          props: {
-            [prop]: false,
-            uncheckedText,
-          },
-        });
+      runTestForValueProps(async (wrapper) => {
+        await wrapper.setProps({ uncheckedText });
         expect(wrapper.text()).toBe(uncheckedText);
       });
     });
 
     it("applies fontWeight correctly", () => {
       const fontWeight = "bold";
-      valueProps.forEach((prop) => {
-        const wrapper = mount(VueToggles, {
-          props: {
-            [prop]: false,
-            uncheckedText,
-            fontWeight,
-          },
-        });
+      runTestForValueProps(async (wrapper) => {
+        await wrapper.setProps({ fontWeight });
+        await wrapper.setProps({ uncheckedText });
         expect(
           wrapper.find(".vue-toggles__text").attributes("style")
         ).toContain(`font-weight: ${fontWeight};`);
@@ -145,14 +124,9 @@ describe("VueToggles", () => {
 
     it("applies fontSize correctly", () => {
       const fontSize = 16;
-      valueProps.forEach((prop) => {
-        const wrapper = mount(VueToggles, {
-          props: {
-            [prop]: false,
-            uncheckedText,
-            fontSize,
-          },
-        });
+      runTestForValueProps(async (wrapper) => {
+        await wrapper.setProps({ fontSize });
+        await wrapper.setProps({ uncheckedText });
         expect(
           wrapper.find(".vue-toggles__text").attributes("style")
         ).toContain(`font-size: ${fontSize}px;`);
@@ -163,28 +137,21 @@ describe("VueToggles", () => {
   describe("Color", () => {
     it("applies checked background color", async () => {
       const checkedBg = "#123456";
-      valueProps.forEach((prop) => {
-        const wrapper = mount(VueToggles, {
-          props: {
-            [prop]: true,
-            checkedBg,
-          },
-        });
-        expect(wrapper.find(".vue-toggles").attributes("style")).toContain(
-          `background: ${hexToRgb(checkedBg)};`
-        );
-      });
+      runTestForValueProps(
+        async (wrapper) => {
+          await wrapper.setProps({ checkedBg });
+          expect(wrapper.find(".vue-toggles").attributes("style")).toContain(
+            `background: ${hexToRgb(checkedBg)};`
+          );
+        },
+        { initialValue: true }
+      );
     });
 
     it("applies unchecked background color", async () => {
       const uncheckedBg = "#654321";
-      valueProps.forEach((prop) => {
-        const wrapper = mount(VueToggles, {
-          props: {
-            [prop]: false,
-            uncheckedBg,
-          },
-        });
+      runTestForValueProps(async (wrapper) => {
+        await wrapper.setProps({ uncheckedBg });
         expect(wrapper.find(".vue-toggles").attributes("style")).toContain(
           `background: ${hexToRgb(uncheckedBg)};`
         );
@@ -193,45 +160,36 @@ describe("VueToggles", () => {
 
     it("applies dot color", async () => {
       const dotColor = "#789012";
-      valueProps.forEach((prop) => {
-        const wrapper = mount(VueToggles, {
-          props: {
-            [prop]: true,
-            dotColor,
-          },
-        });
-        expect(wrapper.find(".vue-toggles__dot").attributes("style")).toContain(
-          `background: ${hexToRgb(dotColor)};`
-        );
-      });
+      runTestForValueProps(
+        async (wrapper) => {
+          await wrapper.setProps({ dotColor });
+          expect(
+            wrapper.find(".vue-toggles__dot").attributes("style")
+          ).toContain(`background: ${hexToRgb(dotColor)};`);
+        },
+        { initialValue: true }
+      );
     });
 
     it("applies checkedTextColor correctly", async () => {
       const checkedTextColor = "#abcdef";
-      valueProps.forEach((prop) => {
-        const wrapper = mount(VueToggles, {
-          props: {
-            [prop]: true,
-            checkedText,
-            checkedTextColor,
-          },
-        });
-        expect(
-          wrapper.find(".vue-toggles__text").attributes("style")
-        ).toContain(`color: ${hexToRgb(checkedTextColor)};`);
-      });
+      runTestForValueProps(
+        async (wrapper) => {
+          await wrapper.setProps({ checkedText });
+          await wrapper.setProps({ checkedTextColor });
+          expect(
+            wrapper.find(".vue-toggles__text").attributes("style")
+          ).toContain(`color: ${hexToRgb(checkedTextColor)};`);
+        },
+        { initialValue: true }
+      );
     });
 
     it("applies uncheckedTextColor correctly", async () => {
       const uncheckedTextColor = "#fedcba";
-      valueProps.forEach((prop) => {
-        const wrapper = mount(VueToggles, {
-          props: {
-            [prop]: false,
-            uncheckedText,
-            uncheckedTextColor,
-          },
-        });
+      runTestForValueProps(async (wrapper) => {
+        await wrapper.setProps({ uncheckedText });
+        await wrapper.setProps({ uncheckedTextColor });
         expect(
           wrapper.find(".vue-toggles__text").attributes("style")
         ).toContain(`color: ${hexToRgb(uncheckedTextColor)};`);
@@ -241,26 +199,19 @@ describe("VueToggles", () => {
 
   describe("ARIA attributes", () => {
     it("should correctly set aria-readonly when disabled", async () => {
-      valueProps.forEach((prop) => {
-        const wrapper = mount(VueToggles, {
-          props: {
-            [prop]: false,
-            disabled: true,
-          },
-        });
+      runTestForValueProps(async (wrapper) => {
+        await wrapper.setProps({ disabled: true });
         expect(wrapper.attributes("aria-readonly")).toBe("true");
       });
     });
 
     it("should correctly set aria-checked when checked", async () => {
-      valueProps.forEach((prop) => {
-        const wrapper = mount(VueToggles, {
-          props: {
-            [prop]: true,
-          },
-        });
-        expect(wrapper.attributes("aria-checked")).toBe("true");
-      });
+      runTestForValueProps(
+        async (wrapper) => {
+          expect(wrapper.attributes("aria-checked")).toBe("true");
+        },
+        { initialValue: true }
+      );
     });
   });
 });
