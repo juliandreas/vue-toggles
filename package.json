@@ -1,6 +1,6 @@
 {
   "name": "vue-toggles",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A highly customizable and accessible toggle component for Vue.js 3",
   "homepage": "https://github.com/juliandreas/vue-toggles#readme",
   "bugs": {
