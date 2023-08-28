@@ -54,6 +54,12 @@ The toggle is very easy to use out of the box. The bare minimum for it to work i
 <VueToggles :value="example" @click="example = !example" />
 ```
 
+Or if you prefer the `v-model`-syntax:
+
+```html
+<VueToggles v-model="example" />
+```
+
 ## Options
 
 You can also add more props to customize things like color and width/height.
@@ -61,8 +67,8 @@ You can also add more props to customize things like color and width/height.
 ```html
 <VueToggles
   :value="value"
-  height="30"
-  width="90"
+  :height="30"
+  :width="90"
   checkedText="On"
   uncheckedText="Off"
   checkedBg="#b4d455"
@@ -92,7 +98,7 @@ You can also add more props to customize things like color and width/height.
 
 ## Vue 2 support
 
-If you're looking for the Vue 2 version, it's available [here](https://www.npmjs.com/package/vue-toggles/v/1.1.4).
+If you're looking for Vue 2 support, the `1.1.4`version is available [here](https://www.npmjs.com/package/vue-toggles/v/1.1.4).
 
 ## License
 
