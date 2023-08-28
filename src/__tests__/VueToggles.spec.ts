@@ -4,26 +4,26 @@ import VueToggles from "../components/VueToggles.vue";
 
 const uncheckedText = "Off";
 const checkedText = "On";
-const valueProps = ["value", "modelValue"];
 
 const hexToRgb = (hex: string) => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result
-    ? `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(
-        result[3],
-        16
-      )})`
-    : null;
+  if (result) {
+    return `rgb(${parseInt(result[1], 16)}, ${parseInt(
+      result[2],
+      16
+    )}, ${parseInt(result[3], 16)})`;
+  } else {
+    throw new Error("Invalid 6-digit hexadecimal color code.");
+  }
 };
 
-// ["value", "modelValue"]
 const runTestForValueProps = (
   testFunction: (wrapper: VueWrapper) => void,
   options: { initialValue?: boolean } = {}
 ) => {
   const { initialValue = false } = options;
 
-  valueProps.forEach((prop) => {
+  ["value", "modelValue"].forEach((prop) => {
     const wrapper = mount(VueToggles, {
       props: { [prop]: initialValue },
     });
