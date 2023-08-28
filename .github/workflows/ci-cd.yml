@@ -19,7 +19,7 @@ jobs:
           node-version: "14"
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --also=peer
 
       - name: Run tests
         run: npm run test:unit:once
