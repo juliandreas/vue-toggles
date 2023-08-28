@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref, watchEffect } from "vue";
 import { type VueTogglesProps } from "../types";
 
 const props = withDefaults(defineProps<VueTogglesProps>(), {
+  modelValue: undefined,
+  value: undefined,
   width: 75,
   height: 25,
   dotColor: "#ffffff",
@@ -17,14 +19,30 @@ const props = withDefaults(defineProps<VueTogglesProps>(), {
 });
 
 const emits = defineEmits<{
+  "update:modelValue": [boolean];
   click: [void];
 }>();
+
+// Track whether the toggle is checked
+const isChecked = ref(props.value || props.modelValue);
+
+watchEffect(() => {
+  // Warn if both 'v-model' and ':value' are provided
+  if (props.value !== undefined && props.modelValue !== undefined) {
+    console.warn(
+      'Avoid using both "v-model" and ":value" at the same time. Choose one for better predictability.'
+    );
+  }
+
+  // Sync the 'isChecked' with the incoming prop 'value'
+  isChecked.value = props.value || props.modelValue;
+});
 
 const bgStyle = computed(() => {
   const styles = {
     width: `${props.width}px`,
     height: `${props.height}px`,
-    background: props.value ? props.checkedBg : props.uncheckedBg,
+    background: isChecked.value ? props.checkedBg : props.uncheckedBg,
     opacity: props.disabled ? "0.5" : "1",
     cursor: !props.disabled ? "pointer" : "not-allowed",
   };
@@ -39,12 +57,12 @@ const dotStyle = computed(() => {
     height: `${props.height - 8}px`,
     "min-width": `${props.height - 8}px`,
     "min-height": `${props.height - 8}px`,
-    "margin-left": props.value
+    "margin-left": isChecked.value
       ? `${props.width - (props.height - 3)}px`
       : "5px",
   };
 
-  if (props.value) {
+  if (isChecked.value) {
     if (props.reverse) {
       styles["margin-left"] = "5px";
     } else {
@@ -66,14 +84,14 @@ const textStyle = computed(() => {
     "font-weight": props.fontWeight,
     "font-size": `${props.fontSize}px`,
     color:
-      props.value && !props.disabled
+      isChecked.value && !props.disabled
         ? props.checkedTextColor
         : props.uncheckedTextColor,
-    right: props.value ? `${props.height - 3}px` : "auto",
-    left: props.value ? "auto" : `${props.height - 3}px`,
+    right: isChecked.value ? `${props.height - 3}px` : "auto",
+    left: isChecked.value ? "auto" : `${props.height - 3}px`,
   };
 
-  if (props.value) {
+  if (isChecked.value) {
     if (props.reverse) {
       styles.left = `${props.height - 3}px`;
       styles.right = "auto";
@@ -96,6 +114,8 @@ const textStyle = computed(() => {
 
 const toggle = () => {
   if (!props.disabled) {
+    isChecked.value = !isChecked.value;
+    emits("update:modelValue", isChecked.value); // emit v-model value
     emits("click");
   }
 };
@@ -107,8 +127,7 @@ const toggle = () => {
     :style="bgStyle"
     role="switch"
     tabindex="0"
-    :aria-checked="value"
-    :aria-disabled="disabled"
+    :aria-checked="isChecked"
     :aria-readonly="disabled"
     @keyup.enter.prevent="toggle"
     @keyup.space.prevent="toggle"
@@ -120,7 +139,7 @@ const toggle = () => {
         class="vue-toggles__text"
         :style="textStyle"
       >
-        {{ value ? checkedText : uncheckedText }}
+        {{ isChecked ? checkedText : uncheckedText }}
       </span>
     </span>
   </span>
