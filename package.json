@@ -1,6 +1,6 @@
 {
   "name": "vue-toggles",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A highly customizable and accessible toggle component for Vue.js 3",
   "homepage": "https://github.com/juliandreas/vue-toggles#readme",
   "bugs": {
@@ -30,8 +30,9 @@
     "build": "vite build && vue-tsc --emitDeclarationOnly",
     "preview": "vite preview",
     "test:unit": "vitest",
-    "deploy": "npm run build && npm publish",
-    "beta": "npm run build && npm publish --tag beta"
+    "test:unit:once": "vitest run",
+    "deploy": "npm run test:unit:once && npm run build && npm publish",
+    "beta": "npm run test:unit:once && npm run build && npm publish --tag beta"
   },
   "peerDependencies": {
     "vue": "^3.3.4"

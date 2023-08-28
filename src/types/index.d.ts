@@ -1,5 +1,6 @@
 export interface VueTogglesProps {
-  value: boolean;
+  modelValue?: boolean;
+  value?: boolean;
   disabled?: boolean;
   reverse?: boolean;
   width?: number;
