@@ -2,9 +2,9 @@
 import { ref } from "vue";
 import VueToggles from "./components/VueToggles.vue";
 
-const checked = ref(false);
+const isChecked = ref(false);
 </script>
 
 <template>
-  <VueToggles :value="checked" @click="checked = !checked" />
+  <VueToggles :value="isChecked" @click="isChecked = !isChecked" />
 </template>
