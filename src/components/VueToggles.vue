@@ -20,6 +20,7 @@ const props = withDefaults(defineProps<VueTogglesProps>(), {
 
 const emits = defineEmits<{
   "update:modelValue": [boolean];
+  change: [boolean];
   click: [void];
 }>();
 
@@ -116,6 +117,7 @@ const toggle = () => {
   if (!props.disabled) {
     isChecked.value = !isChecked.value;
     emits("update:modelValue", isChecked.value); // emit v-model value
+    emits("change", isChecked.value); // emit updated value in to parent
     emits("click");
   }
 };
