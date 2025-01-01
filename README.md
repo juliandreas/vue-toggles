@@ -8,7 +8,7 @@ A highly customizable and accessible toggle component for Vue 3.
 </p>
 
 <p align="center">
-<img src="./public/vue-toggles.jpg" alt="Vue Toggles Logo"/>
+<img src="./dev/public/vue-toggles.jpg" alt="Vue Toggles Logo"/>
 </p>
 
 ## Introduction
@@ -43,7 +43,7 @@ import { VueToggles } from "vue-toggles";
 ### Import types
 
 ```javascript
-import { type VueTogglesProps } from "vue-toggles";
+import type { VueTogglesProps } from "vue-toggles";
 ```
 
 ## Usage
