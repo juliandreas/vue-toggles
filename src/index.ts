@@ -1,2 +1,5 @@
-export { type VueTogglesProps } from "./types";
-export { default as VueToggles } from "./components/VueToggles.vue";
+import type { DefineComponent } from "vue";
+import type { VueTogglesProps } from "./components/types";
+
+declare const VueToggles: DefineComponent<VueTogglesProps>;
+export default VueToggles;

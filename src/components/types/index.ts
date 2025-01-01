@@ -1,3 +1,5 @@
+import type { DefineComponent } from "vue";
+
 export interface VueTogglesProps {
   modelValue?: boolean;
   value?: boolean;
@@ -16,3 +18,5 @@ export interface VueTogglesProps {
   fontWeight?: string;
   ariaLabel?: string;
 }
+
+export type VueTogglesComponent = DefineComponent<VueTogglesProps>;

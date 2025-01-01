@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { mount, type VueWrapper } from "@vue/test-utils";
-import VueToggles from "../components/VueToggles.vue";
+import VueToggles from "../VueToggles.vue";
 
 const uncheckedText = "Off";
 const checkedText = "On";
@@ -10,7 +10,7 @@ const hexToRgb = (hex: string) => {
   if (result) {
     return `rgb(${parseInt(result[1], 16)}, ${parseInt(
       result[2],
-      16
+      16,
     )}, ${parseInt(result[3], 16)})`;
   } else {
     throw new Error("Invalid 6-digit hexadecimal color code.");
@@ -19,7 +19,7 @@ const hexToRgb = (hex: string) => {
 
 const runTestForValueProps = (
   testFunction: (wrapper: VueWrapper) => void,
-  options: { initialValue?: boolean } = {}
+  options: { initialValue?: boolean } = {},
 ) => {
   const { initialValue = false } = options;
 
@@ -100,7 +100,7 @@ describe("VueToggles", () => {
           await wrapper.setProps({ checkedText });
           expect(wrapper.text()).toBe(checkedText);
         },
-        { initialValue: true }
+        { initialValue: true },
       );
     });
 
@@ -116,9 +116,9 @@ describe("VueToggles", () => {
       runTestForValueProps(async (wrapper) => {
         await wrapper.setProps({ fontWeight });
         await wrapper.setProps({ uncheckedText });
-        expect(
-          wrapper.find(".vue-toggles__text").attributes("style")
-        ).toContain(`font-weight: ${fontWeight};`);
+        expect(wrapper.find(".vue-toggles__text").attributes("style")).toContain(
+          `font-weight: ${fontWeight};`,
+        );
       });
     });
 
@@ -127,9 +127,9 @@ describe("VueToggles", () => {
       runTestForValueProps(async (wrapper) => {
         await wrapper.setProps({ fontSize });
         await wrapper.setProps({ uncheckedText });
-        expect(
-          wrapper.find(".vue-toggles__text").attributes("style")
-        ).toContain(`font-size: ${fontSize}px;`);
+        expect(wrapper.find(".vue-toggles__text").attributes("style")).toContain(
+          `font-size: ${fontSize}px;`,
+        );
       });
     });
   });
@@ -141,10 +141,10 @@ describe("VueToggles", () => {
         async (wrapper) => {
           await wrapper.setProps({ checkedBg });
           expect(wrapper.find(".vue-toggles").attributes("style")).toContain(
-            `background: ${hexToRgb(checkedBg)};`
+            `background: ${hexToRgb(checkedBg)};`,
           );
         },
-        { initialValue: true }
+        { initialValue: true },
       );
     });
 
@@ -153,7 +153,7 @@ describe("VueToggles", () => {
       runTestForValueProps(async (wrapper) => {
         await wrapper.setProps({ uncheckedBg });
         expect(wrapper.find(".vue-toggles").attributes("style")).toContain(
-          `background: ${hexToRgb(uncheckedBg)};`
+          `background: ${hexToRgb(uncheckedBg)};`,
         );
       });
     });
@@ -163,11 +163,11 @@ describe("VueToggles", () => {
       runTestForValueProps(
         async (wrapper) => {
           await wrapper.setProps({ dotColor });
-          expect(
-            wrapper.find(".vue-toggles__dot").attributes("style")
-          ).toContain(`background: ${hexToRgb(dotColor)};`);
+          expect(wrapper.find(".vue-toggles__dot").attributes("style")).toContain(
+            `background: ${hexToRgb(dotColor)};`,
+          );
         },
-        { initialValue: true }
+        { initialValue: true },
       );
     });
 
@@ -177,11 +177,11 @@ describe("VueToggles", () => {
         async (wrapper) => {
           await wrapper.setProps({ checkedText });
           await wrapper.setProps({ checkedTextColor });
-          expect(
-            wrapper.find(".vue-toggles__text").attributes("style")
-          ).toContain(`color: ${hexToRgb(checkedTextColor)};`);
+          expect(wrapper.find(".vue-toggles__text").attributes("style")).toContain(
+            `color: ${hexToRgb(checkedTextColor)};`,
+          );
         },
-        { initialValue: true }
+        { initialValue: true },
       );
     });
 
@@ -190,9 +190,9 @@ describe("VueToggles", () => {
       runTestForValueProps(async (wrapper) => {
         await wrapper.setProps({ uncheckedText });
         await wrapper.setProps({ uncheckedTextColor });
-        expect(
-          wrapper.find(".vue-toggles__text").attributes("style")
-        ).toContain(`color: ${hexToRgb(uncheckedTextColor)};`);
+        expect(wrapper.find(".vue-toggles__text").attributes("style")).toContain(
+          `color: ${hexToRgb(uncheckedTextColor)};`,
+        );
       });
     });
   });
@@ -210,7 +210,7 @@ describe("VueToggles", () => {
         async (wrapper) => {
           expect(wrapper.attributes("aria-checked")).toBe("true");
         },
-        { initialValue: true }
+        { initialValue: true },
       );
     });
 

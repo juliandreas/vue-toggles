@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from "vue";
-import { type VueTogglesProps } from "../types";
+import type { VueTogglesProps } from "./types";
 
 const props = withDefaults(defineProps<VueTogglesProps>(), {
   modelValue: undefined,
@@ -76,10 +76,7 @@ const textStyle = computed(() => {
   const styles = {
     "font-weight": props.fontWeight,
     "font-size": `${props.fontSize}px`,
-    color:
-      isChecked.value && !props.disabled
-        ? props.checkedTextColor
-        : props.uncheckedTextColor,
+    color: isChecked.value && !props.disabled ? props.checkedTextColor : props.uncheckedTextColor,
     right: isChecked.value ? `${props.height - TEXT_OFFSET}px` : "auto",
     left: isChecked.value ? "auto" : `${props.height - TEXT_OFFSET}px`,
   };
@@ -116,8 +113,9 @@ const toggle = () => {
 watchEffect(() => {
   // Warn if both 'v-model' and ':value' are provided
   if (props.value !== undefined && props.modelValue !== undefined) {
+    // eslint-disable-next-line no-console
     console.warn(
-      'Avoid using both "v-model" and ":value" at the same time. Choose one for better predictability.'
+      'Avoid using both "v-model" and ":value" at the same time. Choose one for better predictability.',
     );
   }
 
@@ -140,11 +138,7 @@ watchEffect(() => {
     @click="toggle"
   >
     <span aria-hidden="true" :style="dotStyle" class="vue-toggles__dot">
-      <span
-        v-if="checkedText || uncheckedText"
-        class="vue-toggles__text"
-        :style="textStyle"
-      >
+      <span v-if="checkedText || uncheckedText" class="vue-toggles__text" :style="textStyle">
         {{ isChecked ? checkedText : uncheckedText }}
       </span>
     </span>
@@ -160,8 +154,8 @@ watchEffect(() => {
   align-items: center;
   border-radius: 9999px;
   overflow: hidden;
-  transition: background-color var(--toggle-transition-duration)
-      var(--toggle-transition-timing),
+  transition:
+    background-color var(--toggle-transition-duration) var(--toggle-transition-timing),
     width var(--toggle-transition-duration) var(--toggle-transition-timing),
     height var(--toggle-transition-duration) var(--toggle-transition-timing);
 }
@@ -171,7 +165,9 @@ watchEffect(() => {
   display: flex;
   align-items: center;
   border-radius: 9999px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
   transition: margin ease 0.2s;
 }
 
