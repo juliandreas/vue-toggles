@@ -13,10 +13,10 @@ export default defineConfig({
     vue(),
     cssInjectedByJsPlugin(),
     dts({
-      include: ["src"],
-      outDir: "dist",
+      include: ["src/index.ts", "src/components/types/index.ts"],
+      outDir: "dist/types",
       root: "..",
-      tsconfigPath: "tsconfig.app.json",
+      tsconfigPath: "tsconfig.json",
     }),
   ],
   resolve: {
@@ -30,6 +30,8 @@ export default defineConfig({
       name: "VueToggles",
       fileName: "vue-toggles",
     },
+    outDir: "../dist",
+    emptyOutDir: true,
     rollupOptions: {
       external: ["vue"],
       output: {
