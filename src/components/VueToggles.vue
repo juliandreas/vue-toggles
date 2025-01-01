@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from "vue";
-import type { VueTogglesProps } from "./types";
+import type { VueTogglesProps } from "../types";
 
 const props = withDefaults(defineProps<VueTogglesProps>(), {
   modelValue: undefined,

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { mount, type VueWrapper } from "@vue/test-utils";
-import VueToggles from "../VueToggles.vue";
+import VueToggles from "../components/VueToggles.vue";
 
 const uncheckedText = "Off";
 const checkedText = "On";
