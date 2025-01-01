@@ -24,20 +24,12 @@ const emits = defineEmits<{
   click: [void];
 }>();
 
+const PADDING = 8;
+const MARGIN = 5;
+const TEXT_OFFSET = 3;
+
 // Track whether the toggle is checked
 const isChecked = ref(props.value || props.modelValue);
-
-watchEffect(() => {
-  // Warn if both 'v-model' and ':value' are provided
-  if (props.value !== undefined && props.modelValue !== undefined) {
-    console.warn(
-      'Avoid using both "v-model" and ":value" at the same time. Choose one for better predictability.'
-    );
-  }
-
-  // Sync the 'isChecked' with the incoming prop 'value'
-  isChecked.value = props.value || props.modelValue;
-});
 
 const bgStyle = computed(() => {
   const styles = {
@@ -54,26 +46,26 @@ const bgStyle = computed(() => {
 const dotStyle = computed(() => {
   const styles = {
     background: props.dotColor,
-    width: `${props.height - 8}px`,
-    height: `${props.height - 8}px`,
-    "min-width": `${props.height - 8}px`,
-    "min-height": `${props.height - 8}px`,
+    width: `${props.height - PADDING}px`,
+    height: `${props.height - PADDING}px`,
+    "min-width": `${props.height - PADDING}px`,
+    "min-height": `${props.height - PADDING}px`,
     "margin-left": isChecked.value
-      ? `${props.width - (props.height - 3)}px`
-      : "5px",
+      ? `${props.width - (props.height - TEXT_OFFSET)}px`
+      : `${MARGIN}px`,
   };
 
   if (isChecked.value) {
     if (props.reverse) {
-      styles["margin-left"] = "5px";
+      styles["margin-left"] = `${MARGIN}px`;
     } else {
-      styles["margin-left"] = `${props.width - (props.height - 3)}px`;
+      styles["margin-left"] = `${props.width - (props.height - TEXT_OFFSET)}px`;
     }
   } else {
     if (props.reverse) {
-      styles["margin-left"] = `${props.width - (props.height - 3)}px`;
+      styles["margin-left"] = `${props.width - (props.height - TEXT_OFFSET)}px`;
     } else {
-      styles["margin-left"] = "5px";
+      styles["margin-left"] = `${MARGIN}px`;
     }
   }
 
@@ -88,24 +80,24 @@ const textStyle = computed(() => {
       isChecked.value && !props.disabled
         ? props.checkedTextColor
         : props.uncheckedTextColor,
-    right: isChecked.value ? `${props.height - 3}px` : "auto",
-    left: isChecked.value ? "auto" : `${props.height - 3}px`,
+    right: isChecked.value ? `${props.height - TEXT_OFFSET}px` : "auto",
+    left: isChecked.value ? "auto" : `${props.height - TEXT_OFFSET}px`,
   };
 
   if (isChecked.value) {
     if (props.reverse) {
-      styles.left = `${props.height - 3}px`;
+      styles.left = `${props.height - TEXT_OFFSET}px`;
       styles.right = "auto";
     } else {
-      styles.right = `${props.height - 3}px`;
+      styles.right = `${props.height - TEXT_OFFSET}px`;
       styles.left = "auto";
     }
   } else {
     if (props.reverse) {
-      styles.right = `${props.height - 3}px`;
+      styles.right = `${props.height - TEXT_OFFSET}px`;
       styles.left = "auto";
     } else {
-      styles.left = `${props.height - 3}px`;
+      styles.left = `${props.height - TEXT_OFFSET}px`;
       styles.right = "auto";
     }
   }
@@ -120,6 +112,18 @@ const toggle = () => {
     emits("click");
   }
 };
+
+watchEffect(() => {
+  // Warn if both 'v-model' and ':value' are provided
+  if (props.value !== undefined && props.modelValue !== undefined) {
+    console.warn(
+      'Avoid using both "v-model" and ":value" at the same time. Choose one for better predictability.'
+    );
+  }
+
+  // Sync the 'isChecked' with the incoming prop 'value'
+  isChecked.value = props.value || props.modelValue;
+});
 </script>
 
 <template>
@@ -149,11 +153,17 @@ const toggle = () => {
 
 <style>
 .vue-toggles {
+  --toggle-transition-duration: 0.2s;
+  --toggle-transition-timing: ease;
+
   display: flex;
   align-items: center;
   border-radius: 9999px;
   overflow: hidden;
-  transition: background-color ease 0.2s, width ease 0.2s, height ease 0.2s;
+  transition: background-color var(--toggle-transition-duration)
+      var(--toggle-transition-timing),
+    width var(--toggle-transition-duration) var(--toggle-transition-timing),
+    height var(--toggle-transition-duration) var(--toggle-transition-timing);
 }
 
 .vue-toggles__dot {

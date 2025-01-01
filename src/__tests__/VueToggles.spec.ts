@@ -213,5 +213,12 @@ describe("VueToggles", () => {
         { initialValue: true }
       );
     });
+
+    it("should correctly set aria-label", async () => {
+      runTestForValueProps(async (wrapper) => {
+        await wrapper.setProps({ ariaLabel: "Test aria-label" });
+        expect(wrapper.attributes("aria-label")).toBe("Test aria-label");
+      });
+    });
   });
 });
