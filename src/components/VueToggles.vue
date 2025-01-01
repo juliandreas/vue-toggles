@@ -8,6 +8,7 @@ const props = withDefaults(defineProps<VueTogglesProps>(), {
   width: 75,
   height: 25,
   dotColor: "#ffffff",
+  dotSize: 0,
   uncheckedBg: "#939393",
   checkedBg: "#5850ec",
   uncheckedTextColor: "#ffffff",
@@ -43,14 +44,16 @@ const bgStyle = computed(() => {
 });
 
 const dotStyle = computed(() => {
+  const dotDimension = props.dotSize || props.height - PADDING;
+
   const styles = {
     background: props.dotColor,
-    width: `${props.height - PADDING}px`,
-    height: `${props.height - PADDING}px`,
-    "min-width": `${props.height - PADDING}px`,
-    "min-height": `${props.height - PADDING}px`,
+    width: `${dotDimension}px`,
+    height: `${dotDimension}px`,
+    "min-width": `${dotDimension}px`,
+    "min-height": `${dotDimension}px`,
     "margin-left": isChecked.value
-      ? `${props.width - (props.height - TEXT_OFFSET)}px`
+      ? `${props.width - dotDimension - TEXT_OFFSET}px`
       : `${MARGIN}px`,
   };
 
@@ -58,11 +61,11 @@ const dotStyle = computed(() => {
     if (props.reverse) {
       styles["margin-left"] = `${MARGIN}px`;
     } else {
-      styles["margin-left"] = `${props.width - (props.height - TEXT_OFFSET)}px`;
+      styles["margin-left"] = `${props.width - dotDimension - TEXT_OFFSET}px`;
     }
   } else {
     if (props.reverse) {
-      styles["margin-left"] = `${props.width - (props.height - TEXT_OFFSET)}px`;
+      styles["margin-left"] = `${props.width - dotDimension - TEXT_OFFSET}px`;
     } else {
       styles["margin-left"] = `${MARGIN}px`;
     }
