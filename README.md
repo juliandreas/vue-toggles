@@ -79,22 +79,23 @@ You can also add more props to customize things like color and width/height.
 
 ## Properties
 
-| Name               | Type             | Default   | Description                                       |
-| ------------------ | ---------------- | --------- | ------------------------------------------------- |
-| value              | Boolean          | `false`   | Initial state of the toggle button                |
-| disabled           | Boolean          | `false`   | Toggle does not react on mouse or keyboard events |
-| reverse            | Boolean          | `false`   | Reverse toggle to Right to Left                   |
-| height             | [String, Number] | `25`      | Height of the toggle in `px`                      |
-| width              | [String, Number] | `75`      | Width of the toggle in `px`                       |
-| dotColor           | String           | `#ffffff` | Color of the toggle dot                           |
-| uncheckedBg        | String           | `#939393` | Background color when the toggle is unchecked     |
-| checkedBg          | String           | `#5850ec` | Background color when the toggle is checked       |
-| uncheckedTextColor | String           | `#ffffff` | Text color when the toggle is unchecked           |
-| checkedTextColor   | String           | `#ffffff` | Text color when the toggle is checked             |
-| uncheckedText      | String           | `""`      | Optional text when the toggle is unchecked        |
-| checkedText        | String           | `""`      | Optional text when the toggle is checked          |
-| fontSize           | String           | `12`      | Font size in `px`                                 |
-| fontWeight         | String           | `normal`  | Font weight                                       |
+| Name               | Type    | Default   | Description                                       |
+| ------------------ | ------- | --------- | ------------------------------------------------- |
+| value              | Boolean | `false`   | Initial state of the toggle button                |
+| disabled           | Boolean | `false`   | Toggle does not react on mouse or keyboard events |
+| reverse            | Boolean | `false`   | Reverse toggle to Right to Left                   |
+| width              | Number  | `75`      | Width of the toggle in `px`                       |
+| height             | Number  | `25`      | Height of the toggle in `px`                      |
+| dotColor           | String  | `#ffffff` | Color of the toggle dot                           |
+| dotSize            | Number  | `0`       | Dot size in `px`                                  |
+| checkedBg          | String  | `#5850ec` | Background color when the toggle is checked       |
+| uncheckedBg        | String  | `#939393` | Background color when the toggle is unchecked     |
+| checkedTextColor   | String  | `#ffffff` | Text color when the toggle is checked             |
+| uncheckedTextColor | String  | `#ffffff` | Text color when the toggle is unchecked           |
+| uncheckedText      | String  | `""`      | Optional text when the toggle is unchecked        |
+| checkedText        | String  | `""`      | Optional text when the toggle is checked          |
+| fontSize           | Number  | `12`      | Font size in `px`                                 |
+| fontWeight         | String  | `normal`  | Font weight                                       |
 
 ## Vue 2 support
 
