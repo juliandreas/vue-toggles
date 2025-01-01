@@ -95,7 +95,6 @@ You can also add more props to customize things like color and width/height.
 | checkedText        | String           | `""`      | Optional text when the toggle is checked          |
 | fontSize           | String           | `12`      | Font size in `px`                                 |
 | fontWeight         | String           | `normal`  | Font weight                                       |
-| ariaLabel          | String           | `""`      | Aria label for the toggle                         |
 
 ## Vue 2 support
 

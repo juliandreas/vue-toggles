@@ -16,7 +16,6 @@ const props = withDefaults(defineProps<VueTogglesProps>(), {
   checkedText: "",
   fontSize: 12,
   fontWeight: "normal",
-  ariaLabel: "",
 });
 
 const emits = defineEmits<{
@@ -132,7 +131,6 @@ watchEffect(() => {
     tabindex="0"
     :aria-checked="isChecked"
     :aria-readonly="disabled"
-    :aria-label="ariaLabel"
     @keyup.enter.prevent="toggle"
     @keyup.space.prevent="toggle"
     @click="toggle"
