@@ -13,7 +13,7 @@ export default defineConfig({
     vue(),
     cssInjectedByJsPlugin(),
     dts({
-      include: ["src/index.ts", "src/components/types/index.ts"],
+      include: ["src"],
       outDir: "dist",
       root: "..",
       tsconfigPath: "tsconfig.app.json",
