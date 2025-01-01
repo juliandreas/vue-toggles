@@ -14,4 +14,5 @@ export interface VueTogglesProps {
   checkedText?: string;
   fontSize?: number;
   fontWeight?: string;
+  ariaLabel?: string;
 }
