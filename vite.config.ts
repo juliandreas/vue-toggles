@@ -8,12 +8,14 @@ import dts from "vite-plugin-dts";
 // https://vite.dev/config/
 // https://vite.dev/guide/build.html#library-mode
 export default defineConfig({
+  root: "dev",
   plugins: [
     vue(),
     cssInjectedByJsPlugin(),
     dts({
       include: ["src/index.ts", "src/components/types/index.ts"],
       outDir: "dist",
+      root: "..",
       tsconfigPath: "tsconfig.app.json",
     }),
   ],
