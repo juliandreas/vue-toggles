@@ -102,6 +102,8 @@ const textStyle = computed(() => {
   return styles;
 });
 
+//
+
 const toggle = () => {
   if (!props.disabled) {
     isChecked.value = !isChecked.value;
