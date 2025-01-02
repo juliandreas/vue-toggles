@@ -26,7 +26,7 @@ What's left for you, when it comes to accessibility, is labeling the toggle corr
 - A `<label for="example-id">Toggle description</label>` followed by the toggle component `<VueToggles id="example-id" />`
 - Or an `aria-label`, for example `<VueToggles aria-label="Toggle description" />`. Remember, you still need a visual text description of what the toggle does
 
-The `focus`-style is also left up to you - which you shouldn't remove. If you think the default is ugly, style it yourself!
+The focus-style is also left up to you - which you shouldn't remove. If you think the default is ugly, style it yourself!
 
 ## Installation
 
