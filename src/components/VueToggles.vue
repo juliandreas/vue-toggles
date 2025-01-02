@@ -134,12 +134,18 @@ watchEffect(() => {
     tabindex="0"
     :aria-checked="isChecked"
     :aria-readonly="disabled"
+    test-id="toggle"
     @keyup.enter.prevent="toggle"
     @keyup.space.prevent="toggle"
     @click="toggle"
   >
-    <span aria-hidden="true" :style="dotStyle" class="vue-toggles__dot">
-      <span v-if="checkedText || uncheckedText" class="vue-toggles__text" :style="textStyle">
+    <span aria-hidden="true" :style="dotStyle" class="vue-toggles__dot" test-id="dot">
+      <span
+        v-if="checkedText || uncheckedText"
+        class="vue-toggles__text"
+        :style="textStyle"
+        test-id="text"
+      >
         {{ isChecked ? checkedText : uncheckedText }}
       </span>
     </span>

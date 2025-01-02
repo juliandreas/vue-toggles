@@ -91,6 +91,19 @@ describe("VueToggles", () => {
         expect(wrapper.attributes("style")).toContain(`height: ${height}px;`);
       });
     });
+
+    it("handles dot size prop correctly", () => {
+      runTestForValueProps(async (wrapper) => {
+        const dotSize = 10;
+        await wrapper.setProps({ dotSize });
+        expect(wrapper.find("[test-id='dot']").attributes("style")).toContain(
+          `width: ${dotSize}px;`,
+        );
+        expect(wrapper.find("[test-id='dot']").attributes("style")).toContain(
+          `height: ${dotSize}px;`,
+        );
+      });
+    });
   });
 
   describe("Text", () => {
@@ -116,7 +129,7 @@ describe("VueToggles", () => {
       runTestForValueProps(async (wrapper) => {
         await wrapper.setProps({ fontWeight });
         await wrapper.setProps({ uncheckedText });
-        expect(wrapper.find(".vue-toggles__text").attributes("style")).toContain(
+        expect(wrapper.find("[test-id='text']").attributes("style")).toContain(
           `font-weight: ${fontWeight};`,
         );
       });
@@ -127,7 +140,7 @@ describe("VueToggles", () => {
       runTestForValueProps(async (wrapper) => {
         await wrapper.setProps({ fontSize });
         await wrapper.setProps({ uncheckedText });
-        expect(wrapper.find(".vue-toggles__text").attributes("style")).toContain(
+        expect(wrapper.find("[test-id='text']").attributes("style")).toContain(
           `font-size: ${fontSize}px;`,
         );
       });
@@ -140,7 +153,7 @@ describe("VueToggles", () => {
       runTestForValueProps(
         async (wrapper) => {
           await wrapper.setProps({ checkedBg });
-          expect(wrapper.find(".vue-toggles").attributes("style")).toContain(
+          expect(wrapper.find("[test-id='toggle']").attributes("style")).toContain(
             `background: ${hexToRgb(checkedBg)};`,
           );
         },
@@ -152,7 +165,7 @@ describe("VueToggles", () => {
       const uncheckedBg = "#654321";
       runTestForValueProps(async (wrapper) => {
         await wrapper.setProps({ uncheckedBg });
-        expect(wrapper.find(".vue-toggles").attributes("style")).toContain(
+        expect(wrapper.find("[test-id='toggle']").attributes("style")).toContain(
           `background: ${hexToRgb(uncheckedBg)};`,
         );
       });
@@ -163,7 +176,7 @@ describe("VueToggles", () => {
       runTestForValueProps(
         async (wrapper) => {
           await wrapper.setProps({ dotColor });
-          expect(wrapper.find(".vue-toggles__dot").attributes("style")).toContain(
+          expect(wrapper.find("[test-id='dot']").attributes("style")).toContain(
             `background: ${hexToRgb(dotColor)};`,
           );
         },
@@ -177,7 +190,7 @@ describe("VueToggles", () => {
         async (wrapper) => {
           await wrapper.setProps({ checkedText });
           await wrapper.setProps({ checkedTextColor });
-          expect(wrapper.find(".vue-toggles__text").attributes("style")).toContain(
+          expect(wrapper.find("[test-id='text']").attributes("style")).toContain(
             `color: ${hexToRgb(checkedTextColor)};`,
           );
         },
@@ -190,7 +203,7 @@ describe("VueToggles", () => {
       runTestForValueProps(async (wrapper) => {
         await wrapper.setProps({ uncheckedText });
         await wrapper.setProps({ uncheckedTextColor });
-        expect(wrapper.find(".vue-toggles__text").attributes("style")).toContain(
+        expect(wrapper.find("[test-id='text']").attributes("style")).toContain(
           `color: ${hexToRgb(uncheckedTextColor)};`,
         );
       });
@@ -219,6 +232,68 @@ describe("VueToggles", () => {
         },
         { initialValue: true },
       );
+    });
+  });
+
+  describe("Interactions and Events", () => {
+    it("emits correct events when clicked", async () => {
+      runTestForValueProps(async (wrapper) => {
+        // Initial state should be false
+        expect(wrapper.emitted("update:modelValue")).toBeUndefined();
+        expect(wrapper.emitted("click")).toBeUndefined();
+
+        // First click
+        await wrapper.trigger("click");
+        expect(wrapper.emitted("click")).toHaveLength(1);
+        expect(wrapper.emitted("update:modelValue")?.[0]).toEqual([true]);
+
+        // Second click
+        await wrapper.trigger("click");
+        expect(wrapper.emitted("click")).toHaveLength(2);
+        expect(wrapper.emitted("update:modelValue")?.[1]).toEqual([false]);
+      });
+    });
+
+    it("emits events on keyboard interaction", async () => {
+      runTestForValueProps(async (wrapper) => {
+        // Test Enter key
+        await wrapper.trigger("keyup.enter");
+        expect(wrapper.emitted("click")).toHaveLength(1);
+        expect(wrapper.emitted("update:modelValue")?.[0]).toEqual([true]);
+
+        // Test Space key
+        await wrapper.trigger("keyup.space");
+        expect(wrapper.emitted("click")).toHaveLength(2);
+        expect(wrapper.emitted("update:modelValue")?.[1]).toEqual([false]);
+      });
+    });
+
+    it("does not emit events when disabled", async () => {
+      runTestForValueProps(async (wrapper) => {
+        await wrapper.setProps({ disabled: true });
+
+        // Click attempt
+        await wrapper.trigger("click");
+        expect(wrapper.emitted("click")).toBeUndefined();
+        expect(wrapper.emitted("update:modelValue")).toBeUndefined();
+
+        // Keyboard attempt
+        await wrapper.trigger("keyup.enter");
+        expect(wrapper.emitted("click")).toBeUndefined();
+        expect(wrapper.emitted("update:modelValue")).toBeUndefined();
+      });
+    });
+
+    it("maintains correct event state through multiple toggles", async () => {
+      runTestForValueProps(async (wrapper) => {
+        // Multiple clicks
+        for (let i = 0; i < 3; i++) {
+          await wrapper.trigger("click");
+          const expectedValue = i % 2 === 0;
+          expect(wrapper.emitted("update:modelValue")?.[i]).toEqual([expectedValue]);
+        }
+        expect(wrapper.emitted("click")).toHaveLength(3);
+      });
     });
   });
 });
