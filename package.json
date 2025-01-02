@@ -18,10 +18,10 @@
   ],
   "main": "./dist/vue-toggles.umd.cjs",
   "module": "./dist/vue-toggles.js",
-  "types": "./dist/types/index.d.ts",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
+      "types": "./dist/index.d.ts",
       "import": "./dist/vue-toggles.js",
       "require": "./dist/vue-toggles.umd.cjs"
     }
