@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watchEffect } from "vue";
-import { type VueTogglesProps } from "../types";
+import type { VueTogglesProps } from "../types";
 
 const props = withDefaults(defineProps<VueTogglesProps>(), {
   modelValue: undefined,
@@ -8,6 +8,7 @@ const props = withDefaults(defineProps<VueTogglesProps>(), {
   width: 75,
   height: 25,
   dotColor: "#ffffff",
+  dotSize: 0,
   uncheckedBg: "#939393",
   checkedBg: "#5850ec",
   uncheckedTextColor: "#ffffff",
@@ -23,20 +24,12 @@ const emits = defineEmits<{
   click: [void];
 }>();
 
+const PADDING = 8;
+const MARGIN = 5;
+const TEXT_OFFSET = 3;
+
 // Track whether the toggle is checked
 const isChecked = ref(props.value || props.modelValue);
-
-watchEffect(() => {
-  // Warn if both 'v-model' and ':value' are provided
-  if (props.value !== undefined && props.modelValue !== undefined) {
-    console.warn(
-      'Avoid using both "v-model" and ":value" at the same time. Choose one for better predictability.'
-    );
-  }
-
-  // Sync the 'isChecked' with the incoming prop 'value'
-  isChecked.value = props.value || props.modelValue;
-});
 
 const bgStyle = computed(() => {
   const styles = {
@@ -51,28 +44,30 @@ const bgStyle = computed(() => {
 });
 
 const dotStyle = computed(() => {
+  const dotDimension = props.dotSize || props.height - PADDING;
+
   const styles = {
     background: props.dotColor,
-    width: `${props.height - 8}px`,
-    height: `${props.height - 8}px`,
-    "min-width": `${props.height - 8}px`,
-    "min-height": `${props.height - 8}px`,
+    width: `${dotDimension}px`,
+    height: `${dotDimension}px`,
+    "min-width": `${dotDimension}px`,
+    "min-height": `${dotDimension}px`,
     "margin-left": isChecked.value
-      ? `${props.width - (props.height - 3)}px`
-      : "5px",
+      ? `${props.width - dotDimension - TEXT_OFFSET}px`
+      : `${MARGIN}px`,
   };
 
   if (isChecked.value) {
     if (props.reverse) {
-      styles["margin-left"] = "5px";
+      styles["margin-left"] = `${MARGIN}px`;
     } else {
-      styles["margin-left"] = `${props.width - (props.height - 3)}px`;
+      styles["margin-left"] = `${props.width - dotDimension - TEXT_OFFSET}px`;
     }
   } else {
     if (props.reverse) {
-      styles["margin-left"] = `${props.width - (props.height - 3)}px`;
+      styles["margin-left"] = `${props.width - dotDimension - TEXT_OFFSET}px`;
     } else {
-      styles["margin-left"] = "5px";
+      styles["margin-left"] = `${MARGIN}px`;
     }
   }
 
@@ -83,28 +78,25 @@ const textStyle = computed(() => {
   const styles = {
     "font-weight": props.fontWeight,
     "font-size": `${props.fontSize}px`,
-    color:
-      isChecked.value && !props.disabled
-        ? props.checkedTextColor
-        : props.uncheckedTextColor,
-    right: isChecked.value ? `${props.height - 3}px` : "auto",
-    left: isChecked.value ? "auto" : `${props.height - 3}px`,
+    color: isChecked.value && !props.disabled ? props.checkedTextColor : props.uncheckedTextColor,
+    right: isChecked.value ? `${props.height - TEXT_OFFSET}px` : "auto",
+    left: isChecked.value ? "auto" : `${props.height - TEXT_OFFSET}px`,
   };
 
   if (isChecked.value) {
     if (props.reverse) {
-      styles.left = `${props.height - 3}px`;
+      styles.left = `${props.height - TEXT_OFFSET}px`;
       styles.right = "auto";
     } else {
-      styles.right = `${props.height - 3}px`;
+      styles.right = `${props.height - TEXT_OFFSET}px`;
       styles.left = "auto";
     }
   } else {
     if (props.reverse) {
-      styles.right = `${props.height - 3}px`;
+      styles.right = `${props.height - TEXT_OFFSET}px`;
       styles.left = "auto";
     } else {
-      styles.left = `${props.height - 3}px`;
+      styles.left = `${props.height - TEXT_OFFSET}px`;
       styles.right = "auto";
     }
   }
@@ -119,6 +111,19 @@ const toggle = () => {
     emits("click");
   }
 };
+
+watchEffect(() => {
+  // Warn if both 'v-model' and ':value' are provided
+  if (props.value !== undefined && props.modelValue !== undefined) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Avoid using both "v-model" and ":value" at the same time. Choose one for better predictability.',
+    );
+  }
+
+  // Sync the 'isChecked' with the incoming prop 'value'
+  isChecked.value = props.value || props.modelValue;
+});
 </script>
 
 <template>
@@ -129,15 +134,17 @@ const toggle = () => {
     tabindex="0"
     :aria-checked="isChecked"
     :aria-readonly="disabled"
+    test-id="toggle"
     @keyup.enter.prevent="toggle"
     @keyup.space.prevent="toggle"
     @click="toggle"
   >
-    <span aria-hidden="true" :style="dotStyle" class="vue-toggles__dot">
+    <span aria-hidden="true" :style="dotStyle" class="vue-toggles__dot" test-id="dot">
       <span
         v-if="checkedText || uncheckedText"
         class="vue-toggles__text"
         :style="textStyle"
+        test-id="text"
       >
         {{ isChecked ? checkedText : uncheckedText }}
       </span>
@@ -147,11 +154,17 @@ const toggle = () => {
 
 <style>
 .vue-toggles {
+  --toggle-transition-duration: 0.2s;
+  --toggle-transition-timing: ease;
+
   display: flex;
   align-items: center;
   border-radius: 9999px;
   overflow: hidden;
-  transition: background-color ease 0.2s, width ease 0.2s, height ease 0.2s;
+  transition:
+    background-color var(--toggle-transition-duration) var(--toggle-transition-timing),
+    width var(--toggle-transition-duration) var(--toggle-transition-timing),
+    height var(--toggle-transition-duration) var(--toggle-transition-timing);
 }
 
 .vue-toggles__dot {
@@ -159,7 +172,9 @@ const toggle = () => {
   display: flex;
   align-items: center;
   border-radius: 9999px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
   transition: margin ease 0.2s;
 }
 

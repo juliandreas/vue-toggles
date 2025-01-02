@@ -8,7 +8,7 @@ A highly customizable and accessible toggle component for Vue 3.
 </p>
 
 <p align="center">
-<img src="./public/vue-toggles.jpg" alt="Vue Toggles Logo"/>
+<img src="https://raw.githubusercontent.com/juliandreas/vue-toggles/master/public/vue-toggles.jpg" alt="Vue Toggles Logo"/>
 </p>
 
 ## Introduction
@@ -26,7 +26,7 @@ What's left for you, when it comes to accessibility, is labeling the toggle corr
 - A `<label for="example-id">Toggle description</label>` followed by the toggle component `<VueToggles id="example-id" />`
 - Or an `aria-label`, for example `<VueToggles aria-label="Toggle description" />`. Remember, you still need a visual text description of what the toggle does
 
-The `focus`-style is also left up to you — which you shouldn't remove. If you think the default is ugly, style it yourself!
+The `focus`-style is also left up to you - which you shouldn't remove. If you think the default is ugly, style it yourself!
 
 ## Installation
 
@@ -43,7 +43,11 @@ import { VueToggles } from "vue-toggles";
 ### Import types
 
 ```javascript
-import { type VueTogglesProps } from "vue-toggles";
+import type { VueTogglesProps } from "vue-toggles";
+```
+
+```javascript
+import VueToggles, { type VueTogglesProps } from "vue-toggles";
 ```
 
 ## Usage
@@ -51,13 +55,13 @@ import { type VueTogglesProps } from "vue-toggles";
 The toggle is very easy to use out of the box. The bare minimum for it to work is a `@click`-function and a `:value`-prop.
 
 ```html
-<VueToggles :value="example" @click="example = !example" />
+<VueToggles :value="isChecked" @click="isChecked = !isChecked" />
 ```
 
 Or if you prefer the `v-model`-syntax:
 
 ```html
-<VueToggles v-model="example" />
+<VueToggles v-model="isChecked" />
 ```
 
 ## Options
@@ -79,22 +83,23 @@ You can also add more props to customize things like color and width/height.
 
 ## Properties
 
-| Name               | Type             | Default   | Description                                       |
-| ------------------ | ---------------- | --------- | ------------------------------------------------- |
-| value              | Boolean          | `false`   | Initial state of the toggle button                |
-| disabled           | Boolean          | `false`   | Toggle does not react on mouse or keyboard events |
-| reverse            | Boolean          | `false`   | Reverse toggle to Right to Left                   |
-| height             | [String, Number] | `25`      | Height of the toggle in `px`                      |
-| width              | [String, Number] | `75`      | Width of the toggle in `px`                       |
-| dotColor           | String           | `#ffffff` | Color of the toggle dot                           |
-| uncheckedBg        | String           | `#939393` | Background color when the toggle is unchecked     |
-| checkedBg          | String           | `#5850ec` | Background color when the toggle is checked       |
-| uncheckedTextColor | String           | `#ffffff` | Text color when the toggle is unchecked           |
-| checkedTextColor   | String           | `#ffffff` | Text color when the toggle is checked             |
-| uncheckedText      | String           | `""`      | Optional text when the toggle is unchecked        |
-| checkedText        | String           | `""`      | Optional text when the toggle is checked          |
-| fontSize           | String           | `12`      | Font size in `px`                                 |
-| fontWeight         | String           | `normal`  | Font weight                                       |
+| Name               | Type    | Default   | Description                                       |
+| ------------------ | ------- | --------- | ------------------------------------------------- |
+| value              | Boolean | `false`   | Initial state of the toggle button                |
+| disabled           | Boolean | `false`   | Toggle does not react on mouse or keyboard events |
+| reverse            | Boolean | `false`   | Reverse toggle to Right to Left                   |
+| width              | Number  | `75`      | Width of the toggle in `px`                       |
+| height             | Number  | `25`      | Height of the toggle in `px`                      |
+| dotColor           | String  | `#ffffff` | Color of the toggle dot                           |
+| dotSize            | Number  | `0`       | Dot size in `px`                                  |
+| checkedBg          | String  | `#5850ec` | Background color when the toggle is checked       |
+| uncheckedBg        | String  | `#939393` | Background color when the toggle is unchecked     |
+| checkedTextColor   | String  | `#ffffff` | Text color when the toggle is checked             |
+| uncheckedTextColor | String  | `#ffffff` | Text color when the toggle is unchecked           |
+| uncheckedText      | String  | `""`      | Optional text when the toggle is unchecked        |
+| checkedText        | String  | `""`      | Optional text when the toggle is checked          |
+| fontSize           | Number  | `12`      | Font size in `px`                                 |
+| fontWeight         | String  | `normal`  | Font weight                                       |
 
 ## Vue 2 support
 

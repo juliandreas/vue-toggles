@@ -6,6 +6,7 @@ export interface VueTogglesProps {
   width?: number;
   height?: number;
   dotColor?: string;
+  dotSize?: number;
   uncheckedBg?: string;
   checkedBg?: string;
   uncheckedTextColor?: string;
