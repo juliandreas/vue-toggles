@@ -198,6 +198,13 @@ describe("VueToggles", () => {
   });
 
   describe("ARIA attributes", () => {
+    it("should correctly set aria-label", async () => {
+      runTestForValueProps(async (wrapper) => {
+        await wrapper.setProps({ ariaLabel: "Test aria-label" });
+        expect(wrapper.attributes("aria-label")).toBe("Test aria-label");
+      });
+    });
+
     it("should correctly set aria-readonly when disabled", async () => {
       runTestForValueProps(async (wrapper) => {
         await wrapper.setProps({ disabled: true });
@@ -212,13 +219,6 @@ describe("VueToggles", () => {
         },
         { initialValue: true },
       );
-    });
-
-    it("should correctly set aria-label", async () => {
-      runTestForValueProps(async (wrapper) => {
-        await wrapper.setProps({ ariaLabel: "Test aria-label" });
-        expect(wrapper.attributes("aria-label")).toBe("Test aria-label");
-      });
     });
   });
 });

@@ -35,8 +35,8 @@
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
-    "deploy": "npm run test:unit:once && npm run build && npm publish",
-    "beta": "npm run test:ci && npm run build && npm publish --tag beta"
+    "deploy": "npm run test:ci && npm run build && npm publish",
+    "deploy:beta": "npm run test:ci && npm run build && npm publish --tag beta"
   },
   "peerDependencies": {
     "vue": "^3.5.13"
