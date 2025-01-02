@@ -8,7 +8,7 @@ A highly customizable and accessible toggle component for Vue 3.
 </p>
 
 <p align="center">
-<img src="./dev/public/vue-toggles.jpg" alt="Vue Toggles Logo"/>
+<img src="https://raw.githubusercontent.com/juliandreas/vue-toggles/master/public/vue-toggles.jpg" alt="Vue Toggles Logo"/>
 </p>
 
 ## Introduction
