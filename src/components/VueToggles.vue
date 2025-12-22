@@ -53,7 +53,7 @@ const dotStyle = computed(() => {
     "min-width": `${dotDimension}px`,
     "min-height": `${dotDimension}px`,
     "margin-left": isChecked.value
-      ? `${props.width - dotDimension - TEXT_OFFSET}px`
+      ? `${props.width - dotDimension - MARGIN}px`
       : `${MARGIN}px`,
   };
 
@@ -61,11 +61,11 @@ const dotStyle = computed(() => {
     if (props.reverse) {
       styles["margin-left"] = `${MARGIN}px`;
     } else {
-      styles["margin-left"] = `${props.width - dotDimension - TEXT_OFFSET}px`;
+      styles["margin-left"] = `${props.width - dotDimension - MARGIN}px`;
     }
   } else {
     if (props.reverse) {
-      styles["margin-left"] = `${props.width - dotDimension - TEXT_OFFSET}px`;
+      styles["margin-left"] = `${props.width - dotDimension - MARGIN}px`;
     } else {
       styles["margin-left"] = `${MARGIN}px`;
     }
