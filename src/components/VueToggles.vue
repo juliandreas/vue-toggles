@@ -52,9 +52,7 @@ const dotStyle = computed(() => {
     height: `${dotDimension}px`,
     "min-width": `${dotDimension}px`,
     "min-height": `${dotDimension}px`,
-    "margin-left": isChecked.value
-      ? `${props.width - dotDimension - MARGIN}px`
-      : `${MARGIN}px`,
+    "margin-left": isChecked.value ? `${props.width - dotDimension - MARGIN}px` : `${MARGIN}px`,
   };
 
   if (isChecked.value) {
