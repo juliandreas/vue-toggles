@@ -19,7 +19,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["node", "jsdom", "vitest"]
+    "types": ["node", "happy-dom", "vitest"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite.config.ts"],
   "exclude": ["dist", "node_modules"]
